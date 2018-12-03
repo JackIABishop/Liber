@@ -99,12 +99,11 @@
 		575580C621B578A900B6A9AD /* Liber */ = {
 			isa = PBXGroup;
 			children = (
-				575580C721B578A900B6A9AD /* AppDelegate.swift */,
-				575580C921B578A900B6A9AD /* FirstViewController.swift */,
-				575580CB21B578A900B6A9AD /* SecondViewController.swift */,
-				575580CD21B578A900B6A9AD /* Main.storyboard */,
-				575580D021B578AB00B6A9AD /* Assets.xcassets */,
-				575580D221B578AB00B6A9AD /* LaunchScreen.storyboard */,
+				575580F921B5815100B6A9AD /* Models */,
+				575580FB21B5816000B6A9AD /* Views */,
+				575580F821B5814900B6A9AD /* Controllers */,
+				575580F721B5813E00B6A9AD /* Assets */,
+				575580FA21B5815800B6A9AD /* Support Files */,
 				575580D521B578AB00B6A9AD /* Info.plist */,
 			);
 			path = Liber;
@@ -126,6 +125,95 @@
 				575580EB21B578AB00B6A9AD /* Info.plist */,
 			);
 			path = LiberUITests;
+			sourceTree = "<group>";
+		};
+		575580F721B5813E00B6A9AD /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				575580D021B578AB00B6A9AD /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		575580F821B5814900B6A9AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				575580C921B578A900B6A9AD /* FirstViewController.swift */,
+				575580CB21B578A900B6A9AD /* SecondViewController.swift */,
+				575580FC21B5817B00B6A9AD /* Accounts */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		575580F921B5815100B6A9AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		575580FA21B5815800B6A9AD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				575580FD21B581E200B6A9AD /* Cells */,
+				575580FE21B581EA00B6A9AD /* Fonts */,
+				5755810121B5821400B6A9AD /* Images */,
+				575580FF21B581F100B6A9AD /* Sounds */,
+				5755810021B581F600B6A9AD /* Utilities */,
+				575580C721B578A900B6A9AD /* AppDelegate.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		575580FB21B5816000B6A9AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				575580D221B578AB00B6A9AD /* LaunchScreen.storyboard */,
+				575580CD21B578A900B6A9AD /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		575580FC21B5817B00B6A9AD /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		575580FD21B581E200B6A9AD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		575580FE21B581EA00B6A9AD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		575580FF21B581F100B6A9AD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		5755810021B581F600B6A9AD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		5755810121B5821400B6A9AD /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
