@@ -7,8 +7,11 @@ target 'Liber' do
 
   # Pods for Liber
   pod 'GoogleBooksApiClient'
+  pod 'Firebase'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'SVProgressHUD'
 
   target 'LiberTests' do
     inherit! :search_paths

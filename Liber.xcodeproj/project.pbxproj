@@ -7,14 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5739037521B5C3D2002483DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5739037421B5C3D2002483DC /* Assets.xcassets */; };
 		575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C721B578A900B6A9AD /* AppDelegate.swift */; };
-		575580CA21B578A900B6A9AD /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C921B578A900B6A9AD /* FirstViewController.swift */; };
-		575580CC21B578A900B6A9AD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580CB21B578A900B6A9AD /* SecondViewController.swift */; };
+		575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C921B578A900B6A9AD /* BookcaseViewController.swift */; };
+		575580CC21B578A900B6A9AD /* AddViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580CB21B578A900B6A9AD /* AddViewControler.swift */; };
 		575580CF21B578A900B6A9AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575580CD21B578A900B6A9AD /* Main.storyboard */; };
-		575580D121B578AB00B6A9AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 575580D021B578AB00B6A9AD /* Assets.xcassets */; };
 		575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575580D221B578AB00B6A9AD /* LaunchScreen.storyboard */; };
 		575580DF21B578AB00B6A9AD /* LiberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580DE21B578AB00B6A9AD /* LiberTests.swift */; };
 		575580EA21B578AB00B6A9AD /* LiberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580E921B578AB00B6A9AD /* LiberUITests.swift */; };
+		57B2C8E221B59FA1005DB89A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */; };
+		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
+		57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */; };
+		57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */; };
+		57FA1D9521B6C74A001FB848 /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9421B6C74A001FB848 /* UserAccountViewController.swift */; };
+		57FA1D9721B6C757001FB848 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9621B6C757001FB848 /* MasterViewController.swift */; };
+		57FA1D9921B6F054001FB848 /* FutureLog in Resources */ = {isa = PBXBuildFile; fileRef = 57FA1D9821B6F054001FB848 /* FutureLog */; };
+		57FA1D9D21B71A08001FB848 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9C21B71A08001FB848 /* Account.swift */; };
+		57FA1D9F21B71B67001FB848 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9E21B71B67001FB848 /* Book.swift */; };
 		8C25328FE4330F01650DAA67 /* Pods_Liber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11805284FFC931811F38B1CC /* Pods_Liber.framework */; };
 		A36427397A245259C72E7103 /* Pods_LiberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203C1150E8A7FDBE4113FBB /* Pods_LiberUITests.framework */; };
 		A3B58A65028F778459F76D13 /* Pods_LiberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C548C700A51CF425AEAAB /* Pods_LiberTests.framework */; };
@@ -42,12 +51,12 @@
 		11805284FFC931811F38B1CC /* Pods_Liber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Liber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343C548C700A51CF425AEAAB /* Pods_LiberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D272B6B096744D50322AF /* Pods-LiberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiberUITests/Pods-LiberUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5739037421B5C3D2002483DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Liber/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		575580C421B578A900B6A9AD /* Liber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580C721B578A900B6A9AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		575580C921B578A900B6A9AD /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		575580CB21B578A900B6A9AD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		575580C921B578A900B6A9AD /* BookcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookcaseViewController.swift; sourceTree = "<group>"; };
+		575580CB21B578A900B6A9AD /* AddViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewControler.swift; sourceTree = "<group>"; };
 		575580CE21B578A900B6A9AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		575580D021B578AB00B6A9AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		575580D321B578AB00B6A9AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		575580D521B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		575580DA21B578AB00B6A9AD /* LiberTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiberTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +65,16 @@
 		575580E521B578AB00B6A9AD /* LiberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580E921B578AB00B6A9AD /* LiberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberUITests.swift; sourceTree = "<group>"; };
 		575580EB21B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		57FA1D9421B6C74A001FB848 /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
+		57FA1D9621B6C757001FB848 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		57FA1D9821B6F054001FB848 /* FutureLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = FutureLog; sourceTree = "<group>"; };
+		57FA1D9A21B70743001FB848 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		57FA1D9C21B71A08001FB848 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		57FA1D9E21B71B67001FB848 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		610054AA44688C8206049601 /* Pods-Liber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liber.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liber/Pods-Liber.release.xcconfig"; sourceTree = "<group>"; };
 		7801A2E6ED716676241DE18A /* Pods-LiberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiberTests/Pods-LiberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D203C1150E8A7FDBE4113FBB /* Pods_LiberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +179,7 @@
 		575580F721B5813E00B6A9AD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				575580D021B578AB00B6A9AD /* Assets.xcassets */,
+				5739037421B5C3D2002483DC /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -168,9 +187,8 @@
 		575580F821B5814900B6A9AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				575580C921B578A900B6A9AD /* FirstViewController.swift */,
-				575580CB21B578A900B6A9AD /* SecondViewController.swift */,
-				575580FC21B5817B00B6A9AD /* Accounts */,
+				57FA1D8E21B6B561001FB848 /* Account Handling */,
+				57FA1D9321B6B637001FB848 /* Tabs */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +196,8 @@
 		575580F921B5815100B6A9AD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57FA1D9C21B71A08001FB848 /* Account.swift */,
+				57FA1D9E21B71B67001FB848 /* Book.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,13 +224,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		575580FC21B5817B00B6A9AD /* Accounts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Accounts;
-			sourceTree = "<group>";
-		};
 		575580FD21B581E200B6A9AD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +248,9 @@
 		5755810021B581F600B6A9AD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */,
+				57FA1D9A21B70743001FB848 /* CHANGELOG.md */,
+				57FA1D9821B6F054001FB848 /* FutureLog */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -244,6 +260,27 @@
 			children = (
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		57FA1D8E21B6B561001FB848 /* Account Handling */ = {
+			isa = PBXGroup;
+			children = (
+				57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */,
+				57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */,
+				57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */,
+				57FA1D9421B6C74A001FB848 /* UserAccountViewController.swift */,
+				57FA1D9621B6C757001FB848 /* MasterViewController.swift */,
+			);
+			path = "Account Handling";
+			sourceTree = "<group>";
+		};
+		57FA1D9321B6B637001FB848 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				575580C921B578A900B6A9AD /* BookcaseViewController.swift */,
+				575580CB21B578A900B6A9AD /* AddViewControler.swift */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		D9523878324BE3FBD83AC3A7 /* Frameworks */ = {
@@ -364,9 +401,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FA1D9921B6F054001FB848 /* FutureLog in Resources */,
 				575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */,
-				575580D121B578AB00B6A9AD /* Assets.xcassets in Resources */,
+				57B2C8E221B59FA1005DB89A /* GoogleService-Info.plist in Resources */,
 				575580CF21B578A900B6A9AD /* Main.storyboard in Resources */,
+				5739037521B5C3D2002483DC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,9 +511,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575580CC21B578A900B6A9AD /* SecondViewController.swift in Sources */,
+				57FA1D9721B6C757001FB848 /* MasterViewController.swift in Sources */,
+				57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */,
+				575580CC21B578A900B6A9AD /* AddViewControler.swift in Sources */,
+				57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */,
+				57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */,
+				57FA1D9D21B71A08001FB848 /* Account.swift in Sources */,
 				575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */,
-				575580CA21B578A900B6A9AD /* FirstViewController.swift in Sources */,
+				575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */,
+				57FA1D9F21B71B67001FB848 /* Book.swift in Sources */,
+				57FA1D9521B6C74A001FB848 /* UserAccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
