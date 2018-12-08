@@ -21,8 +21,6 @@
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
 		57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */; };
 		57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */; };
-		57FA1D9521B6C74A001FB848 /* UserAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9421B6C74A001FB848 /* UserAccountViewController.swift */; };
-		57FA1D9721B6C757001FB848 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9621B6C757001FB848 /* MasterViewController.swift */; };
 		57FA1D9921B6F054001FB848 /* FutureLog in Resources */ = {isa = PBXBuildFile; fileRef = 57FA1D9821B6F054001FB848 /* FutureLog */; };
 		57FA1D9D21B71A08001FB848 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9C21B71A08001FB848 /* Account.swift */; };
 		57FA1D9F21B71B67001FB848 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9E21B71B67001FB848 /* Book.swift */; };
@@ -70,12 +68,9 @@
 		575580EB21B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
-		57CC7B4221B84B5000E8F0CD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		57FA1D9421B6C74A001FB848 /* UserAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountViewController.swift; sourceTree = "<group>"; };
-		57FA1D9621B6C757001FB848 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		57FA1D9821B6F054001FB848 /* FutureLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = FutureLog; sourceTree = "<group>"; };
 		57FA1D9A21B70743001FB848 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		57FA1D9C21B71A08001FB848 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -256,7 +251,6 @@
 			children = (
 				57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */,
 				57FA1D9A21B70743001FB848 /* CHANGELOG.md */,
-				57CC7B4221B84B5000E8F0CD /* README.md */,
 				57FA1D9821B6F054001FB848 /* FutureLog */,
 			);
 			path = Utilities;
@@ -275,8 +269,6 @@
 				57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */,
 				57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */,
 				57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */,
-				57FA1D9421B6C74A001FB848 /* UserAccountViewController.swift */,
-				57FA1D9621B6C757001FB848 /* MasterViewController.swift */,
 			);
 			path = "Account Handling";
 			sourceTree = "<group>";
@@ -523,7 +515,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57FA1D9721B6C757001FB848 /* MasterViewController.swift in Sources */,
 				57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */,
 				575580CC21B578A900B6A9AD /* AddViewControler.swift in Sources */,
 				57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */,
@@ -533,7 +524,6 @@
 				575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */,
 				575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */,
 				57FA1D9F21B71B67001FB848 /* Book.swift in Sources */,
-				57FA1D9521B6C74A001FB848 /* UserAccountViewController.swift in Sources */,
 				5700314721B86763002DCF73 /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

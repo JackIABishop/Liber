@@ -5,8 +5,11 @@
 //  Created by Jack Bishop on 05/12/2018.
 //  Copyright © 2018 Jack Bishop. All rights reserved.
 //
+//  This class holds the logic for the Account Tab View. Which is used to handle any information relating to the users account.
 
 import UIKit
+import Firebase
+import SVProgressHUD
 
 class AccountViewController: UIViewController {
 
@@ -14,6 +17,7 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
 
@@ -27,20 +31,18 @@ class AccountViewController: UIViewController {
     }
     */
 
-    
-    
-    //TODO: - Implement Logout 
-    /*
-    @IBAction func logOutPressed(_ sender: AnyObject) {
-        
-        //TODO: Log out the user and send them back to WelcomeViewController
+    // Logout the user and return them to the Login screen.
+    @IBAction func logoutPressed(_ sender: AnyObject) {
         do {
-            try Auth.auth().signOut()
+            SVProgressHUD.show()
             
-            navigationController?.popToRootViewController(animated: true)
+            try Auth.auth().signOut()
+            print("Sign out successful")
+            performSegue(withIdentifier: "goToLogin", sender: self)
         }
         catch {
             print("ERROR, there was a problem signing out.")
         }
-    }*/
+        SVProgressHUD.dismiss()
+    }
 }

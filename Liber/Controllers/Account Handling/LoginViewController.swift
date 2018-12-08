@@ -5,6 +5,7 @@
 //  Created by Jack Bishop on 04/12/2018.
 //  Copyright © 2018 Jack Bishop. All rights reserved.
 //
+//  This class holds the logic for the Login View Controller.
 
 import UIKit
 import Firebase
