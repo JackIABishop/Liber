@@ -31,7 +31,7 @@ All rights reserved.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewi-uT-MRg">
-                                <rect key="frame" x="145" y="159" width="124" height="60"/>
+                                <rect key="frame" x="148.66666666666666" y="134" width="116.66666666666666" height="60"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,9 +41,8 @@ All rights reserved.</string>
                         <constraints>
                             <constraint firstItem="Ewi-uT-MRg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Dh1-Ki-5Vv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HqE-38-uIu" secondAttribute="bottom" constant="23" id="Fyg-5P-7Dd"/>
-                            <constraint firstItem="Ewi-uT-MRg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="115" id="KqZ-c2-tZ2"/>
                             <constraint firstItem="Ewi-uT-MRg" firstAttribute="centerX" secondItem="HqE-38-uIu" secondAttribute="centerX" id="Rzj-HL-CZX"/>
-                            <constraint firstItem="Ewi-uT-MRg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="145" id="W6L-Tn-b3L"/>
+                            <constraint firstItem="Ewi-uT-MRg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="90" id="yLI-lw-af6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
