@@ -47,6 +47,8 @@ class LoginViewController: UIViewController {
                 print("Log in successful")
                 self.warningText.text = ""
                 
+                currentAccount.email = self.emailTextField.text!
+                
                 self.performSegue(withIdentifier: "goToTabView", sender: self)
             }
             SVProgressHUD.dismiss()

@@ -9,12 +9,15 @@
 import UIKit
 import Firebase
 
+// Creating account class for use when requiring to access data.
+// This will likely be changed and replaced by calling data from direct from Firebase.
+let currentAccount = Account()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()

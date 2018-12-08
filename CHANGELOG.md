@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.0.7
+    * Addition of Automatic Barcode entry with ADFoundation.
+    * Using the Account class to save the users email address for user later on. NOTE: This method will likely be changed by a direct call from Firebase.
+
 ## Version 0.0.6 
     * Added comments to each file to explain their purpose. 
     * Addition of 'logout' functionality from the Account Tab View. 

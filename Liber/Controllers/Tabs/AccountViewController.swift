@@ -37,6 +37,7 @@ class AccountViewController: UIViewController {
             SVProgressHUD.show()
             
             try Auth.auth().signOut()
+            currentAccount.resetClassData()
             print("Sign out successful")
             performSegue(withIdentifier: "goToLogin", sender: self)
         }
