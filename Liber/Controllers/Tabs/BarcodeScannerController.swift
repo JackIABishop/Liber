@@ -95,8 +95,6 @@ class BarcodeScannerController: UIViewController {
         let session = URLSession.shared
         let client = GoogleBooksApiClient(session: session)
         
-        SVProgressHUD.show()
-        
         let request = GoogleBooksApi.VolumeRequest.List(query: decodedURL)
         let task: URLSessionDataTask = client.invoke(
             request,
@@ -117,7 +115,6 @@ class BarcodeScannerController: UIViewController {
                 print("error")
         })
         task.resume()
-        SVProgressHUD.dismiss()
         return !currentBookData.title.isEmpty
     }
     

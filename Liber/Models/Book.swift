@@ -20,7 +20,6 @@ class Book {
     //var price : String = ""
     //var location : String = ""
     
-    
     func resetClassData() {
         title = ""
         author.removeAll()
@@ -32,4 +31,6 @@ class Book {
         //price = ""
         //location = ""
     }
+    
+    let bookElements : Int = 7
 }

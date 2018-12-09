@@ -13,11 +13,13 @@ import SVProgressHUD
 
 class AccountViewController: UIViewController {
 
+    @IBOutlet var currentAccountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        currentAccountLabel.text = Auth.auth().currentUser?.email
     }
     
 

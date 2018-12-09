@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.0.10
+    * Addition of ConfirmEntryController implementation, allowing the user to check the book information before it is added to the database.
+    * Completed functionality to save confirmed book data into Firebase. 
+
 ## Version 0.0.9
     * Emergency fix of published API key.
 
