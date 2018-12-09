@@ -76,16 +76,19 @@ class ConfirmEntryController: UIViewController {
     @IBAction func confirmButtonPressed(_ sender: Any) {
         // Save the book in user's database.
         SVProgressHUD.show()
-        let bookDB = Database.database().reference().child("Books")
-        let bookDictionary = ["User": Auth.auth().currentUser?.email,
+        let userEmail = Auth.auth().currentUser?.email!
+        let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
+        
+        let bookDB = Database.database().reference().child("Users").child(parsedEmail!)
+        let bookDictionary = ["User": userEmail,
                               "Book Title": titleText.text!,
                               "Author": authorText.text!,
                               "ISBN-13": isbn13Text.text!,
                               "ISBN-10": isbn10Text.text!,
                               "Publisher": publisherText.text!,
                               "Published": publishedText.text!]
-        
         bookDB.childByAutoId().setValue(bookDictionary) {
+        //bookDB.childByAutoId().setValue(bookDictionary) {
             (error, reference) in
             if error != nil {
                 print(error as Any)
