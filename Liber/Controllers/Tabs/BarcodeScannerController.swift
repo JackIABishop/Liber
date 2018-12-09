@@ -24,12 +24,6 @@ class BarcodeScannerController: UIViewController {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var barcodeFrameView: UIView?
     
-    
-    
-    // Constants
-    let APP_KEY : String = "AIzaSyD7PUV7yuyD-hfp1clbShXBlFiYUU9movg"
-    let GOOGLE_BOOKS_API : String = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
-    
     // Listing supported datatypes for the barcode, at the current just two the two ISBN standards.
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.ean8,
                                      AVMetadataObject.ObjectType.ean13,]

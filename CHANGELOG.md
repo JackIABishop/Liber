@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 0.0.9
+    * Emergency fix of published API key.
+
 ## Version 0.0.8
     * Use of Google Books API to search for book data.
     * Recieve API call JSON and store in temporary Book class.
