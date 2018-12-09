@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.0.8
+    * Use of Google Books API to search for book data.
+    * Recieve API call JSON and store in temporary Book class.
+
 ## Version 0.0.7
     * Addition of Automatic Barcode entry with ADFoundation.
     * Using the Account class to save the users email address for user later on. NOTE: This method will likely be changed by a direct call from Firebase.

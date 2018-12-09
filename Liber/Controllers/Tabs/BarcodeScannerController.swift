@@ -9,35 +9,32 @@
 
 import UIKit
 import AVFoundation
+import SVProgressHUD
+import GoogleBooksApiClient
+
+var currentBookData = Book()
 
 class BarcodeScannerController: UIViewController {
     
     @IBOutlet var messageLabel: UILabel!
     
-    var captureSession = AVCaptureSession()
+    // Instance Variables
     
+    var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var barcodeFrameView: UIView?
     
-    // Listing supported datatypes for the barcode.
+    
+    
+    // Constants
+    let APP_KEY : String = "AIzaSyD7PUV7yuyD-hfp1clbShXBlFiYUU9movg"
+    let GOOGLE_BOOKS_API : String = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
+    
+    // Listing supported datatypes for the barcode, at the current just two the two ISBN standards.
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.ean8,
                                      AVMetadataObject.ObjectType.ean13,]
     
-    /*private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
-                                      AVMetadataObject.ObjectType.code39,
-                                      AVMetadataObject.ObjectType.code39Mod43,
-                                      AVMetadataObject.ObjectType.code93,
-                                      AVMetadataObject.ObjectType.code128,
-                                      AVMetadataObject.ObjectType.ean8,
-                                      AVMetadataObject.ObjectType.ean13,
-                                      AVMetadataObject.ObjectType.aztec,
-                                      AVMetadataObject.ObjectType.pdf417,
-                                      AVMetadataObject.ObjectType.itf14,
-                                      AVMetadataObject.ObjectType.dataMatrix,
-                                      AVMetadataObject.ObjectType.interleaved2of5,
-                                      AVMetadataObject.ObjectType.qr]*/
-    
-    
+    // MARK: - Setting up BarcodeScannerController to show camera and scan for supportedCodeTypes.
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -98,16 +95,54 @@ class BarcodeScannerController: UIViewController {
         
     }
     
-    func searchGoogleBooks(decodedURL: String) {
-        // Function to be implemented in a later version, to pass a code in and this function will search the Google Books API for a proper entry. 
+    // MARK: - Handling Book Data
+    func searchGoogleBooks(decodedURL : String) -> Bool {
+        
+        let session = URLSession.shared
+        let client = GoogleBooksApiClient(session: session)
+        
+        SVProgressHUD.show()
+        
+        let request = GoogleBooksApi.VolumeRequest.List(query: decodedURL)
+        let task: URLSessionDataTask = client.invoke(
+            request,
+            onSuccess: { volumes in NSLog("\(volumes)")
+                // Fill the found book with the data that has been retrieved from the API call.
+                currentBookData.title = volumes.items[0].volumeInfo.title
+                for author in volumes.items[0].volumeInfo.authors {
+                    currentBookData.author.append(author)
+                }
+                currentBookData.isbn_10 = volumes.items[0].volumeInfo.industryIdentifiers[1].identifier
+                currentBookData.isbn_13 = volumes.items[0].volumeInfo.industryIdentifiers[0].identifier
+                // May not always have a publisher/publish date so conditional unwrapping to set default value to ""
+                currentBookData.publisher = volumes.items[0].volumeInfo.publisher ?? ""
+                currentBookData.published = volumes.items[0].volumeInfo.publishedDate ?? ""
+                currentBookData.thumbnail = volumes.items[0].volumeInfo.imageLinks?.thumbnail
+        },
+            onError: { error in NSLog("\(error)")
+                print("error")
+        })
+        task.resume()
+        SVProgressHUD.dismiss()
+        return !currentBookData.title.isEmpty
     }
+    
+    /*func prepareForSegue(segue: UIStoryboardSegue! , sender: AnyObject!) {
+        if (segue.identifier == "goToConfirmEntry") {
+            // Checking if segue is the desired one for the following operation.
+            var confirmEntry = segue!.destination as! ConfirmEntryController
+            confirmEntry.confirmedBookData = currentBookData
+        }
+    }*/
 }
+
+
 
 extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count == 0 {
             barcodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No barcode is detected"
+            messageLabel.text = "Searching for barcode"
             return
         }
         
@@ -121,8 +156,15 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
             barcodeFrameView?.frame = barcodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                // NOTE: - In a later update, this will segue to the ConfirmEntryController as the found code will be searched in the Google Books API and return the data available for a book to be added.
-                messageLabel.text = metadataObj.stringValue
+                // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
+                // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
+                if searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
+                    // If the barcode is matched with the Google Books.
+                    
+                    performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                } else {
+                    messageLabel.text = "Cannot find book"
+                }
             }
         }
     }

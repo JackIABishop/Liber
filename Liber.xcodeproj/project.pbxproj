@@ -18,6 +18,7 @@
 		575580EA21B578AB00B6A9AD /* LiberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580E921B578AB00B6A9AD /* LiberUITests.swift */; };
 		57B2C8E221B59FA1005DB89A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
+		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
 		57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */; };
 		57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */; };
@@ -68,6 +69,7 @@
 		575580EB21B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		575580F821B5814900B6A9AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				57B897F421BC56E8000237BB /* Book Handling */,
 				57FA1D8E21B6B561001FB848 /* Account Handling */,
 				57FA1D9321B6B637001FB848 /* Tabs */,
 				57B897F221BC0D6B000237BB /* GuideViewController.swift */,
@@ -259,6 +262,14 @@
 			children = (
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		57B897F421BC56E8000237BB /* Book Handling */ = {
+			isa = PBXGroup;
+			children = (
+				57B897F521BC5711000237BB /* ConfirmEntryController.swift */,
+			);
+			path = "Book Handling";
 			sourceTree = "<group>";
 		};
 		57FA1D8E21B6B561001FB848 /* Account Handling */ = {
@@ -520,6 +531,7 @@
 				57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */,
 				57FA1D9D21B71A08001FB848 /* Account.swift in Sources */,
 				575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */,
+				57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */,
 				575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */,
 				57FA1D9F21B71B67001FB848 /* Book.swift in Sources */,
 				5700314721B86763002DCF73 /* AccountViewController.swift in Sources */,
