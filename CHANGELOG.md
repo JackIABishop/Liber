@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.0.13
+    * Addition of ViewEntryController to view more info about a book entry. NOTE:- Not fully working yet. 
+    * Addition of README.md
+    * Fixed BUG 005.
+
 ## Version 0.0.12
     * Implemented digital bookcase with TableView, in a later revision, this will be a custom table view.
     * Reading from user's bookcase.

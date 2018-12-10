@@ -27,7 +27,16 @@ class ConfirmEntryController: UIViewController {
 
         // Do any additional setup after loading the view.
         titleText.text = currentBookData.title
-        authorText.text? = currentBookData.author[0]
+        
+        var counter : Int = 1
+        for author in currentBookData.author {
+            authorText.text?.append(author)
+            if (counter != currentBookData.author.count) {
+                authorText.text?.append(", ")
+            }
+            counter = counter + 1
+        }
+        
         isbn13Text.text = currentBookData.isbn_13
         isbn10Text.text = currentBookData.isbn_10
         publisherText.text = currentBookData.publisher
@@ -79,6 +88,7 @@ class ConfirmEntryController: UIViewController {
         let userEmail = Auth.auth().currentUser?.email!
         let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
         
+        // Set each text field in the database. 
         let bookDB = Database.database().reference().child("Users").child(parsedEmail!)
         let bookDictionary = ["User": userEmail,
                               "Book Title": titleText.text!,
@@ -88,7 +98,6 @@ class ConfirmEntryController: UIViewController {
                               "Publisher": publisherText.text!,
                               "Published": publishedText.text!]
         bookDB.childByAutoId().setValue(bookDictionary) {
-        //bookDB.childByAutoId().setValue(bookDictionary) {
             (error, reference) in
             if error != nil {
                 print(error as Any)
@@ -96,8 +105,6 @@ class ConfirmEntryController: UIViewController {
                 print("Book saved successfully!")
             }
         }
-        
-        
         
         SVProgressHUD.dismiss()
         performSegue(withIdentifier: "goToTabView", sender: self)

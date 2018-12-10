@@ -16,6 +16,7 @@
 		575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575580D221B578AB00B6A9AD /* LaunchScreen.storyboard */; };
 		575580DF21B578AB00B6A9AD /* LiberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580DE21B578AB00B6A9AD /* LiberTests.swift */; };
 		575580EA21B578AB00B6A9AD /* LiberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580E921B578AB00B6A9AD /* LiberUITests.swift */; };
+		57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */; };
 		57B2C8E221B59FA1005DB89A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
 		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
@@ -67,6 +68,7 @@
 		575580E521B578AB00B6A9AD /* LiberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580E921B578AB00B6A9AD /* LiberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberUITests.swift; sourceTree = "<group>"; };
 		575580EB21B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				57B897F521BC5711000237BB /* ConfirmEntryController.swift */,
+				57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */,
 			);
 			path = "Book Handling";
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */,
 				57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */,
 				575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */,
+				57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */,
 				57FA1D9F21B71B67001FB848 /* Book.swift in Sources */,
 				5700314721B86763002DCF73 /* AccountViewController.swift in Sources */,
 			);

@@ -101,9 +101,7 @@ class BarcodeScannerController: UIViewController {
             onSuccess: { volumes in NSLog("\(volumes)")
                 // Fill the found book with the data that has been retrieved from the API call.
                 currentBookData.title = volumes.items[0].volumeInfo.title
-                for author in volumes.items[0].volumeInfo.authors {
-                    currentBookData.author.append(author)
-                }
+                currentBookData.author = volumes.items[0].volumeInfo.authors
                 currentBookData.isbn_10 = volumes.items[0].volumeInfo.industryIdentifiers[1].identifier
                 currentBookData.isbn_13 = volumes.items[0].volumeInfo.industryIdentifiers[0].identifier
                 // May not always have a publisher/publish date so conditional unwrapping to set default value to ""
@@ -126,8 +124,6 @@ class BarcodeScannerController: UIViewController {
         }
     }*/
 }
-
-
 
 extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {

@@ -5,10 +5,10 @@
 //  Created by Jack Bishop on 04/12/2018.
 //  Copyright © 2018 Jack Bishop. All rights reserved.
 //
+// Handles the data for a book.
 
 import Foundation
 
-// Handles the data for a book.
 class Book {
     var title = ""
     var author = [""]
