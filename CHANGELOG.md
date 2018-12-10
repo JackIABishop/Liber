@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 0.0.12
+    * Implemented digital bookcase with TableView, in a later revision, this will be a custom table view.
+    * Reading from user's bookcase.
+    * When a user registers, a help screen will be shown to give a quick rundown on what they can do with the application. 
+    * Addition of BUGS.md file, to report known bugs as an acknowledgment 
+
 ## Version 0.0.11
     * Fix to save data to the database in the correct way.
 

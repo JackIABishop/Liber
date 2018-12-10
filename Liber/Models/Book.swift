@@ -10,12 +10,12 @@ import Foundation
 
 // Handles the data for a book.
 class Book {
-    var title : String = ""
-    var author = [String]()
-    var isbn_13 : String = ""
-    var isbn_10 : String = ""
-    var publisher : String = ""
-    var published : String = ""
+    var title = ""
+    var author = [""]
+    var isbn_13 = ""
+    var isbn_10 = ""
+    var publisher = ""
+    var published = ""
     var thumbnail = URL(string: "")
     //var price : String = ""
     //var location : String = ""

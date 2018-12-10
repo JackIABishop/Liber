@@ -18,8 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbM-VR-5qm">
+                                <rect key="frame" x="129" y="144" width="117" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="j54-aM-jtX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejF-zc-jnq">
+                                <rect key="frame" x="39" y="255" width="297" height="181"/>
+                                <string key="text">Welcome to Liber, the app that will help you organise your books!
+
+Now that you have made an account, you can view your digital bookcase. It may look empty for now, but head to the 'Add' section to start scanning!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ddv-y5-uOg">
-                                <rect key="frame" x="0.0" y="653" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="457" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="hul-mo-wtY"/>
@@ -34,26 +52,18 @@
                                     <segue destination="49e-Tb-3d3" kind="show" identifier="goToTabView" id="66M-Zw-EUp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Liber" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbM-VR-5qm">
-                                <rect key="frame" x="129" y="144" width="117" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is an example of text that I will use to show the users how to use the application." lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejF-zc-jnq">
-                                <rect key="frame" x="39" y="210" width="297" height="176"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ddv-y5-uOg" secondAttribute="trailing" id="1XZ-yJ-rNv"/>
-                            <constraint firstItem="ddv-y5-uOg" firstAttribute="leading" secondItem="eMZ-nb-sJ7" secondAttribute="leading" id="7h4-xx-i4v"/>
-                            <constraint firstItem="ddv-y5-uOg" firstAttribute="top" secondItem="1sD-tB-aGI" secondAttribute="top" constant="609" id="Vc7-ey-njj"/>
+                            <constraint firstAttribute="trailing" secondItem="ddv-y5-uOg" secondAttribute="trailing" id="2ko-ft-eqN"/>
+                            <constraint firstItem="ejF-zc-jnq" firstAttribute="leading" secondItem="1sD-tB-aGI" secondAttribute="leading" constant="39" id="RPe-Mb-p7e"/>
+                            <constraint firstItem="MbM-VR-5qm" firstAttribute="centerX" secondItem="ejF-zc-jnq" secondAttribute="centerX" id="UPX-hp-A9C"/>
+                            <constraint firstItem="MbM-VR-5qm" firstAttribute="top" secondItem="1sD-tB-aGI" secondAttribute="top" constant="100" id="XFN-Ea-sCs"/>
+                            <constraint firstItem="ddv-y5-uOg" firstAttribute="leading" secondItem="eMZ-nb-sJ7" secondAttribute="leading" id="dQ6-hL-XGe"/>
+                            <constraint firstItem="ejF-zc-jnq" firstAttribute="top" secondItem="MbM-VR-5qm" secondAttribute="bottom" constant="69" id="hlm-b6-gko"/>
+                            <constraint firstItem="ejF-zc-jnq" firstAttribute="centerX" secondItem="ddv-y5-uOg" secondAttribute="centerX" id="tzp-qR-Wyf"/>
+                            <constraint firstItem="ddv-y5-uOg" firstAttribute="top" secondItem="ejF-zc-jnq" secondAttribute="bottom" constant="21" id="uYa-3A-P4Y"/>
+                            <constraint firstItem="1sD-tB-aGI" firstAttribute="bottom" secondItem="ddv-y5-uOg" secondAttribute="bottom" constant="271" id="ysY-Ep-k1M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1sD-tB-aGI"/>
                     </view>
@@ -77,12 +87,34 @@
                                     <navigationItem title="Bookcase" id="kBv-Ti-DuK"/>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYo-tC-4zj">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookItemCell" id="7BX-NZ-Biw">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7BX-NZ-Biw" id="C1e-Sg-DDo">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="zCh-Df-tGY"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="mDj-FD-GHW"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Bookcase" image="first" selectedImage="first" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="TtM-sC-hQg"/>
+                    <connections>
+                        <outlet property="tableView" destination="mYo-tC-4zj" id="4AI-h0-55y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -611,7 +643,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fwc-ts-0Lf"/>
+        <segue reference="66M-Zw-EUp"/>
         <segue reference="Zzw-BF-Vdt"/>
         <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>
