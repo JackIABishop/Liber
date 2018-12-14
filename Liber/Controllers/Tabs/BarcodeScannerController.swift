@@ -5,7 +5,7 @@
 //  Created by Jack Bishop on 03/12/2018.
 //  Copyright © 2018 Jack Bishop. All rights reserved.
 //
-//  This class holds the logic for the Add View Controller, which is used to add a new entry to the bookcase. 
+//  This class holds the logic for the Add View Controller, which is used to add a new entry to the bookcase.
 
 import UIKit
 import AVFoundation
@@ -19,19 +19,17 @@ class BarcodeScannerController: UIViewController {
     @IBOutlet var messageLabel: UILabel!
     
     // Instance Variables
-    
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var barcodeFrameView: UIView?
     
     // Listing supported datatypes for the barcode, at the current just two the two ISBN standards.
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.ean8,
-                                     AVMetadataObject.ObjectType.ean13,]
+                                      AVMetadataObject.ObjectType.ean13,]
     
     // MARK: - Setting up BarcodeScannerController to show camera and scan for supportedCodeTypes.
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         // Get the back-facing camera for capturing videos.
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
@@ -53,7 +51,7 @@ class BarcodeScannerController: UIViewController {
             captureSession.addOutput(captureMetadataOutput)
             
             // Set delegate and use the default dispatch queue to execute the call back.
-            captureMetadataOutput.setMetadataObjectsDelegate((self as! AVCaptureMetadataOutputObjectsDelegate), queue: DispatchQueue.main)
+            captureMetadataOutput.setMetadataObjectsDelegate((self as AVCaptureMetadataOutputObjectsDelegate), queue: DispatchQueue.main)
             
             // Set the supported code types.
             captureMetadataOutput.metadataObjectTypes = supportedCodeTypes
@@ -115,14 +113,6 @@ class BarcodeScannerController: UIViewController {
         task.resume()
         return !currentBookData.title.isEmpty
     }
-    
-    /*func prepareForSegue(segue: UIStoryboardSegue! , sender: AnyObject!) {
-        if (segue.identifier == "goToConfirmEntry") {
-            // Checking if segue is the desired one for the following operation.
-            var confirmEntry = segue!.destination as! ConfirmEntryController
-            confirmEntry.confirmedBookData = currentBookData
-        }
-    }*/
 }
 
 extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {

@@ -17,7 +17,6 @@
 		575580DF21B578AB00B6A9AD /* LiberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580DE21B578AB00B6A9AD /* LiberTests.swift */; };
 		575580EA21B578AB00B6A9AD /* LiberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580E921B578AB00B6A9AD /* LiberUITests.swift */; };
 		57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */; };
-		57B2C8E221B59FA1005DB89A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
 		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
@@ -26,6 +25,7 @@
 		57FA1D9921B6F054001FB848 /* FutureLog in Resources */ = {isa = PBXBuildFile; fileRef = 57FA1D9821B6F054001FB848 /* FutureLog */; };
 		57FA1D9D21B71A08001FB848 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9C21B71A08001FB848 /* Account.swift */; };
 		57FA1D9F21B71B67001FB848 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9E21B71B67001FB848 /* Book.swift */; };
+		57FE9A0F21C3D5AB00CF3DCD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */; };
 		8C25328FE4330F01650DAA67 /* Pods_Liber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11805284FFC931811F38B1CC /* Pods_Liber.framework */; };
 		A36427397A245259C72E7103 /* Pods_LiberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D203C1150E8A7FDBE4113FBB /* Pods_LiberUITests.framework */; };
 		A3B58A65028F778459F76D13 /* Pods_LiberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 343C548C700A51CF425AEAAB /* Pods_LiberTests.framework */; };
@@ -69,7 +69,6 @@
 		575580E921B578AB00B6A9AD /* LiberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberUITests.swift; sourceTree = "<group>"; };
 		575580EB21B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
-		57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		57FA1D9821B6F054001FB848 /* FutureLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = FutureLog; sourceTree = "<group>"; };
 		57FA1D9C21B71A08001FB848 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		57FA1D9E21B71B67001FB848 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		610054AA44688C8206049601 /* Pods-Liber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liber.release.xcconfig"; path = "Pods/Target Support Files/Pods-Liber/Pods-Liber.release.xcconfig"; sourceTree = "<group>"; };
 		7801A2E6ED716676241DE18A /* Pods-LiberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiberTests/Pods-LiberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D203C1150E8A7FDBE4113FBB /* Pods_LiberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,7 +253,7 @@
 		5755810021B581F600B6A9AD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				57B2C8E121B59FA1005DB89A /* GoogleService-Info.plist */,
+				57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */,
 				57FA1D9821B6F054001FB848 /* FutureLog */,
 			);
 			path = Utilities;
@@ -415,7 +415,7 @@
 			files = (
 				57FA1D9921B6F054001FB848 /* FutureLog in Resources */,
 				575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */,
-				57B2C8E221B59FA1005DB89A /* GoogleService-Info.plist in Resources */,
+				57FE9A0F21C3D5AB00CF3DCD /* GoogleService-Info.plist in Resources */,
 				575580CF21B578A900B6A9AD /* Main.storyboard in Resources */,
 				5739037521B5C3D2002483DC /* Assets.xcassets in Resources */,
 			);

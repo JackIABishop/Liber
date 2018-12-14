@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.014
+    * Removal of acronyms in source for more readable code. 
+    * Creation of Roadmap section in README.md
+    * Modification of loading screen to include UCLan in copyright notice. 
+
 ## Version 0.0.13
     * Addition of ViewEntryController to view more info about a book entry. NOTE:- Not fully working yet. 
     * Addition of README.md

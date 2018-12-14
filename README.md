@@ -10,30 +10,22 @@ I have created a demo video that can be found at the following link: [Link to Yo
 ## Installation
 To build Liber in a development environment, Xcode is required to launch the .xcworkspace. When running the project, it is important to know that the pods required are not included in the project file. To install the pods, locate to the file directory using terminal and run:
 
-```bash
-pod init
-open podfile 
-```
-
-Then add the following pods to the podfile.
-
-```bash
-pod 'GoogleBooksApiClient'
-pod 'Firebase'
-pod 'Firebase/Core'
-pod 'Firebase/Auth'
-pod 'Firebase/Database'
-pod 'SVProgressHUD'
-```
-
-Finally, run 
+To build Liber in a development environment, clone the repository and launch terminal. Navigate to the cloned directory and run the following command:
 
 ```bash
 pod install
 ```
+
+Terminal will download all of the necessary dependencies that the application requires to run. Then you can launch the 'Liber.xcworkspace' file.
 
 ## Support 
 The GitHub Repo can be found here: [Liber Github](https://github.com/JackIABishop/Liber)
 
 If you require any help regarding this project, please contact [Jack](mailto:jack.bish96@gmail.com). 
 
+## Roadmap
+    * Add a 'View Entry' controller to view more info about a book entry. 
+    * Add search functionality for the bookcase. 
+    * Potentially add a 'Author' controller, to list all Authors in collection, then have the functionality to click on an author and list their books. 
+    * Add manual entry functionality.
+    * Implement Organisations, allowing a user to subscribe to a collection of books. 

@@ -10,11 +10,11 @@
 class Account {
     var email : String = ""
     var name : String = ""
-    var orgCode : Int = 0
+    var organisationCode : Int = 0
     
     func resetClassData() {
         email = ""
         name = ""
-        orgCode = 0
+        organisationCode = 0
     }
 }

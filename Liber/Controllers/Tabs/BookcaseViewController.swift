@@ -30,10 +30,10 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         // Read data from the database
         let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
         
-        let bookDB = Database.database().reference().child("Users").child(parsedEmail!)
+        let bookDatabase = Database.database().reference().child("Users").child(parsedEmail!)
         
         // Check if there is any data in the users account, if there is fill the data with the users books.
-        bookDB.observeSingleEvent(of: .value) { snapshot in
+        bookDatabase.observeSingleEvent(of: .value) { snapshot in
             if snapshot.hasChildren(){
                 // Found data.
                 self.numberOfBooksInUsersAccount = Int(snapshot.childrenCount)
@@ -84,7 +84,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
             let book = usersBooks[indexPath.row]
             
             cell?.textLabel?.text = book.title
-            
         } else {
             //TODO: - Print no content found.
         }
@@ -103,11 +102,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        
         let destinationVC = segue.destination as! MoreInfoViewController
         destinationVC.bookToView.title = "test"
-        
     }
     
 }

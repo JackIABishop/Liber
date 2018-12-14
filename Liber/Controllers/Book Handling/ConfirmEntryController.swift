@@ -88,8 +88,8 @@ class ConfirmEntryController: UIViewController {
         let userEmail = Auth.auth().currentUser?.email!
         let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
         
-        // Set each text field in the database. 
-        let bookDB = Database.database().reference().child("Users").child(parsedEmail!)
+        // Set each text field in the database.
+        let bookDatabase = Database.database().reference().child("Users").child(parsedEmail!)
         let bookDictionary = ["User": userEmail,
                               "Book Title": titleText.text!,
                               "Author": authorText.text!,
@@ -97,7 +97,7 @@ class ConfirmEntryController: UIViewController {
                               "ISBN-10": isbn10Text.text!,
                               "Publisher": publisherText.text!,
                               "Published": publishedText.text!]
-        bookDB.childByAutoId().setValue(bookDictionary) {
+        bookDatabase.childByAutoId().setValue(bookDictionary) {
             (error, reference) in
             if error != nil {
                 print(error as Any)
