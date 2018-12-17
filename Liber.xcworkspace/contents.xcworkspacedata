@@ -8,9 +8,6 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
-      location = "group:BUGS.md">
-   </FileRef>
-   <FileRef
       location = "group:Liber.xcodeproj">
    </FileRef>
    <FileRef

@@ -547,47 +547,24 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGD-vz-PgP">
-                                <rect key="frame" x="0.0" y="317" width="375" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="FzH-Gj-stb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Register">
-                                    <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="registerPressed:" destination="YFL-Nz-KXV" eventType="touchUpInside" id="JlB-Xr-zct"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Already onboard?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07v-ls-7iU">
-                                <rect key="frame" x="33" y="385" width="135" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-6H-QyK">
-                                <rect key="frame" x="176" y="379" width="45" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" red="0.75294119119644165" green="0.22352941334247589" blue="0.16862745583057404" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="DeF-cm-BmZ" kind="show" id="wFM-tI-g5j"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKk-p6-OFU">
-                                <rect key="frame" x="16" y="267" width="343" height="30"/>
+                                <rect key="frame" x="16" y="268" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="myD-r7-8Cf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pAx-HK-MOn">
+                                <rect key="frame" x="16" y="306" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="X5l-VI-era"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDJ-ke-ToF">
-                                <rect key="frame" x="16" y="229" width="343" height="30"/>
+                                <rect key="frame" x="16" y="230" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Cig-XK-nHF"/>
                                 </constraints>
@@ -606,32 +583,67 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <color key="textColor" red="0.75294119119644165" green="0.22352941334247589" blue="0.16862745583057404" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGD-vz-PgP">
+                                <rect key="frame" x="0.0" y="348" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FzH-Gj-stb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="registerPressed:" destination="YFL-Nz-KXV" eventType="touchUpInside" id="JlB-Xr-zct"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Already onboard?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07v-ls-7iU">
+                                <rect key="frame" x="32" y="415" width="135" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-6H-QyK">
+                                <rect key="frame" x="175" y="409" width="45" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.75294119119644165" green="0.22352941334247589" blue="0.16862745583057404" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DeF-cm-BmZ" kind="show" id="wFM-tI-g5j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="trailing" secondItem="pKk-p6-OFU" secondAttribute="trailing" id="1AT-gd-pXo"/>
-                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="top" secondItem="YvT-Vm-9bw" secondAttribute="bottom" constant="64" id="2rf-gL-aj9"/>
-                            <constraint firstItem="YvT-Vm-9bw" firstAttribute="top" secondItem="Y5p-NK-qWc" secondAttribute="top" constant="86" id="5Lc-Lb-nSy"/>
-                            <constraint firstItem="07v-ls-7iU" firstAttribute="leading" secondItem="Y5p-NK-qWc" secondAttribute="leading" constant="33" id="DBw-Nl-cAZ"/>
-                            <constraint firstItem="YvT-Vm-9bw" firstAttribute="centerX" secondItem="KDJ-ke-ToF" secondAttribute="centerX" id="FRS-ww-JWQ"/>
-                            <constraint firstItem="07v-ls-7iU" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="20" id="H7S-hl-Bxs"/>
-                            <constraint firstItem="sfA-6H-QyK" firstAttribute="leading" secondItem="07v-ls-7iU" secondAttribute="trailing" constant="8" symbolic="YES" id="I0k-Lr-9kj"/>
-                            <constraint firstAttribute="trailing" secondItem="LGD-vz-PgP" secondAttribute="trailing" id="Waf-Bi-VaS"/>
-                            <constraint firstItem="pKk-p6-OFU" firstAttribute="top" secondItem="KDJ-ke-ToF" secondAttribute="bottom" constant="8" id="Xge-Wc-0FK"/>
-                            <constraint firstItem="pKk-p6-OFU" firstAttribute="centerX" secondItem="LGD-vz-PgP" secondAttribute="centerX" id="Xxf-nm-npK"/>
-                            <constraint firstItem="LGD-vz-PgP" firstAttribute="leading" secondItem="gbG-OO-Cv2" secondAttribute="leading" id="efg-5j-Sl0"/>
-                            <constraint firstItem="Y5p-NK-qWc" firstAttribute="bottom" secondItem="sfA-6H-QyK" secondAttribute="bottom" constant="366" id="gfe-SJ-jpo"/>
-                            <constraint firstItem="07v-ls-7iU" firstAttribute="centerY" secondItem="sfA-6H-QyK" secondAttribute="centerY" id="htP-qj-FdM"/>
-                            <constraint firstItem="fY8-1h-xQO" firstAttribute="leading" secondItem="KDJ-ke-ToF" secondAttribute="leading" id="jTF-l5-Ggk"/>
-                            <constraint firstItem="LGD-vz-PgP" firstAttribute="top" secondItem="pKk-p6-OFU" secondAttribute="bottom" constant="20" id="kgA-mb-GaY"/>
-                            <constraint firstItem="fY8-1h-xQO" firstAttribute="top" secondItem="YvT-Vm-9bw" secondAttribute="bottom" constant="33" id="lON-Yw-MAc"/>
-                            <constraint firstItem="fY8-1h-xQO" firstAttribute="top" secondItem="gbG-OO-Cv2" secondAttribute="top" constant="198" id="qpu-1S-Sry"/>
-                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="leading" secondItem="gbG-OO-Cv2" secondAttribute="leadingMargin" id="yHf-sX-LPR"/>
-                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="leading" secondItem="pKk-p6-OFU" secondAttribute="leading" id="zgV-gm-z56"/>
+                            <constraint firstItem="YvT-Vm-9bw" firstAttribute="centerX" secondItem="KDJ-ke-ToF" secondAttribute="centerX" id="0DW-0d-pxe"/>
+                            <constraint firstItem="07v-ls-7iU" firstAttribute="leading" secondItem="Y5p-NK-qWc" secondAttribute="leading" constant="32" id="1x4-Dx-n9F"/>
+                            <constraint firstItem="LGD-vz-PgP" firstAttribute="top" secondItem="pAx-HK-MOn" secondAttribute="bottom" constant="12" id="2sc-MX-LVP"/>
+                            <constraint firstItem="07v-ls-7iU" firstAttribute="centerY" secondItem="sfA-6H-QyK" secondAttribute="centerY" id="7za-JF-beY"/>
+                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="leading" secondItem="pKk-p6-OFU" secondAttribute="leading" id="9hF-AR-kKy"/>
+                            <constraint firstItem="pAx-HK-MOn" firstAttribute="top" secondItem="pKk-p6-OFU" secondAttribute="bottom" constant="8" symbolic="YES" id="B2M-ik-cdp"/>
+                            <constraint firstAttribute="trailing" secondItem="LGD-vz-PgP" secondAttribute="trailing" id="CjC-ER-qIo"/>
+                            <constraint firstItem="pKk-p6-OFU" firstAttribute="top" secondItem="KDJ-ke-ToF" secondAttribute="bottom" constant="8" symbolic="YES" id="Com-BV-XYO"/>
+                            <constraint firstItem="Y5p-NK-qWc" firstAttribute="bottom" secondItem="sfA-6H-QyK" secondAttribute="bottom" constant="336" id="D4G-Kp-0pl"/>
+                            <constraint firstItem="fY8-1h-xQO" firstAttribute="leading" secondItem="gbG-OO-Cv2" secondAttribute="leadingMargin" id="Hhm-J3-q8M"/>
+                            <constraint firstItem="LGD-vz-PgP" firstAttribute="leading" secondItem="gbG-OO-Cv2" secondAttribute="leading" id="I1E-MS-xkQ"/>
+                            <constraint firstItem="pKk-p6-OFU" firstAttribute="trailing" secondItem="pAx-HK-MOn" secondAttribute="trailing" id="Imd-pT-qbB"/>
+                            <constraint firstItem="07v-ls-7iU" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="18" id="Mev-Sm-2g1"/>
+                            <constraint firstItem="fY8-1h-xQO" firstAttribute="top" secondItem="gbG-OO-Cv2" secondAttribute="top" constant="198" id="W8C-Pc-zBH"/>
+                            <constraint firstItem="pAx-HK-MOn" firstAttribute="centerX" secondItem="LGD-vz-PgP" secondAttribute="centerX" id="Wkd-Kk-Ihh"/>
+                            <constraint firstItem="YvT-Vm-9bw" firstAttribute="top" secondItem="Y5p-NK-qWc" secondAttribute="top" constant="79" id="bF5-Fj-GHD"/>
+                            <constraint firstItem="sfA-6H-QyK" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="12" id="gQw-Wh-b1f"/>
+                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="trailing" secondItem="pKk-p6-OFU" secondAttribute="trailing" id="mbG-pK-G9b"/>
+                            <constraint firstItem="pKk-p6-OFU" firstAttribute="leading" secondItem="pAx-HK-MOn" secondAttribute="leading" id="obG-dY-viO"/>
+                            <constraint firstItem="sfA-6H-QyK" firstAttribute="leading" secondItem="07v-ls-7iU" secondAttribute="trailing" constant="8" symbolic="YES" id="ox8-aZ-hTp"/>
+                            <constraint firstItem="fY8-1h-xQO" firstAttribute="leading" secondItem="KDJ-ke-ToF" secondAttribute="leading" id="txX-zW-CM3"/>
+                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="top" secondItem="YvT-Vm-9bw" secondAttribute="bottom" constant="64" id="vPS-2R-456"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y5p-NK-qWc"/>
                     </view>
                     <connections>
+                        <outlet property="confirmPasswordTextField" destination="pAx-HK-MOn" id="xnY-Ob-e3P"/>
                         <outlet property="emailTextField" destination="KDJ-ke-ToF" id="xHi-t1-kWZ"/>
                         <outlet property="passwordTextField" destination="pKk-p6-OFU" id="eBd-yP-jvb"/>
                         <outlet property="warningText" destination="fY8-1h-xQO" id="tBV-Qp-jEe"/>
@@ -669,6 +681,9 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63h-dy-Ch7">
                                 <rect key="frame" x="0.0" y="341" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="J7q-iP-Df2"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -771,8 +786,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UTg-a9-9we"/>
-        <segue reference="Zzw-BF-Vdt"/>
-        <segue reference="kua-8v-1Hi"/>
+        <segue reference="V0W-PT-oLM"/>
+        <segue reference="wFM-tI-g5j"/>
+        <segue reference="dO8-bj-3Pk"/>
     </inferredMetricsTieBreakers>
 </document>

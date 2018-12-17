@@ -17,7 +17,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     var numberOfBooksInUsersAccount : Int = 3 //NOTE: - This needs to change, very bad coding but currently does not set this before tableViews have been loaded.
     var usersBooks = [Book]()
     var databaseHandle : DatabaseHandle!
-    let userEmail = Auth.auth().currentUser?.email!
+    let userEmail = getFirebaseUserEmail()
 
     @IBOutlet var tableView: UITableView!
     
@@ -28,9 +28,9 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         SVProgressHUD.show()
         
         // Read data from the database
-        let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
+        let parsedEmail = userEmail.replacingOccurrences(of: ".", with: ",")
         
-        let bookDatabase = Database.database().reference().child("Users").child(parsedEmail!)
+        let bookDatabase = Database.database().reference().child("Users").child(parsedEmail)
         
         // Check if there is any data in the users account, if there is fill the data with the users books.
         bookDatabase.observeSingleEvent(of: .value) { snapshot in

@@ -19,33 +19,21 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        currentAccountLabel.text = Auth.auth().currentUser?.email
+        currentAccountLabel.text = getFirebaseUserEmail()
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // Logout the user and return them to the Login screen.
     @IBAction func logoutPressed(_ sender: AnyObject) {
-        do {
-            SVProgressHUD.show()
-            
-            try Auth.auth().signOut()
+        SVProgressHUD.show()
+        
+        if signOutCurrentFirebaseUser() {
             currentAccount.resetClassData()
             print("Sign out successful")
             performSegue(withIdentifier: "goToLogin", sender: self)
-        }
-        catch {
+        } else {
             print("ERROR, there was a problem signing out.")
         }
+        
         SVProgressHUD.dismiss()
     }
 }

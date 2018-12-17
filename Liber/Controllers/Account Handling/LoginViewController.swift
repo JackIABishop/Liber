@@ -33,27 +33,26 @@ class LoginViewController: UIViewController {
         
         // Call Firebase with the user's login details.
         // As the function is called, I use a closure for the completion handler, so the app waits until the time consuming tasks is completed.
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            //TODO: - If there is an error, ask the user to try again.
-            if error != nil {
-                print(error!)
-                self.warningText.text = "Wrong username or password."
-                UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
-                    self.warningText.center.x += self.view.bounds.width
-                    self.view.layoutIfNeeded()
-                }, completion: nil)
-            } else {
-                // Successful Login
-                print("Log in successful")
-                self.warningText.text = ""
-                
-                currentAccount.email = self.emailTextField.text!
-                
-                self.performSegue(withIdentifier: "goToTabView", sender: self)
+        let loginParameters = ["Email": emailTextField.text!, "Password": passwordTextField.text!]
+        if conductLoginValidation(loginParameters: loginParameters) {
+            signInFirebaseUser(loginParameters: loginParameters) { (result) in
+                if result {
+                    // Successful login
+                    self.warningText.text = ""
+                    self.performSegue(withIdentifier: "goToTabView", sender: self)
+                } else {
+                    // Error signing into Firebase.
+                    self.warningText.text = "Incorrect email / password."
+                }
             }
-            SVProgressHUD.dismiss()
+        } else {
+            // Login validation failed, so print the error message to the user.
+            self.warningText.text = getLatestErrorMessageFromFirebaseFunctions()
         }
+        
+        SVProgressHUD.dismiss()
     }
 }
+
     
 

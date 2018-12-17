@@ -1,6 +1,12 @@
 # Changelog
 
-## Version 0.014
+## Version 0.0.15
+    * Splitting code into reusable libraries, addition of 'FirebaseFunctions.swift' in SupportFiles/Utilities/
+    * Removal of BUGS.md as it is no longer required, any further issues will be recorded in the 'Issues' section in Bitbucket.
+    * Changed the RegisterViewController to require two confirmation passwords.
+    * Added validation for the login / register pages to give a better error message to the user. 
+
+## Version 0.0.14
     * Removal of acronyms in source for more readable code. 
     * Creation of Roadmap section in README.md
     * Modification of loading screen to include UCLan in copyright notice. 
