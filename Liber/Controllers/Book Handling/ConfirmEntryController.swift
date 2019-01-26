@@ -9,7 +9,6 @@
 
 import UIKit
 import Firebase
-import SVProgressHUD
 
 class ConfirmEntryController: UIViewController {
     
@@ -84,7 +83,7 @@ class ConfirmEntryController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
         // Save the book in user's database.
-        SVProgressHUD.show()
+        indeterminateLoad(displayText: "Saving Book", view: self.view)
         let userEmail = Auth.auth().currentUser?.email!
         let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
         
@@ -106,7 +105,7 @@ class ConfirmEntryController: UIViewController {
             }
         }
         
-        SVProgressHUD.dismiss()
+        hideHUD(view: self.view)
         performSegue(withIdentifier: "goToTabView", sender: self)
     }
 

@@ -9,7 +9,6 @@
 
 import UIKit
 import Firebase
-import SVProgressHUD
 
 class RegisterViewController: UIViewController {
     
@@ -28,7 +27,7 @@ class RegisterViewController: UIViewController {
     // MARK: - Account Handling
     @IBAction func registerPressed(_ sender: AnyObject) {
         // Notify the user that something is happening.
-        SVProgressHUD.show()
+        indeterminateLoad(displayText: "Registering", view: self.view)
         
         // Set up a new user on the Firebase database.
         let registerParameters = ["Email": emailTextField.text!, "Password": passwordTextField.text!]
@@ -48,6 +47,6 @@ class RegisterViewController: UIViewController {
             self.warningText.text = getLatestErrorMessageFromFirebaseFunctions()
         }
         
-        SVProgressHUD.dismiss()
+        hideHUD(view: self.view)
     }
 }

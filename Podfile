@@ -11,7 +11,7 @@ target 'Liber' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  pod 'SVProgressHUD'
+  pod 'MBProgressHUD'
 
   target 'LiberTests' do
     inherit! :search_paths

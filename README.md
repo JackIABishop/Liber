@@ -19,8 +19,6 @@ pod install
 Terminal will download all of the necessary dependencies that the application requires to run. Then you can launch the 'Liber.xcworkspace' file.
 
 ## Support 
-The GitHub Repo can be found here: [Liber Github](https://github.com/JackIABishop/Liber)
-
 If you require any help regarding this project, please contact [Jack](mailto:jack.bish96@gmail.com). 
 
 ## Roadmap

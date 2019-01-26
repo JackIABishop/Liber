@@ -23,8 +23,12 @@ class MoreInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setting up the view controller.
         titleText.text = bookToView.title
         authorText.text = bookToView.author[0]
+        isbn13Text.text = bookToView.isbn_13
+        isbn10Text.text = bookToView.isbn_10
+        publisherText.text = bookToView.publisher
+        publishedText.text = bookToView.published
     }
 }

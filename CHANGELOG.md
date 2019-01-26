@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.0.16
+    * Fixed Issue #1: ConfirmEntryController opens twice.
+    * Added Code for MoreInfoViewController to view more info about a book selection.
+    * Changed LaunchScreen copyright to 2019.
+    * Removal of SVProgressHUD and addition of MBProgressHUD as I have more control of the loading animations. 
+    * Addition of MBProgressHUDFunctionFile, a customer library that I created to make calls to the MBProgressHUD API easier. 
+
 ## Version 0.0.15
     * Splitting code into reusable libraries, addition of 'FirebaseFunctions.swift' in SupportFiles/Utilities/
     * Removal of BUGS.md as it is no longer required, any further issues will be recorded in the 'Issues' section in Bitbucket.

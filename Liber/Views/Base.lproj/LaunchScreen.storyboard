@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="41" id="4g2-pZ-N1Y"/>
                                     <constraint firstAttribute="width" constant="259" id="Spr-jF-VZs"/>
                                 </constraints>
-                                <string key="text">  Copyright (c) 2018 UCLan &amp; Jack Bishop. 
+                                <string key="text">  Copyright (c) 2019 UCLan &amp; Jack Bishop. 
 All rights reserved.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

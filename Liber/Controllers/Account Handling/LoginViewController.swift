@@ -9,7 +9,6 @@
 
 import UIKit
 import Firebase
-import SVProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -29,7 +28,7 @@ class LoginViewController: UIViewController {
     // MARK: - Account Handling
     @IBAction func logInPressed(_ sender: UIButton) {
         // Notify the user that an action is happening.
-        SVProgressHUD.show()
+        indeterminateLoad(displayText: "Logging in", view: self.view)
         
         // Call Firebase with the user's login details.
         // As the function is called, I use a closure for the completion handler, so the app waits until the time consuming tasks is completed.
@@ -50,7 +49,7 @@ class LoginViewController: UIViewController {
             self.warningText.text = getLatestErrorMessageFromFirebaseFunctions()
         }
         
-        SVProgressHUD.dismiss()
+        hideHUD(view: self.view)
     }
 }
 

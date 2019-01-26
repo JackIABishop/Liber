@@ -9,7 +9,6 @@
 
 import UIKit
 import Firebase
-import SVProgressHUD
 
 class BookcaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,6 +17,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     var usersBooks = [Book]()
     var databaseHandle : DatabaseHandle!
     let userEmail = getFirebaseUserEmail()
+    var selectedBook = Book()
 
     @IBOutlet var tableView: UITableView!
     
@@ -25,7 +25,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         
         // Load user's bookcase data.
-        SVProgressHUD.show()
+        indeterminateLoad(displayText: "Loading bookcase", view: self.view)
         
         // Read data from the database
         let parsedEmail = userEmail.replacingOccurrences(of: ".", with: ",")
@@ -69,7 +69,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
-        SVProgressHUD.dismiss()
+        hideHUD(view: self.view)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,19 +91,20 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToMoreInfo", sender: self)
-        
-        let selectedBook = usersBooks[indexPath.row]
-        let destinationVC = MoreInfoViewController()
-        destinationVC.bookToView = selectedBook
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Set selected cell as the chosen book to view more information on.
+        selectedBook = usersBooks[indexPath.row]
+
         performSegue(withIdentifier: "goToMoreInfo", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! MoreInfoViewController
-        destinationVC.bookToView.title = "test"
+        if segue.destination is MoreInfoViewController
+        {
+            let destinationVC = segue.destination as? MoreInfoViewController
+            
+            destinationVC?.bookToView = selectedBook
+        }
     }
     
 }

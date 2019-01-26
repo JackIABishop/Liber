@@ -9,7 +9,6 @@
 
 import UIKit
 import Firebase
-import SVProgressHUD
 
 class AccountViewController: UIViewController {
 
@@ -24,7 +23,7 @@ class AccountViewController: UIViewController {
 
     // Logout the user and return them to the Login screen.
     @IBAction func logoutPressed(_ sender: AnyObject) {
-        SVProgressHUD.show()
+        indeterminateLoad(displayText: "Logging out", view: self.view)
         
         if signOutCurrentFirebaseUser() {
             currentAccount.resetClassData()
@@ -34,6 +33,6 @@ class AccountViewController: UIViewController {
             print("ERROR, there was a problem signing out.")
         }
         
-        SVProgressHUD.dismiss()
+        hideHUD(view: self.view)
     }
 }

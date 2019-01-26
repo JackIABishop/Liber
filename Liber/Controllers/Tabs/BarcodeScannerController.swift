@@ -9,7 +9,6 @@
 
 import UIKit
 import AVFoundation
-import SVProgressHUD
 import GoogleBooksApiClient
 
 var currentBookData = Book()
@@ -22,6 +21,7 @@ class BarcodeScannerController: UIViewController {
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var barcodeFrameView: UIView?
+    var bookFound : Bool?
     
     // Listing supported datatypes for the barcode, at the current just two the two ISBN standards.
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.ean8,
@@ -111,6 +111,7 @@ class BarcodeScannerController: UIViewController {
                 print("error")
         })
         task.resume()
+        
         return !currentBookData.title.isEmpty
     }
 }
@@ -135,13 +136,18 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
             if metadataObj.stringValue != nil {
                 // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
                 // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
-                if searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
+                
+                if self.searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
                     // If the barcode is matched with the Google Books.
-                    
-                    performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                    // If a book has been found prevent further API calls.
+                    if bookFound == nil {
+                        bookFound = true
+                        performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                    }
                 } else {
                     messageLabel.text = "Cannot find book"
                 }
+                
             }
         }
     }
