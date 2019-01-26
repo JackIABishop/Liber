@@ -13,7 +13,6 @@ import Firebase
 class BookcaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Instance Variables
-    var numberOfBooksInUsersAccount : Int = 3 //NOTE: - This needs to change, very bad coding but currently does not set this before tableViews have been loaded.
     var usersBooks = [Book]()
     var databaseHandle : DatabaseHandle!
     let userEmail = getFirebaseUserEmail()
@@ -23,7 +22,10 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        retrieveBooks()
+    }
+    
+    func retrieveBooks() {
         // Load user's bookcase data.
         indeterminateLoad(displayText: "Loading bookcase", view: self.view)
         
@@ -35,8 +37,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         // Check if there is any data in the users account, if there is fill the data with the users books.
         bookDatabase.observeSingleEvent(of: .value) { snapshot in
             if snapshot.hasChildren(){
-                // Found data.
-                self.numberOfBooksInUsersAccount = Int(snapshot.childrenCount)
                 // For each book in users account
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
@@ -63,6 +63,9 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     // usersBook will now store all books the user has.
                     self.usersBooks.append(newBook)
                     
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             } else {
                 // No data.
@@ -73,7 +76,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfBooksInUsersAccount
+        return usersBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -106,7 +109,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
             destinationVC?.bookToView = selectedBook
         }
     }
-    
 }
 
 //MARK: - Search Bar Methods
