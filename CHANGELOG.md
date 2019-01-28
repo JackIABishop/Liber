@@ -1,8 +1,13 @@
 # Changelog
 
+## Version 0.0.18
+    * Added a reset password option in the login screen. 
+    * Added a change password option in the account screen.  
+    * Added the ability to delete the users account.
+
 ## Version 0.0.17
     * Fix Issue #2: BookcaseViewController TableView Data Cells not refreshing on load.
-    * Fix Issue #5: TableViewDataSource incorrect implementation
+    * Fix Issue #5: TableViewDataSource incorrect implementation.
 
 ## Version 0.0.16
     * Fixed Issue #1: ConfirmEntryController opens twice.

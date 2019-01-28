@@ -21,6 +21,7 @@
 		5791EC9021C6D27300F94481 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
 		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
+		57D65EDD21FE602200E10D55 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */; };
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
 		57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */; };
 		57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */; };
@@ -75,6 +76,7 @@
 		5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
+		57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -258,9 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */,
+				5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */,
 				57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */,
 				57FA1D9821B6F054001FB848 /* FutureLog */,
-				5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -287,6 +289,7 @@
 				57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */,
 				57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */,
 				57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */,
+				57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */,
 			);
 			path = "Account Handling";
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */,
+				57D65EDD21FE602200E10D55 /* PasswordResetViewController.swift in Sources */,
 				575580CC21B578A900B6A9AD /* BarcodeScannerController.swift in Sources */,
 				57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */,
 				57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */,
