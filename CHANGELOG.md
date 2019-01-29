@@ -1,13 +1,18 @@
 # Changelog
 
+## Version 0.1.0
+    * Addition of icons for the tab controllers. 
+    * Added the ability to delete a book from the MoreInfoViewController.
+    * Core functionality has been completed, hence launching v0.1.0.
+
 ## Version 0.0.18
     * Added a reset password option in the login screen. 
     * Added a change password option in the account screen.  
     * Added the ability to delete the users account.
 
 ## Version 0.0.17
-    * Fix Issue #2: BookcaseViewController TableView Data Cells not refreshing on load.
-    * Fix Issue #5: TableViewDataSource incorrect implementation.
+    * Fixed Issue #2: BookcaseViewController TableView Data Cells not refreshing on load.
+    * Fixed Issue #5: TableViewDataSource incorrect implementation.
 
 ## Version 0.0.16
     * Fixed Issue #1: ConfirmEntryController opens twice.

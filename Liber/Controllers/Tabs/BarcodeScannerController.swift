@@ -84,7 +84,6 @@ class BarcodeScannerController: UIViewController {
             view.addSubview(barcodeFrameView)
             view.bringSubviewToFront(barcodeFrameView)
         }
-        
     }
     
     // MARK: - Handling Book Data

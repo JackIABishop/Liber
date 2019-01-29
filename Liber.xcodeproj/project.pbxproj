@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5700314721B86763002DCF73 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700314621B86763002DCF73 /* AccountViewController.swift */; };
-		5739037521B5C3D2002483DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5739037421B5C3D2002483DC /* Assets.xcassets */; };
 		573F624F21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */; };
 		575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C721B578A900B6A9AD /* AppDelegate.swift */; };
 		575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C921B578A900B6A9AD /* BookcaseViewController.swift */; };
@@ -21,6 +20,7 @@
 		5791EC9021C6D27300F94481 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
 		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
+		57C98BAC21FFAD08004B79C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C98BAB21FFAD08004B79C1 /* Assets.xcassets */; };
 		57D65EDD21FE602200E10D55 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */; };
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
 		57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */; };
@@ -57,7 +57,6 @@
 		343C548C700A51CF425AEAAB /* Pods_LiberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D272B6B096744D50322AF /* Pods-LiberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiberUITests/Pods-LiberUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5700314621B86763002DCF73 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		5739037421B5C3D2002483DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Liber/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUDFunctionFile.swift; sourceTree = "<group>"; };
 		575580C421B578A900B6A9AD /* Liber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580C721B578A900B6A9AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +75,7 @@
 		5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
+		57C98BAB21FFAD08004B79C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		575580F721B5813E00B6A9AD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				5739037421B5C3D2002483DC /* Assets.xcassets */,
+				57C98BAB21FFAD08004B79C1 /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 				575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */,
 				57FE9A0F21C3D5AB00CF3DCD /* GoogleService-Info.plist in Resources */,
 				575580CF21B578A900B6A9AD /* Main.storyboard in Resources */,
-				5739037521B5C3D2002483DC /* Assets.xcassets in Resources */,
+				57C98BAC21FFAD08004B79C1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

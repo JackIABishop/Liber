@@ -80,16 +80,14 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-2e-mnS">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-2e-mnS">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Bookcase" id="kBv-Ti-DuK"/>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYo-tC-4zj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYo-tC-4zj">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="hb0-hE-B0W">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -113,9 +111,18 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Dj3-2e-mnS" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="3ml-f6-ktI"/>
+                            <constraint firstItem="mYo-tC-4zj" firstAttribute="top" secondItem="Dj3-2e-mnS" secondAttribute="bottom" id="Ddz-80-i5a"/>
+                            <constraint firstItem="Dj3-2e-mnS" firstAttribute="leading" secondItem="mYo-tC-4zj" secondAttribute="leading" id="FLV-hE-btx"/>
+                            <constraint firstItem="Dj3-2e-mnS" firstAttribute="trailing" secondItem="mYo-tC-4zj" secondAttribute="trailing" id="JdZ-uG-8lf"/>
+                            <constraint firstItem="Dj3-2e-mnS" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="aOl-FT-CSQ"/>
+                            <constraint firstItem="mYo-tC-4zj" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="xwJ-FR-469"/>
+                            <constraint firstAttribute="trailing" secondItem="Dj3-2e-mnS" secondAttribute="trailing" id="zzw-F4-WLG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Bookcase" image="first" selectedImage="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Bookcase" image="book" selectedImage="book" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" id="TtM-sC-hQg"/>
                     <connections>
                         <outlet property="tableView" destination="mYo-tC-4zj" id="4AI-h0-55y"/>
@@ -134,9 +141,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7Z-fw-hHO">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7Z-fw-hHO">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="More Information" id="5uJ-0X-riC">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="tVX-QQ-m4r">
@@ -147,92 +153,134 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1A-b9-7yQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1A-b9-7yQ">
                                 <rect key="frame" x="16" y="117" width="34" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="asy-CK-VfS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbk-2P-Uan">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbk-2P-Uan">
                                 <rect key="frame" x="16" y="155" width="52" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISBN-13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v66-jY-EZd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN-13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v66-jY-EZd">
                                 <rect key="frame" x="16" y="193" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISBN-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjb-dA-ZlH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjb-dA-ZlH">
                                 <rect key="frame" x="16" y="231" width="64" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Publisher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n0-OS-zmB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publisher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n0-OS-zmB">
                                 <rect key="frame" x="16" y="268" width="72" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Published" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvv-aF-dCz">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvv-aF-dCz">
                                 <rect key="frame" x="16" y="306" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTH-cT-BxH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTH-cT-BxH">
                                 <rect key="frame" x="101" y="116" width="258" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="926-CN-bKY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="926-CN-bKY">
                                 <rect key="frame" x="101" y="154" width="258" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISBN-13" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ym-Yf-VG4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN-13" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ym-Yf-VG4">
                                 <rect key="frame" x="101" y="192" width="258" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISBN-10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYW-eN-ROE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISBN-10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYW-eN-ROE">
                                 <rect key="frame" x="101" y="231" width="258" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Published" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-TR-e0p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Published" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-TR-e0p">
                                 <rect key="frame" x="101" y="305" width="258" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Publisher" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aze-RU-pP3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Publisher" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aze-RU-pP3">
                                 <rect key="frame" x="101" y="268" width="258" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhb-CD-5Hn">
+                                <rect key="frame" x="136" y="361" width="102" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bgc-Gb-WrX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Delete Book">
+                                    <color key="titleColor" red="0.1524967888" green="0.4190410376" blue="0.14067776900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteBookPressed:" destination="mA8-R1-l1B" eventType="touchUpInside" id="7Z8-df-x1Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TZL-TR-e0p" firstAttribute="top" secondItem="aze-RU-pP3" secondAttribute="bottom" constant="16" id="1yA-7X-4G6"/>
+                            <constraint firstItem="rhb-CD-5Hn" firstAttribute="top" secondItem="TZL-TR-e0p" secondAttribute="bottom" constant="35" id="5L3-F0-9mC"/>
+                            <constraint firstItem="dbk-2P-Uan" firstAttribute="top" secondItem="B1A-b9-7yQ" secondAttribute="bottom" constant="17" id="97K-K0-H3Q"/>
+                            <constraint firstItem="tjb-dA-ZlH" firstAttribute="leading" secondItem="4n0-OS-zmB" secondAttribute="leading" id="Db6-R3-WhY"/>
+                            <constraint firstItem="4n0-OS-zmB" firstAttribute="leading" secondItem="kvv-aF-dCz" secondAttribute="leading" id="FM7-gL-Tn9"/>
+                            <constraint firstItem="4n0-OS-zmB" firstAttribute="top" secondItem="tjb-dA-ZlH" secondAttribute="bottom" constant="16" id="FQc-K4-aHT"/>
+                            <constraint firstItem="CTH-cT-BxH" firstAttribute="trailing" secondItem="dKV-kZ-d5i" secondAttribute="trailingMargin" id="Fcd-IR-HeZ"/>
+                            <constraint firstItem="CTH-cT-BxH" firstAttribute="trailing" secondItem="926-CN-bKY" secondAttribute="trailing" id="GwX-8Q-VdM"/>
+                            <constraint firstItem="rhb-CD-5Hn" firstAttribute="centerX" secondItem="O7Z-fw-hHO" secondAttribute="centerX" id="JuI-Jd-Ufp"/>
+                            <constraint firstItem="B1A-b9-7yQ" firstAttribute="leading" secondItem="dbk-2P-Uan" secondAttribute="leading" id="Mu6-xl-61m"/>
+                            <constraint firstItem="4n0-OS-zmB" firstAttribute="baseline" secondItem="aze-RU-pP3" secondAttribute="baseline" id="NY8-lt-rST"/>
+                            <constraint firstItem="fYW-eN-ROE" firstAttribute="leading" secondItem="aze-RU-pP3" secondAttribute="leading" id="Qhn-8a-Zrb"/>
+                            <constraint firstItem="fYW-eN-ROE" firstAttribute="top" secondItem="3Ym-Yf-VG4" secondAttribute="bottom" constant="18" id="Qll-fh-5o5"/>
+                            <constraint firstItem="v66-jY-EZd" firstAttribute="leading" secondItem="tjb-dA-ZlH" secondAttribute="leading" id="SKD-Ww-jhf"/>
+                            <constraint firstItem="CTH-cT-BxH" firstAttribute="leading" secondItem="B1A-b9-7yQ" secondAttribute="trailing" constant="51" id="SNh-CT-t71"/>
+                            <constraint firstItem="3Ym-Yf-VG4" firstAttribute="trailing" secondItem="fYW-eN-ROE" secondAttribute="trailing" id="SdP-5v-H7x"/>
+                            <constraint firstItem="rhb-CD-5Hn" firstAttribute="leading" secondItem="aog-zg-akt" secondAttribute="leading" constant="136" id="Uqk-Ix-oBc"/>
+                            <constraint firstItem="926-CN-bKY" firstAttribute="top" secondItem="CTH-cT-BxH" secondAttribute="bottom" constant="17" id="WUh-cb-cfm"/>
+                            <constraint firstItem="926-CN-bKY" firstAttribute="leading" secondItem="3Ym-Yf-VG4" secondAttribute="leading" id="WxE-uM-bM6"/>
+                            <constraint firstItem="tjb-dA-ZlH" firstAttribute="top" secondItem="v66-jY-EZd" secondAttribute="bottom" constant="17" id="a7L-dE-Epf"/>
+                            <constraint firstItem="O7Z-fw-hHO" firstAttribute="leading" secondItem="dKV-kZ-d5i" secondAttribute="leading" id="bCO-M6-mJy"/>
+                            <constraint firstItem="CTH-cT-BxH" firstAttribute="top" secondItem="O7Z-fw-hHO" secondAttribute="bottom" constant="28" id="bet-ls-P8W"/>
+                            <constraint firstItem="v66-jY-EZd" firstAttribute="top" secondItem="dbk-2P-Uan" secondAttribute="bottom" constant="17" id="c59-Ru-kk3"/>
+                            <constraint firstItem="aze-RU-pP3" firstAttribute="trailing" secondItem="TZL-TR-e0p" secondAttribute="trailing" id="cID-jI-u9R"/>
+                            <constraint firstAttribute="trailing" secondItem="O7Z-fw-hHO" secondAttribute="trailing" id="hVj-vq-4cu"/>
+                            <constraint firstItem="B1A-b9-7yQ" firstAttribute="leading" secondItem="dKV-kZ-d5i" secondAttribute="leadingMargin" id="hgC-cH-PjG"/>
+                            <constraint firstItem="3Ym-Yf-VG4" firstAttribute="top" secondItem="926-CN-bKY" secondAttribute="bottom" constant="17" id="lhP-8N-HSZ"/>
+                            <constraint firstItem="tjb-dA-ZlH" firstAttribute="baseline" secondItem="fYW-eN-ROE" secondAttribute="baseline" id="pk6-Yl-8CL"/>
+                            <constraint firstItem="CTH-cT-BxH" firstAttribute="leading" secondItem="926-CN-bKY" secondAttribute="leading" id="qqC-KT-Wu2"/>
+                            <constraint firstItem="kvv-aF-dCz" firstAttribute="top" secondItem="4n0-OS-zmB" secondAttribute="bottom" constant="17" id="rsL-78-oo0"/>
+                            <constraint firstItem="926-CN-bKY" firstAttribute="trailing" secondItem="3Ym-Yf-VG4" secondAttribute="trailing" id="s4i-Wz-XvA"/>
+                            <constraint firstItem="O7Z-fw-hHO" firstAttribute="top" secondItem="aog-zg-akt" secondAttribute="top" id="tLe-qa-UWq"/>
+                            <constraint firstItem="fYW-eN-ROE" firstAttribute="trailing" secondItem="aze-RU-pP3" secondAttribute="trailing" id="uoE-Hf-slm"/>
+                            <constraint firstItem="aze-RU-pP3" firstAttribute="leading" secondItem="TZL-TR-e0p" secondAttribute="leading" id="vUd-zm-ghS"/>
+                            <constraint firstItem="3Ym-Yf-VG4" firstAttribute="leading" secondItem="fYW-eN-ROE" secondAttribute="leading" id="vrg-kb-no4"/>
+                            <constraint firstItem="dbk-2P-Uan" firstAttribute="leading" secondItem="v66-jY-EZd" secondAttribute="leading" id="vsS-Aj-tue"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aog-zg-akt"/>
                     </view>
                     <connections>
@@ -275,7 +323,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Add" image="plus" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="messageLabel" destination="2FV-j3-7cM" id="SXJ-gT-uXm"/>
                         <segue destination="UW0-79-uLl" kind="show" identifier="goToConfirmEntry" id="jl2-kl-DRH"/>
@@ -319,91 +367,91 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QSh-1R-LZp">
-                                <rect key="frame" x="112" y="112" width="248" height="30"/>
+                                <rect key="frame" x="112" y="112" width="248" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p2I-qC-A2J">
-                                <rect key="frame" x="113" y="150" width="248" height="30"/>
+                                <rect key="frame" x="113" y="151" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4j-Db-WgM">
-                                <rect key="frame" x="16" y="155" width="52" height="21"/>
+                                <rect key="frame" x="16" y="155" width="52" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISBN-13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMt-pq-Al2">
-                                <rect key="frame" x="16" y="193" width="64" height="21"/>
+                                <rect key="frame" x="16" y="194" width="64" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hwR-8Y-p9S">
-                                <rect key="frame" x="113" y="188" width="248" height="30"/>
+                                <rect key="frame" x="113" y="189" width="248" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ISBN-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg6-Ak-btw">
-                                <rect key="frame" x="16" y="231" width="64" height="21"/>
+                                <rect key="frame" x="16" y="232" width="64" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Epc-CO-tpZ">
-                                <rect key="frame" x="113" y="226" width="248" height="30"/>
+                                <rect key="frame" x="113" y="228" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Publisher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVl-FU-6M0">
-                                <rect key="frame" x="16" y="268" width="72" height="21"/>
+                                <rect key="frame" x="16" y="270" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-pH-yIE">
-                                <rect key="frame" x="113" y="264" width="248" height="30"/>
+                                <rect key="frame" x="113" y="266" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Published" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgH-44-Wz4">
-                                <rect key="frame" x="16" y="306" width="76" height="21"/>
+                                <rect key="frame" x="16" y="306.66666666666669" width="76" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LQH-38-AoH">
-                                <rect key="frame" x="113" y="302" width="248" height="30"/>
+                                <rect key="frame" x="113" y="301.66666666666669" width="248" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thumbnail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufq-wU-vHV">
-                                <rect key="frame" x="16" y="345" width="81" height="21"/>
+                                <rect key="frame" x="16" y="345.66666666666669" width="81" height="20.333333333333314"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OfF-hV-E3u">
-                                <rect key="frame" x="113" y="345" width="246" height="308"/>
+                                <rect key="frame" x="113" y="345.66666666666674" width="246" height="307.33333333333326"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -434,9 +482,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-Xh-0GS">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-Xh-0GS">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Account" id="xVc-MZ-acz">
                                         <barButtonItem key="rightBarButtonItem" title="Logout" id="Yft-Df-iNC">
@@ -447,32 +494,31 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Account: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQD-CH-7t9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Account: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQD-CH-7t9">
                                 <rect key="frame" x="16" y="108" width="135" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="DZC-Nc-p4C"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P5-1k-fqD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P5-1k-fqD">
                                 <rect key="frame" x="159" y="108" width="200" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-on-H3Y">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-on-H3Y">
                                 <rect key="frame" x="118" y="146" width="138" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Change Password"/>
                                 <connections>
                                     <action selector="changePasswordPressed:" destination="s5T-N4-816" eventType="touchUpInside" id="RM7-1T-zyE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3L-Pz-chv">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3L-Pz-chv">
                                 <rect key="frame" x="128" y="187" width="118" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Delete Account">
                                     <color key="titleColor" red="0.1524967888" green="0.4190410376" blue="0.14067776900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -483,9 +529,26 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="centerX" secondItem="0iq-on-H3Y" secondAttribute="centerX" id="5uK-ic-CJf"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leading" id="BCo-VY-Ous"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="top" secondItem="fMi-Um-2qt" secondAttribute="top" id="Bk2-hd-2Hb"/>
+                            <constraint firstItem="b3L-Pz-chv" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="128" id="F26-R9-gyG"/>
+                            <constraint firstItem="b3L-Pz-chv" firstAttribute="top" secondItem="0iq-on-H3Y" secondAttribute="bottom" constant="8" symbolic="YES" id="IRC-Hw-FhP"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="top" id="M65-k1-1xT"/>
+                            <constraint firstItem="0P5-1k-fqD" firstAttribute="leading" secondItem="DQD-CH-7t9" secondAttribute="trailing" constant="8" symbolic="YES" id="MhR-OB-cw4"/>
+                            <constraint firstItem="0P5-1k-fqD" firstAttribute="trailing" secondItem="zw1-r7-3xm" secondAttribute="trailingMargin" id="PlX-rc-i1w"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="oAx-Xh-0GS" secondAttribute="bottom" constant="20" id="SOR-EQ-0Fr"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="bottom" secondItem="0P5-1k-fqD" secondAttribute="bottom" id="WCK-3t-wds"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="118" id="aBh-Hs-fS3"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="centerX" secondItem="b3L-Pz-chv" secondAttribute="centerX" id="eQt-MH-3eF"/>
+                            <constraint firstAttribute="trailing" secondItem="oAx-Xh-0GS" secondAttribute="trailing" id="i9K-63-qC6"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="top" secondItem="DQD-CH-7t9" secondAttribute="bottom" constant="17" id="kNP-ky-zAr"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leadingMargin" id="pda-Gz-Nrj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fMi-Um-2qt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="info.png" id="aMU-NH-tX5"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="user_male" id="aMU-NH-tX5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currentAccountLabel" destination="0P5-1k-fqD" id="VaR-fq-oBN"/>
@@ -568,7 +631,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pKk-p6-OFU">
-                                <rect key="frame" x="16" y="268" width="343" height="30"/>
+                                <rect key="frame" x="16" y="269" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="myD-r7-8Cf"/>
                                 </constraints>
@@ -576,7 +639,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pAx-HK-MOn">
-                                <rect key="frame" x="16" y="306" width="343" height="30"/>
+                                <rect key="frame" x="16" y="307" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="X5l-VI-era"/>
                                 </constraints>
@@ -584,7 +647,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDJ-ke-ToF">
-                                <rect key="frame" x="16" y="230" width="343" height="30"/>
+                                <rect key="frame" x="16" y="231" width="343" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Cig-XK-nHF"/>
                                 </constraints>
@@ -604,7 +667,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGD-vz-PgP">
-                                <rect key="frame" x="0.0" y="348" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="349" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FzH-Gj-stb"/>
@@ -649,16 +712,16 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             <constraint firstItem="fY8-1h-xQO" firstAttribute="leading" secondItem="gbG-OO-Cv2" secondAttribute="leadingMargin" id="Hhm-J3-q8M"/>
                             <constraint firstItem="LGD-vz-PgP" firstAttribute="leading" secondItem="gbG-OO-Cv2" secondAttribute="leading" id="I1E-MS-xkQ"/>
                             <constraint firstItem="pKk-p6-OFU" firstAttribute="trailing" secondItem="pAx-HK-MOn" secondAttribute="trailing" id="Imd-pT-qbB"/>
-                            <constraint firstItem="07v-ls-7iU" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="18" id="Mev-Sm-2g1"/>
+                            <constraint firstItem="07v-ls-7iU" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="17" id="Mev-Sm-2g1"/>
                             <constraint firstItem="fY8-1h-xQO" firstAttribute="top" secondItem="gbG-OO-Cv2" secondAttribute="top" constant="198" id="W8C-Pc-zBH"/>
                             <constraint firstItem="pAx-HK-MOn" firstAttribute="centerX" secondItem="LGD-vz-PgP" secondAttribute="centerX" id="Wkd-Kk-Ihh"/>
                             <constraint firstItem="YvT-Vm-9bw" firstAttribute="top" secondItem="Y5p-NK-qWc" secondAttribute="top" constant="79" id="bF5-Fj-GHD"/>
-                            <constraint firstItem="sfA-6H-QyK" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="12" id="gQw-Wh-b1f"/>
+                            <constraint firstItem="sfA-6H-QyK" firstAttribute="top" secondItem="LGD-vz-PgP" secondAttribute="bottom" constant="11" id="gQw-Wh-b1f"/>
                             <constraint firstItem="KDJ-ke-ToF" firstAttribute="trailing" secondItem="pKk-p6-OFU" secondAttribute="trailing" id="mbG-pK-G9b"/>
                             <constraint firstItem="pKk-p6-OFU" firstAttribute="leading" secondItem="pAx-HK-MOn" secondAttribute="leading" id="obG-dY-viO"/>
                             <constraint firstItem="sfA-6H-QyK" firstAttribute="leading" secondItem="07v-ls-7iU" secondAttribute="trailing" constant="8" symbolic="YES" id="ox8-aZ-hTp"/>
                             <constraint firstItem="fY8-1h-xQO" firstAttribute="leading" secondItem="KDJ-ke-ToF" secondAttribute="leading" id="txX-zW-CM3"/>
-                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="top" secondItem="YvT-Vm-9bw" secondAttribute="bottom" constant="64" id="vPS-2R-456"/>
+                            <constraint firstItem="KDJ-ke-ToF" firstAttribute="top" secondItem="YvT-Vm-9bw" secondAttribute="bottom" constant="65" id="vPS-2R-456"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y5p-NK-qWc"/>
                     </view>
@@ -911,13 +974,13 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="info.png" width="28" height="28"/>
-        <image name="second" width="30" height="30"/>
+        <image name="book" width="30" height="30"/>
+        <image name="plus" width="30" height="30"/>
+        <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UTg-a9-9we"/>
-        <segue reference="Zzw-BF-Vdt"/>
-        <segue reference="dO8-bj-3Pk"/>
+        <segue reference="WSY-Q7-ZVl"/>
+        <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>
 </document>

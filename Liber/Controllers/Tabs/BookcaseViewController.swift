@@ -22,7 +22,13 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        retrieveBooks()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            indeterminateLoad(displayText: "Loading Bookcase", view: self.view)
+            self.retrieveBooks()
+        }
+        
+        hideHUD(view: self.view)
     }
     
     func retrieveBooks() {
