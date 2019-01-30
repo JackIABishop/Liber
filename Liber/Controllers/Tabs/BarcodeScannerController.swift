@@ -154,6 +154,11 @@ class BarcodeScannerController: UIViewController {
         // No book found, return false
         return bookFound
     }
+    
+    @IBAction func manualAddPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToManualAddView", sender: self)
+    }
+    
 }
 
 extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
