@@ -12,11 +12,10 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
-    // Linking text fields
+    // Linking UI Elements
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    // Labels
     @IBOutlet var warningText: UILabel!
     
     override func viewDidLoad() {

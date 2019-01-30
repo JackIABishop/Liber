@@ -12,7 +12,7 @@ import Firebase
 
 class RegisterViewController: UIViewController {
     
-    // Linking text fields
+    // Linking UI Elements
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmPasswordTextField: UITextField!

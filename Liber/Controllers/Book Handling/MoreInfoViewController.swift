@@ -12,8 +12,10 @@ import Firebase
 
 class MoreInfoViewController: UIViewController {
     
+    // Instance Variables
     var bookToView = Book()
     
+    // Linking UI Elements
     @IBOutlet var titleText: UILabel!
     @IBOutlet var authorText: UILabel!
     @IBOutlet var isbn13Text: UILabel!
@@ -33,6 +35,7 @@ class MoreInfoViewController: UIViewController {
         publishedText.text = bookToView.published
     }
     
+    //MARK: - Book Deletion Handling
     @IBAction func deleteBookPressed(_ sender: Any) {
         // Open an action sheet to confirm the deletion of the book entry.
         let deleteMenu = UIAlertController(title: "Warning", message: "Deleting your account is a destructive action, this book entry will be deleted.", preferredStyle: UIAlertController.Style.actionSheet)

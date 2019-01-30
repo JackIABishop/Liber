@@ -12,6 +12,7 @@ import Firebase
 
 class ConfirmEntryController: UIViewController {
     
+    // Linking UI Elements
     @IBOutlet var titleText: UITextField!
     @IBOutlet var authorText: UITextField!
     @IBOutlet var isbn13Text: UITextField!

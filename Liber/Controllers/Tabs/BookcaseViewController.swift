@@ -17,7 +17,10 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     var databaseHandle : DatabaseHandle!
     let userEmail = getFirebaseUserEmail()
     var selectedBook = Book()
+    var filteredBooks = [Book]()
 
+    // Linking UI Elements
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -26,7 +29,10 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             indeterminateLoad(displayText: "Loading Bookcase", view: self.view)
             self.retrieveBooks()
+            //self.filteredData = self.usersBooks
         }
+        
+        searchBar.delegate = self
         
         hideHUD(view: self.view)
     }
@@ -68,6 +74,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     // usersBook will now store all books the user has.
                     self.usersBooks.append(newBook)
+                    self.filteredBooks.append(newBook)
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -81,18 +88,17 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         hideHUD(view: self.view)
     }
     
+    //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersBooks.count
+        return filteredBooks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookItemCell")
         
-        if (!usersBooks.isEmpty) {
+        if (!filteredBooks.isEmpty) {
             // List out books.
-            let book = usersBooks[indexPath.row]
-            
-            cell?.textLabel?.text = book.title
+            cell?.textLabel?.text = filteredBooks[indexPath.row].title
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
         }
@@ -102,8 +108,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Set selected cell as the chosen book to view more information on.
-        selectedBook = usersBooks[indexPath.row]
-
+        selectedBook = filteredBooks[indexPath.row]
+        
         performSegue(withIdentifier: "goToMoreInfo", sender: self)
     }
     
@@ -120,13 +126,41 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
 //MARK: - Search Bar Methods
 extension BookcaseViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-       
+        tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       
+        
+        // Reset the books
+        filteredBooks = usersBooks
+        
+        if searchBar.text?.count != 0 {
+            filteredBooks = filteredBooks.filter({ (item) -> Bool in
+                item.title.contains(find: searchText)
+            })
+        }
+        
+        tableView.reloadData()
+    }
+    
+    
+    // Enable the cancel button on the search bar
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    // When Search Bar Cancel button is pressed.
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
 }
 
-
+// Extension to filter out the books.
+extension String {
+    func contains(find: String) -> Bool {
+        return self.range(of: find) != nil
+    }
+}
 
