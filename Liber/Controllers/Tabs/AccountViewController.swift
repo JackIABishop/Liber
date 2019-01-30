@@ -15,7 +15,7 @@ class AccountViewController: UIViewController {
     // Instance Variables
     let userEmail = getFirebaseUserEmail()
     
-    
+    // Linking UI Elements
     @IBOutlet var currentAccountLabel: UILabel!
     
     override func viewDidLoad() {
@@ -34,6 +34,7 @@ class AccountViewController: UIViewController {
         hideHUD(view: self.view)
     }
     
+    //MARK: - Button Presses
     @IBAction func changePasswordPressed(_ sender: Any) {
         // Launch Change Password Functionality
 

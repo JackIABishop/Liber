@@ -12,7 +12,7 @@ import Firebase
 
 class PasswordResetViewController: UIViewController {
     
-    // Linking storyboard elements.
+    // Linking UI Elements
     @IBOutlet var confirmationText: UILabel!
     @IBOutlet var emailTextField: UITextField!
     

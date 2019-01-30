@@ -10,11 +10,13 @@
 import UIKit
 import AVFoundation
 import GoogleBooksApiClient
+import Firebase
 
 var currentBookData = Book()
 
 class BarcodeScannerController: UIViewController {
     
+    // Linking UI Elements
     @IBOutlet var messageLabel: UILabel!
     
     // Instance Variables
@@ -113,6 +115,50 @@ class BarcodeScannerController: UIViewController {
         
         return !currentBookData.title.isEmpty
     }
+    
+    func bookHasBeenAdded() -> Bool {
+        var bookFound = false
+        
+        // Delete the selected book.
+        indeterminateLoad(displayText: "Deleting book", view: self.view)
+        
+        // Remove the book from the database.
+        
+        let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
+        
+        let usersDatabase = Database.database().reference().child("Users").child(parsedEmail)
+        
+        // Go through users database and remove the matched book.
+        usersDatabase.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.hasChildren(){
+                for child in snapshot.children {
+                    let snap = child as! DataSnapshot
+                    
+                    let dataChange = snap.value as? [String:AnyObject]
+                    
+                    let title = dataChange!["Book Title"]
+                    let author = dataChange!["Author"]
+                    
+                    if title as! String == currentBookData.title &&
+                        author as! String == currentBookData.author[0] {
+                        // When found a match, delete book.
+                        print("Book already in database")
+                        bookFound = true
+                    }
+                }
+            }
+        }
+        
+        hideHUD(view: self.view)
+        
+        // No book found, return false
+        return bookFound
+    }
+    
+    @IBAction func manualAddPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToManualAddView", sender: self)
+    }
+    
 }
 
 extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {

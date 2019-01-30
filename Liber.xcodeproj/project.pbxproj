@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5700314721B86763002DCF73 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700314621B86763002DCF73 /* AccountViewController.swift */; };
+		571FA1AE2201C973005BDF69 /* ManualAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */; };
 		573F624F21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */; };
 		575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C721B578A900B6A9AD /* AppDelegate.swift */; };
 		575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C921B578A900B6A9AD /* BookcaseViewController.swift */; };
@@ -57,6 +58,7 @@
 		343C548C700A51CF425AEAAB /* Pods_LiberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		343D272B6B096744D50322AF /* Pods-LiberUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiberUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiberUITests/Pods-LiberUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5700314621B86763002DCF73 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManualAddViewController.swift; path = "Liber/Controllers/Book Handling/ManualAddViewController.swift"; sourceTree = SOURCE_ROOT; };
 		573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUDFunctionFile.swift; sourceTree = "<group>"; };
 		575580C421B578A900B6A9AD /* Liber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580C721B578A900B6A9AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		57B897F421BC56E8000237BB /* Book Handling */ = {
 			isa = PBXGroup;
 			children = (
+				571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */,
 				57B897F521BC5711000237BB /* ConfirmEntryController.swift */,
 				57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */,
 			);
@@ -550,6 +553,7 @@
 				57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */,
 				57FA1D9F21B71B67001FB848 /* Book.swift in Sources */,
 				5700314721B86763002DCF73 /* AccountViewController.swift in Sources */,
+				571FA1AE2201C973005BDF69 /* ManualAddViewController.swift in Sources */,
 				573F624F21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
