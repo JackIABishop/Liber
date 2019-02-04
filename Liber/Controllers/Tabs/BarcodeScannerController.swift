@@ -18,6 +18,8 @@ class BarcodeScannerController: UIViewController {
     
     // Linking UI Elements
     @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet var blockView: UIView!
     
     // Instance Variables
     var captureSession = AVCaptureSession()
@@ -86,6 +88,11 @@ class BarcodeScannerController: UIViewController {
             view.addSubview(barcodeFrameView)
             view.bringSubviewToFront(barcodeFrameView)
         }
+        
+        // Bringing the Navigation Bar infront of the camera view.
+        blockView.layer.zPosition = 2
+        navigationBar.layer.zPosition = 3
+        
     }
     
     // MARK: - Handling Book Data

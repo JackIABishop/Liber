@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.1.1 
+    * Added search functionality in the bookcase. 
+    * Added Manual Entry functionality.
+
 ## Version 0.1.0
     * Addition of icons for the tab controllers. 
     * Added the ability to delete a book from the MoreInfoViewController.

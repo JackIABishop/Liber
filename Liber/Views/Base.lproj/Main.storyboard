@@ -80,6 +80,11 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w8Q-lV-Ap5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-2e-mnS">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
@@ -145,6 +150,11 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1EV-cf-4kH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7Z-fw-hHO">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
@@ -308,6 +318,11 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXC-42-yk3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647720575332642" green="0.9764588475227356" blue="0.97647124528884888" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for barcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-j3-7cM">
                                 <rect key="frame" x="0.0" y="681" width="375" height="40"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
@@ -333,6 +348,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="2FV-j3-7cM" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="637" id="1XR-pt-BuB"/>
                             <constraint firstAttribute="trailing" secondItem="2FV-j3-7cM" secondAttribute="trailing" id="8LR-dx-Otu"/>
@@ -342,7 +358,9 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                     </view>
                     <tabBarItem key="tabBarItem" title="Add" image="plus" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="blockView" destination="JXC-42-yk3" id="7Ox-Da-0hR"/>
                         <outlet property="messageLabel" destination="2FV-j3-7cM" id="SXJ-gT-uXm"/>
+                        <outlet property="navigationBar" destination="wGN-SE-B9j" id="46Y-oM-vEs"/>
                         <segue destination="UW0-79-uLl" kind="show" identifier="goToConfirmEntry" id="jl2-kl-DRH"/>
                         <segue destination="EZw-Ay-EX4" kind="show" identifier="goToManualAddView" id="ngZ-XW-bZE"/>
                     </connections>
@@ -359,6 +377,11 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJ8-3w-Ffk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXA-4Y-kZN">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -490,7 +513,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qXy-yn-75k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="0.0"/>
+            <point key="canvasLocation" x="1568.8" y="0.0"/>
         </scene>
         <!--Manual Add View Controller-->
         <scene sceneID="DQL-Ap-ioQ">
@@ -500,6 +523,11 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ghE-Z9-PgO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0p9-r9-Nok">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -618,7 +646,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNW-8T-do3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2311" y="0.0"/>
+            <point key="canvasLocation" x="2309.5999999999999" y="0.0"/>
         </scene>
         <!--Account-->
         <scene sceneID="r4G-is-h4W">
@@ -628,6 +656,11 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kn4-PU-XwA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-Xh-0GS">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <items>
@@ -703,7 +736,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKm-wh-WWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="677"/>
+            <point key="canvasLocation" x="821.60000000000002" y="676.84729064039414"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="vsi-5Q-Kd9">
@@ -1125,8 +1158,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wdK-GW-nZt"/>
-        <segue reference="wFM-tI-g5j"/>
+        <segue reference="fwc-ts-0Lf"/>
+        <segue reference="Zzw-BF-Vdt"/>
         <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>
 </document>
