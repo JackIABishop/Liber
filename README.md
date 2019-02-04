@@ -22,7 +22,5 @@ Terminal will download all of the necessary dependencies that the application re
 If you require any help regarding this project, please contact [Jack](mailto:jack.bish96@gmail.com). 
 
 ## Roadmap
-    * Add search functionality for the bookcase. 
     * Potentially add a 'Author' controller, to list all Authors in collection, then have the functionality to click on an author and list their books. 
-    * Add manual entry functionality.
     * Implement Organisations, allowing a user to subscribe to a collection of books. 
