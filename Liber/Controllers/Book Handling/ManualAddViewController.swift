@@ -25,31 +25,42 @@ class ManualAddViewController: UIViewController {
     }
 
     @IBAction func confirmButtonPressed(_ sender: Any) {
-        // Save the book in user's database.
-        indeterminateLoad(displayText: "Saving Book", view: self.view)
-        let userEmail = Auth.auth().currentUser?.email!
-        let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
-        
-        // Set each text field in the database.
-        let bookDatabase = Database.database().reference().child("Users").child(parsedEmail!)
-        let bookDictionary = ["User": userEmail,
-                              "Book Title": titleText.text!,
-                              "Author": authorText.text!,
-                              "ISBN-13": isbn13Text.text!,
-                              "ISBN-10": isbn10Text.text!,
-                              "Publisher": publisherText.text!,
-                              "Published": publishedText.text!]
-        bookDatabase.childByAutoId().setValue(bookDictionary) {
-            (error, reference) in
-            if error != nil {
-                print(error as Any)
-            } else {
-                print("Book saved successfully!")
+        // Check if the user has entered a book title.
+        if titleText.text?.count != 0 {
+            // Save the book in user's database.
+            indeterminateLoad(displayText: "Saving Book", view: self.view)
+            let userEmail = Auth.auth().currentUser?.email!
+            let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
+            
+            // Set each text field in the database.
+            let bookDatabase = Database.database().reference().child("Users").child(parsedEmail!)
+            let bookDictionary = ["User": userEmail,
+                                  "Book Title": titleText.text!,
+                                  "Author": authorText.text!,
+                                  "ISBN-13": isbn13Text.text!,
+                                  "ISBN-10": isbn10Text.text!,
+                                  "Publisher": publisherText.text!,
+                                  "Published": publishedText.text!]
+            bookDatabase.childByAutoId().setValue(bookDictionary) {
+                (error, reference) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    print("Book saved successfully!")
+                }
             }
+            
+            hideHUD(view: self.view)
+            performSegue(withIdentifier: "goToTabView", sender: self)
+        } else {
+            // Print an error message to the user
+            let errorAlert = UIAlertController(title: "Uh-oh", message: "A book title is required", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(errorAlert, animated: true, completion: nil)
         }
-        
-        hideHUD(view: self.view)
-        performSegue(withIdentifier: "goToTabView", sender: self)
     }
 
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToTabView", sender: self)
+    }
 }

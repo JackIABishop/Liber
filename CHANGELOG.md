@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.1.2 
+    * Change to manualAddViewController to force a Book title to be entered. 
+    * Fix of different coloured Navigation Bars by adding a same coloured view behind each one. 
+
 ## Version 0.1.1 
     * Added search functionality in the bookcase. 
     * Added Manual Entry functionality.
