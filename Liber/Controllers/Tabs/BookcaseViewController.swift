@@ -37,6 +37,30 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         hideHUD(view: self.view)
     }
     
+    @IBAction func addButtonPressed(_ sender: Any) {
+        // Present action controller asking user method of book entry.
+        let optionMenu = UIAlertController(title: "Book Entry", message: "How would you like to add your book?", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        // Creation options.
+        let manualEntryAction = UIAlertAction(title: "Manual Entry", style: UIAlertAction.Style.default) { (alert) in
+            self.performSegue(withIdentifier: "goToManualEntry", sender: self)
+        }
+        
+        let barcodeScanAction = UIAlertAction(title: "Barcode Scan", style: UIAlertAction.Style.default) { (alert) in
+            self.performSegue(withIdentifier: "goToBarcodeEntry", sender: self)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+        
+        // Adding the actions to the menu.
+        optionMenu.addAction(manualEntryAction)
+        optionMenu.addAction(barcodeScanAction)
+        optionMenu.addAction(cancelAction)
+        
+        // Present the menu to the screen.
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
     func retrieveBooks() {
         // Load user's bookcase data.
         indeterminateLoad(displayText: "Loading bookcase", view: self.view)
@@ -52,7 +76,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                 // For each book in users account
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
-                    print(snap)
+                    //print(snap)
                     
                     // Store each book in usersBooks array
                     let newBook = Book()

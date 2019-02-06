@@ -13,6 +13,9 @@ import GoogleBooksApiClient
 import Firebase
 
 var currentBookData = Book()
+var lastBookTitle: String = ""
+var sentBookTitle: String = ""
+var isFirstRequest: Bool? // Setting first scan request.
 
 class BarcodeScannerController: UIViewController {
     
@@ -34,6 +37,9 @@ class BarcodeScannerController: UIViewController {
     // MARK: - Setting up BarcodeScannerController to show camera and scan for supportedCodeTypes.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        isFirstRequest = true
+        currentBookData.resetClassData()
         
         // Get the back-facing camera for capturing videos.
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
@@ -97,7 +103,6 @@ class BarcodeScannerController: UIViewController {
     
     // MARK: - Handling Book Data
     func searchGoogleBooks(decodedURL : String) -> Bool {
-        
         let session = URLSession.shared
         let client = GoogleBooksApiClient(session: session)
         
@@ -114,6 +119,17 @@ class BarcodeScannerController: UIViewController {
                 currentBookData.publisher = volumes.items[0].volumeInfo.publisher ?? ""
                 currentBookData.published = volumes.items[0].volumeInfo.publishedDate ?? ""
                 currentBookData.thumbnail = volumes.items[0].volumeInfo.imageLinks?.thumbnail
+                
+                lastBookTitle = currentBookData.title
+                
+                print("Book sent to controller")
+                sentBookTitle = currentBookData.title
+                
+                // Perform segue in main dispatchQueue as the change of UI (PerformSegue) is best to be on the main thread.
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                }
+                
         },
             onError: { error in NSLog("\(error)")
                 print("error")
@@ -123,47 +139,8 @@ class BarcodeScannerController: UIViewController {
         return !currentBookData.title.isEmpty
     }
     
-    func bookHasBeenAdded() -> Bool {
-        var bookFound = false
-        
-        // Delete the selected book.
-        indeterminateLoad(displayText: "Deleting book", view: self.view)
-        
-        // Remove the book from the database.
-        
-        let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
-        
-        let usersDatabase = Database.database().reference().child("Users").child(parsedEmail)
-        
-        // Go through users database and remove the matched book.
-        usersDatabase.observeSingleEvent(of: .value) { (snapshot) in
-            if snapshot.hasChildren(){
-                for child in snapshot.children {
-                    let snap = child as! DataSnapshot
-                    
-                    let dataChange = snap.value as? [String:AnyObject]
-                    
-                    let title = dataChange!["Book Title"]
-                    let author = dataChange!["Author"]
-                    
-                    if title as! String == currentBookData.title &&
-                        author as! String == currentBookData.author[0] {
-                        // When found a match, delete book.
-                        print("Book already in database")
-                        bookFound = true
-                    }
-                }
-            }
-        }
-        
-        hideHUD(view: self.view)
-        
-        // No book found, return false
-        return bookFound
-    }
-    
-    @IBAction func manualAddPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToManualAddView", sender: self)
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToTabView", sender: self)
     }
     
 }
@@ -185,22 +162,30 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
             let barcodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             barcodeFrameView?.frame = barcodeObject!.bounds
             
-            if metadataObj.stringValue != nil {
-                // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
-                // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
-                
-                if self.searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
-                    // If the barcode is matched with the Google Books.
-                    // If a book has been found prevent further API calls.
-                    if bookFound == nil {
-                        bookFound = true
-                        performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+            if isFirstRequest! {
+                if metadataObj.stringValue != nil {
+                    // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
+                    // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
+                    
+                    isFirstRequest = false
+                    // Put your code which should be executed with a delay here
+                    if self.searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
+                        // If the barcode is matched with the Google Books.
+                        // If a book has been found prevent further API calls.
+                        
+                        print("Book sent to controller")
+                        sentBookTitle = currentBookData.title
+                        self.performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                        
+                    } else {
+                        self.messageLabel.text = "Error: Cannot find book"
                     }
-                } else {
-                    messageLabel.text = "Cannot find book"
+                    
+                    isFirstRequest = false
+                    print("setting first request to false")
                 }
-                
             }
+            
         }
     }
 }

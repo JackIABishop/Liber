@@ -25,7 +25,6 @@ class ConfirmEntryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         titleText.text = currentBookData.title
         
         var counter : Int = 1
@@ -78,7 +77,6 @@ class ConfirmEntryController: UIViewController {
     //MARK: - Button press handling.
     @IBAction func cancelButtonPressed(_ sender: Any) {
         // Cancel action and return to add screen.
-        currentBookData.resetClassData()
         performSegue(withIdentifier: "goToTabView", sender: self)
     }
     
