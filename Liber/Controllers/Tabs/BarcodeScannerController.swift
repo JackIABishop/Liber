@@ -131,12 +131,11 @@ class BarcodeScannerController: UIViewController {
         return !currentBookData.title.isEmpty
     }
     
-    @IBAction func manualAddPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToManualAddView", sender: self)
-    }
-    
     //NOTE:- Testing the locking of the object.
     
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToTabView", sender: self)
+    }
     
     
 }
