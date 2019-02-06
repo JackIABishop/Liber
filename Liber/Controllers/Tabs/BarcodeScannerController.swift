@@ -38,8 +38,8 @@ class BarcodeScannerController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //bookFound = false
         isFirstRequest = true
+        currentBookData.resetClassData()
         
         // Get the back-facing camera for capturing videos.
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
@@ -122,6 +122,14 @@ class BarcodeScannerController: UIViewController {
                 
                 lastBookTitle = currentBookData.title
                 
+                print("Book sent to controller")
+                sentBookTitle = currentBookData.title
+                
+                // Perform segue in main dispatchQueue as the change of UI (PerformSegue) is best to be on the main thread.
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                }
+                
         },
             onError: { error in NSLog("\(error)")
                 print("error")
@@ -131,12 +139,9 @@ class BarcodeScannerController: UIViewController {
         return !currentBookData.title.isEmpty
     }
     
-    //NOTE:- Testing the locking of the object.
-    
     @IBAction func cancelButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToTabView", sender: self)
     }
-    
     
 }
 
@@ -157,45 +162,30 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
             let barcodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             barcodeFrameView?.frame = barcodeObject!.bounds
             
-            if metadataObj.stringValue != nil {
-                // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
-                // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
-                
-                //NOTE:-One call API Testing
-                
-                if isFirstRequest! {
-                    print("searching")
+            if isFirstRequest! {
+                if metadataObj.stringValue != nil {
+                    // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
+                    // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
+                    
+                    isFirstRequest = false
+                    // Put your code which should be executed with a delay here
                     if self.searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
                         // If the barcode is matched with the Google Books.
                         // If a book has been found prevent further API calls.
-                        if bookFound == nil {
-                            bookFound = true
-                            if lastBookTitle != sentBookTitle {
-                                print("Book sent to controller")
-                                sentBookTitle = currentBookData.title
-                                performSegue(withIdentifier: "goToConfirmEntry", sender: self)
-                            }
-                        }
+                        
+                        print("Book sent to controller")
+                        sentBookTitle = currentBookData.title
+                        self.performSegue(withIdentifier: "goToConfirmEntry", sender: self)
+                        
                     } else {
-                        messageLabel.text = "Error: Cannot find book"
+                        self.messageLabel.text = "Error: Cannot find book"
                     }
-                } else {
-                    print("dont look")
+                    
+                    isFirstRequest = false
+                    print("setting first request to false")
                 }
-                
-                /*
-                guard isFirstRequest! else {
-                    print("firstrequest")
-                    return
-                }*/
-                
-                isFirstRequest = false
-                print("setting first request to false")
-                
-                
-                
-                
             }
+            
         }
     }
 }
