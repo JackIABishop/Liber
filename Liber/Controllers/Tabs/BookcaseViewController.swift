@@ -10,6 +10,8 @@
 import UIKit
 import Firebase
 
+var organisationCode: String = ""
+
 class BookcaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Instance Variables
@@ -29,10 +31,12 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             indeterminateLoad(displayText: "Loading Bookcase", view: self.view)
             self.retrieveBooks()
-            //self.filteredData = self.usersBooks
         }
         
         searchBar.delegate = self
+        
+        // Set the organisation code for the logged in user. 
+        getOrgCode()
         
         hideHUD(view: self.view)
     }
