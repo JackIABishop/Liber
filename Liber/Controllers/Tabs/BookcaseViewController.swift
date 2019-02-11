@@ -10,8 +10,6 @@
 import UIKit
 import Firebase
 
-var organisationCode: String = ""
-
 class BookcaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Instance Variables
@@ -34,9 +32,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         searchBar.delegate = self
-        
-        // Set the organisation code for the logged in user. 
-        getOrgCode()
         
         hideHUD(view: self.view)
     }
@@ -70,9 +65,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         indeterminateLoad(displayText: "Loading bookcase", view: self.view)
         
         // Read data from the database
-        let parsedEmail = userEmail.replacingOccurrences(of: ".", with: ",")
-        
-        let bookDatabase = Database.database().reference().child("Users").child(parsedEmail)
+        let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
         
         // Check if there is any data in the users account, if there is fill the data with the users books.
         bookDatabase.observeSingleEvent(of: .value) { snapshot in

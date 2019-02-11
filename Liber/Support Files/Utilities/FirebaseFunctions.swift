@@ -10,6 +10,8 @@
 import Foundation
 import Firebase
 
+var organisationCode: String = ""
+
 // Get the latest error message.
 var latestErrorMessage = ""
 func getLatestErrorMessageFromFirebaseFunctions() -> String {
@@ -73,7 +75,12 @@ func signInFirebaseUser(loginParameters:Dictionary<String, String>, completion: 
         } else {
             // Successful login
             print("Login successful")
-            completion(true)
+            
+            //Get organisation code and save globablly for use throughout the app.
+            getOrgCode()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                completion(true)
+            }
         }
     }
 }

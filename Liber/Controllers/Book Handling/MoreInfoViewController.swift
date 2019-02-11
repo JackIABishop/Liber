@@ -59,13 +59,10 @@ class MoreInfoViewController: UIViewController {
         indeterminateLoad(displayText: "Deleting book", view: self.view)
         
         // Remove the book from the database.
-        
-        let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
-        
-        let usersDatabase = Database.database().reference().child("Users").child(parsedEmail)
+        let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
         
         // Go through users database and remove the matched book.
-        usersDatabase.observeSingleEvent(of: .value) { (snapshot) in
+        bookDatabase.observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.hasChildren(){
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
