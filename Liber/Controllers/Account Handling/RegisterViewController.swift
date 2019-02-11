@@ -13,6 +13,7 @@ import Firebase
 class RegisterViewController: UIViewController {
     
     // Linking UI Elements
+    @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var confirmPasswordTextField: UITextField!
@@ -30,7 +31,7 @@ class RegisterViewController: UIViewController {
         indeterminateLoad(displayText: "Registering", view: self.view)
         
         // Set up a new user on the Firebase database.
-        let registerParameters = ["Email": emailTextField.text!, "Password": passwordTextField.text!]
+        let registerParameters = ["Name": nameTextField.text! ,"Email": emailTextField.text!, "Password": passwordTextField.text!]
         if conductRegistrationValidation(registerParameters: registerParameters, confirmPassword: confirmPasswordTextField.text!) {
             registerFirebaseUser(registerParameters: registerParameters) { (result) in
                 if result {

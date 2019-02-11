@@ -34,6 +34,11 @@ func conductLoginValidation(loginParameters:Dictionary<String, String>) -> Bool 
 // Function to verify the users registration details.
 func conductRegistrationValidation(registerParameters:Dictionary<String, String>, confirmPassword: String) -> Bool {
     // List different types of validation methods, if any fail, return false.
+    let name: String = registerParameters["Name"] ?? ""
+    if (name.count == 0) {
+        latestErrorMessage = "Enter a name."
+        return false
+    }
     if (registerParameters["Password"] != confirmPassword) {
         latestErrorMessage = "Passwords do not match."
         return false
@@ -83,6 +88,21 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
         } else {
             // Successful registration
             print("Registration successful")
+            
+            // Enter name in users account database.
+            
+            // Create organisationCode
+            let orgCode = getOrgCode(userEmail: registerParameters["Email"]!)
+            let bookDatabase = Database.database().reference().child("Users").child(orgCode).child("Name")
+            
+            bookDatabase.setValue(registerParameters["Name"]) {
+                (error, reference) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    print("Name saves successfully!")
+                }
+            }
             completion(true)
         }
     }
@@ -103,3 +123,12 @@ func signOutCurrentFirebaseUser() -> Bool {
     }
 }
 
+// This function will generate the organisation code based off their email.
+func getOrgCode(userEmail: String) -> String {
+    var result = UInt64(5381)
+    let buf = [UInt8](userEmail.utf8)
+    for b in buf {
+        result = 127 * (result & 0x00ffffffffffffff) + UInt64(b)
+    }
+    return String(result)
+}
