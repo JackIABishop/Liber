@@ -170,13 +170,27 @@ class AccountViewController: UIViewController {
     // Delete the users account
     func deleteAccount() {
         indeterminateLoad(displayText: "Deleting account", view: self.view)
+       
+        let user = Auth.auth().currentUser
         
-        // Firstly, log the user out.
+        // Log the user out.
         logOut()
         
-        // Remove user & bookcase data.
+        // Remove user bookcase data.
         let parsedEmail = userEmail.replacingOccurrences(of: ".", with: ",")
-        Database.database().reference(withPath: "Users").child(parsedEmail).removeValue()
+        Database.database().reference(withPath: "Users").child(organisationCode).removeValue()
+        
+        // Remove UID.
+        Database.database().reference(withPath: "Identifiers").child(parsedEmail).removeValue()
+        
+        //TODO:- Remove user authentication.
+        user?.delete { error in
+            if let error = error {
+                // Error
+                print(error)
+                print("Error deleting account")
+            }
+        }
         
         print("account deleted")
         hideHUD(view: self.view)

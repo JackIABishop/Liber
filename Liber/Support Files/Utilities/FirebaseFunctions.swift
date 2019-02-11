@@ -113,7 +113,13 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
                     print("Name saves successfully!")
                 }
             }
-            completion(true)
+            
+            //Get organisation code and save globablly for use throughout the app.
+            getOrgCode()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                completion(true)
+            }
+            
         }
     }
 }
