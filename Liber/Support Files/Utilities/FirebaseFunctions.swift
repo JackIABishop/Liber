@@ -114,8 +114,20 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
                 }
             }
             
+            // Save own UID as Subscribed bookcase.
+            let orgDB = Database.database().reference().child("Users").child(orgCode).child("Subscribed Organisations")
+            orgDB.childByAutoId().setValue(orgCode) {
+                (error, reference) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    print("UID saved in subscribed organisations")
+                }
+            }
+            
             //Get organisation code and save globablly for use throughout the app.
             getOrgCode()
+            getSubscribedOrgs()
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
                 completion(true)
             }
@@ -153,4 +165,9 @@ func getOrgCode() {
         print("Users organisation code: \(orgCode)")
         organisationCode = orgCode
     }
+}
+
+// This function will return the subscribed Organisations the user is subscribed too.
+func getSubscribedOrgs() {
+    
 }

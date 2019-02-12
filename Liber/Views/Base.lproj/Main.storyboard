@@ -85,8 +85,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-2e-mnS">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-2e-mnS">
+                                <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                                 <items>
                                     <navigationItem title="Bookcase" id="kBv-Ti-DuK">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jVG-6f-uGi">
@@ -98,7 +98,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYo-tC-4zj">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="hb0-hE-B0W">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -669,9 +669,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kn4-PU-XwA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kn4-PU-XwA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAx-Xh-0GS">
@@ -689,7 +688,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Account: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQD-CH-7t9">
                                 <rect key="frame" x="16" y="108" width="135" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="DZC-Nc-p4C"/>
+                                    <constraint firstAttribute="width" constant="135" id="WDi-Wd-ytH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -701,16 +700,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-on-H3Y">
-                                <rect key="frame" x="118" y="146" width="138" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Change Password"/>
-                                <connections>
-                                    <action selector="changePasswordPressed:" destination="s5T-N4-816" eventType="touchUpInside" id="RM7-1T-zyE"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3L-Pz-chv">
-                                <rect key="frame" x="128" y="187" width="118" height="33"/>
+                                <rect key="frame" x="128" y="260" width="118" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Delete Account">
                                     <color key="titleColor" red="0.1524967888" green="0.4190410376" blue="0.14067776900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -719,24 +710,47 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                     <action selector="deleteAccountPressed:" destination="s5T-N4-816" eventType="touchUpInside" id="QNb-FU-XCj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0iq-on-H3Y">
+                                <rect key="frame" x="118" y="188" width="138" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Change Password"/>
+                                <connections>
+                                    <action selector="changePasswordPressed:" destination="s5T-N4-816" eventType="touchUpInside" id="RM7-1T-zyE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vG-iN-lj1">
+                                <rect key="frame" x="104" y="147" width="166" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="View Organisations"/>
+                                <connections>
+                                    <action selector="viewOrgsButtonPressed:" destination="s5T-N4-816" eventType="touchUpInside" id="bfC-6m-f0C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="centerX" secondItem="0iq-on-H3Y" secondAttribute="centerX" id="5uK-ic-CJf"/>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leading" id="BCo-VY-Ous"/>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="top" secondItem="fMi-Um-2qt" secondAttribute="top" id="Bk2-hd-2Hb"/>
-                            <constraint firstItem="b3L-Pz-chv" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="128" id="F26-R9-gyG"/>
-                            <constraint firstItem="b3L-Pz-chv" firstAttribute="top" secondItem="0iq-on-H3Y" secondAttribute="bottom" constant="8" symbolic="YES" id="IRC-Hw-FhP"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="top" id="M65-k1-1xT"/>
-                            <constraint firstItem="0P5-1k-fqD" firstAttribute="leading" secondItem="DQD-CH-7t9" secondAttribute="trailing" constant="8" symbolic="YES" id="MhR-OB-cw4"/>
-                            <constraint firstItem="0P5-1k-fqD" firstAttribute="trailing" secondItem="zw1-r7-3xm" secondAttribute="trailingMargin" id="PlX-rc-i1w"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="oAx-Xh-0GS" secondAttribute="bottom" constant="20" id="SOR-EQ-0Fr"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="bottom" secondItem="0P5-1k-fqD" secondAttribute="bottom" id="WCK-3t-wds"/>
-                            <constraint firstItem="0iq-on-H3Y" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="118" id="aBh-Hs-fS3"/>
-                            <constraint firstItem="0iq-on-H3Y" firstAttribute="centerX" secondItem="b3L-Pz-chv" secondAttribute="centerX" id="eQt-MH-3eF"/>
-                            <constraint firstAttribute="trailing" secondItem="oAx-Xh-0GS" secondAttribute="trailing" id="i9K-63-qC6"/>
-                            <constraint firstItem="0iq-on-H3Y" firstAttribute="top" secondItem="DQD-CH-7t9" secondAttribute="bottom" constant="17" id="kNP-ky-zAr"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leadingMargin" id="pda-Gz-Nrj"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="leading" secondItem="oAx-Xh-0GS" secondAttribute="leading" id="0dc-YO-Uvw"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="bottom" secondItem="oAx-Xh-0GS" secondAttribute="bottom" id="AYi-Pu-zjc"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="trailing" secondItem="oAx-Xh-0GS" secondAttribute="trailing" id="B8h-5h-0vN"/>
+                            <constraint firstItem="1vG-iN-lj1" firstAttribute="top" secondItem="DQD-CH-7t9" secondAttribute="bottom" constant="18" id="DFb-SL-apr"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leadingMargin" id="G7T-2a-Z7O"/>
+                            <constraint firstItem="b3L-Pz-chv" firstAttribute="top" secondItem="0iq-on-H3Y" secondAttribute="bottom" constant="39" id="JDZ-zx-Udq"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="118" id="Q3U-A9-K2d"/>
+                            <constraint firstItem="1vG-iN-lj1" firstAttribute="centerX" secondItem="0iq-on-H3Y" secondAttribute="centerX" id="S6Z-5V-1VV"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="top" id="UYU-vu-k4e"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="centerX" secondItem="b3L-Pz-chv" secondAttribute="centerX" id="V4N-Ky-9PP"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="oAx-Xh-0GS" secondAttribute="bottom" constant="20" id="XWz-pI-4H2"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="top" secondItem="fMi-Um-2qt" secondAttribute="top" id="bJC-TB-cMF"/>
+                            <constraint firstItem="b3L-Pz-chv" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="128" id="buJ-6k-y6x"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="top" secondItem="zw1-r7-3xm" secondAttribute="top" id="ci7-RG-7Ba"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="top" secondItem="1vG-iN-lj1" secondAttribute="bottom" constant="8" symbolic="YES" id="dOf-gt-IHw"/>
+                            <constraint firstItem="0P5-1k-fqD" firstAttribute="leading" secondItem="DQD-CH-7t9" secondAttribute="trailing" constant="8" symbolic="YES" id="hF5-bj-qgc"/>
+                            <constraint firstItem="1vG-iN-lj1" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="104" id="lZH-ml-CXn"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leading" id="pJh-Ph-J9i"/>
+                            <constraint firstItem="0P5-1k-fqD" firstAttribute="trailing" secondItem="zw1-r7-3xm" secondAttribute="trailingMargin" id="pSU-le-wDT"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="centerX" secondItem="1vG-iN-lj1" secondAttribute="centerX" id="pc6-Of-sF5"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="bottom" secondItem="0P5-1k-fqD" secondAttribute="bottom" id="rNq-4Q-PUt"/>
+                            <constraint firstAttribute="trailing" secondItem="kn4-PU-XwA" secondAttribute="trailing" id="sSX-7A-Aas"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fMi-Um-2qt"/>
                     </view>
@@ -745,11 +759,89 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                     <connections>
                         <outlet property="currentAccountLabel" destination="0P5-1k-fqD" id="VaR-fq-oBN"/>
                         <segue destination="DeF-cm-BmZ" kind="show" identifier="goToLogin" id="Zzw-BF-Vdt"/>
+                        <segue destination="QLj-zv-xyT" kind="show" identifier="goToOrganisation" id="Zxh-Ou-NIR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tKm-wh-WWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="821.60000000000002" y="676.84729064039414"/>
+        </scene>
+        <!--Organisation View Controller-->
+        <scene sceneID="RNZ-kD-Sdx">
+            <objects>
+                <viewController id="QLj-zv-xyT" customClass="OrganisationViewController" customModule="Liber" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DSu-xu-e3C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KYD-k4-TuM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTw-Qg-Lee">
+                                        <rect key="frame" x="0.0" y="52" width="375" height="44"/>
+                                        <items>
+                                            <navigationItem title="Organisations" id="5NW-LK-OMh">
+                                                <barButtonItem key="leftBarButtonItem" systemItem="save" id="So9-jp-8vq">
+                                                    <connections>
+                                                        <action selector="saveButtonPressed:" destination="QLj-zv-xyT" id="VsI-kP-rAJ"/>
+                                                        <segue destination="49e-Tb-3d3" kind="show" identifier="goToTabView" id="plo-fX-zHh"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" systemItem="add" id="6v6-Fa-eJ9">
+                                                    <connections>
+                                                        <action selector="addButtonPressed:" destination="QLj-zv-xyT" id="ZkA-v1-uSF"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="DTw-Qg-Lee" firstAttribute="leading" secondItem="KYD-k4-TuM" secondAttribute="leading" id="4Gr-AN-TXi"/>
+                                    <constraint firstAttribute="bottom" secondItem="DTw-Qg-Lee" secondAttribute="bottom" constant="-8" id="5np-bw-r5x"/>
+                                    <constraint firstItem="DTw-Qg-Lee" firstAttribute="top" secondItem="KYD-k4-TuM" secondAttribute="topMargin" id="xqc-gz-Vf3"/>
+                                    <constraint firstAttribute="trailing" secondItem="DTw-Qg-Lee" secondAttribute="trailing" id="yg9-pc-brF"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pax-NH-01o">
+                                <rect key="frame" x="0.0" y="96" width="375" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="organisationItemCell" id="Yzs-wi-z2I">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Yzs-wi-z2I" id="SkG-OA-4by">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="QLj-zv-xyT" id="TWL-nt-jd5"/>
+                                    <outlet property="delegate" destination="QLj-zv-xyT" id="F7x-oG-yAT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KYD-k4-TuM" firstAttribute="top" secondItem="DSu-xu-e3C" secondAttribute="top" id="A7t-4d-KNg"/>
+                            <constraint firstItem="KYD-k4-TuM" firstAttribute="leading" secondItem="pax-NH-01o" secondAttribute="leading" id="Eq4-9C-xrW"/>
+                            <constraint firstAttribute="bottom" secondItem="pax-NH-01o" secondAttribute="bottom" id="TVc-2G-dEg"/>
+                            <constraint firstAttribute="trailing" secondItem="KYD-k4-TuM" secondAttribute="trailing" id="YWO-Px-i38"/>
+                            <constraint firstItem="KYD-k4-TuM" firstAttribute="leading" secondItem="DSu-xu-e3C" secondAttribute="leading" id="d0T-dg-iaX"/>
+                            <constraint firstItem="pax-NH-01o" firstAttribute="top" secondItem="KYD-k4-TuM" secondAttribute="bottom" constant="8" symbolic="YES" id="m77-m7-Ter"/>
+                            <constraint firstItem="KYD-k4-TuM" firstAttribute="trailing" secondItem="pax-NH-01o" secondAttribute="trailing" id="uVu-yK-QyD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IYq-9M-kNu"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="pax-NH-01o" id="CMP-vr-oi9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVO-Yr-Fw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1568.8" y="676.84729064039414"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="vsi-5Q-Kd9">
@@ -1186,8 +1278,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vh5-4A-kRo"/>
-        <segue reference="wFM-tI-g5j"/>
+        <segue reference="plo-fX-zHh"/>
+        <segue reference="Zzw-BF-Vdt"/>
         <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -195,4 +195,9 @@ class AccountViewController: UIViewController {
         print("account deleted")
         hideHUD(view: self.view)
     }
+    
+    // Open the OrganisationViewController
+    @IBAction func viewOrgsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToOrganisation", sender: self)
+    }
 }
