@@ -26,15 +26,130 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         
         // Adding dummy data.
         var org1 = Organisation()
-        org1.orgCode = "test1"
-        var org2 = Organisation()
-        org2.orgCode = "test2"
+        org1.orgCode = "test"
+        var jack = Organisation()
+        jack.orgCode = "DB6ECCF4-0DE5-45C6-9F8F-44F679936FF3"
         var realOrg = Organisation()
         realOrg.orgCode = "953F5245-BBC0-453B-9421-00297F32253D"
         
         subscribedOrganisations.append(realOrg)
         subscribedOrganisations.append(org1)
-        subscribedOrganisations.append(org2)
+        subscribedOrganisations.append(jack)
+    }
+    
+    // Save the organisation data in the users DB.
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        
+        performSegue(withIdentifier: "goToTabView", sender: self)
+    }
+    
+    // Load organisation data.
+    func retrieveOrganisations() {
+        
+    }
+    
+    //MARK:- TableView Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return subscribedOrganisations.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Get organisation name.
+        indeterminateLoad(displayText: "Hold on...", view: self.view)
+        
+        var orgName = ""
+        let orgCode = subscribedOrganisations[indexPath.row].orgCode
+        
+        let nameDB = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
+            if let value = snapshot.value as? String {
+                orgName = value
+            }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            // Select a row shows the organisation details, then off OK or Delete options.
+            let viewOrgData = UIAlertController(title: "Organisation Details", message: "Name: \(orgName), UID: \(orgCode)", preferredStyle: UIAlertController.Style.alert)
+            
+            // Add action buttons.
+            viewOrgData.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (alert) in
+                // Double ask the user if they want to delete this organisation.
+                let confirmDeleteAlert = UIAlertController(title: "Are you sure?", message: "Delete this organisation: \(orgName)", preferredStyle: .alert)
+                
+                confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (delete) in
+                    // Delete organisation
+                    print("Deleting organisation")
+                    
+                    let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
+                    
+                    // Go through users subscribed organisations and delete the matched UID.
+                    orgDB.observeSingleEvent(of: .value) { (orgSnapshot) in
+                        if orgSnapshot.hasChildren() {
+                            for child in orgSnapshot.children {
+                                let snap = child as! DataSnapshot
+                                print(snap)
+                                
+                                // Found a match
+                                if snap.value as? String == orgCode {
+                                    // If that match is users org, do not delete
+                                    if snap.value as? String == organisationCode {
+                                        // Show UIAlert of error.
+                                        let errorAlert = UIAlertController(title: "Error", message: "You cannot delete your own bookcase", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                    } else {
+                                        // Delete organisation
+                                        snap.ref.removeValue()
+                                        
+                                        // Show UIAlert of error.
+                                        let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                        
+                                        return
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }))
+                
+                self.present(confirmDeleteAlert, animated: true, completion: nil)
+            }))
+            viewOrgData.addAction(UIAlertAction(title: "OK", style: .default))
+            print(orgName)
+            self.present(viewOrgData, animated: true, completion: nil)
+        }
+        
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        hideHUD(view: self.view)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "organisationItemCell")
+        
+        if (!subscribedOrganisations.isEmpty) {
+            // List out organisations.
+            let orgCode = subscribedOrganisations[indexPath.row].orgCode
+            
+            let nameDB = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
+                if let value = snapshot.value as? String {
+                    cell?.textLabel?.text = value
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {}
+            
+            
+        } else {
+            //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
+            cell?.textLabel?.text = "no content found"
+        }
+        
+        
+        return cell!
     }
     
     // Allow the user to add an organisation.
@@ -60,8 +175,8 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             identifierDB.observeSingleEvent(of: .value, with: { (snapshot) in
                 //print(snapshot)
                 for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                   print(snap.value!)
-
+                    print(snap.value!)
+                    
                     // Check if OrgCode is valid.
                     if snap.value! as? String == orgNum.text {
                         
@@ -118,38 +233,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         }))
         
         self.present(addOrganisationAlert, animated: true, completion: nil)
-    }
-    
-    // Save the organisation data in the users DB.
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        
-        
-        performSegue(withIdentifier: "goToTabView", sender: self)
-    }
-    
-    // Load organisation data.
-    func retrieveOrganisations() {
-        
-    }
-    
-    //MARK:- TableView Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return subscribedOrganisations.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "organisationItemCell")
-        
-        if (!subscribedOrganisations.isEmpty) {
-            // List out organisations.
-            cell?.textLabel?.text = subscribedOrganisations[indexPath.row].orgCode
-            //TODO:- List out organisation's name.
-        } else {
-            //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
-            cell?.textLabel?.text = "no content found"
-        }
-        
-        return cell!
     }
     
 }

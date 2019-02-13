@@ -132,7 +132,6 @@ class AccountViewController: UIViewController {
             })
         }))
         
-        
         self.present(changePasswordAlert, animated: true, completion: nil)
     }
     
