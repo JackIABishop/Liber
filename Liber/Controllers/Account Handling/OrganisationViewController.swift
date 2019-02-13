@@ -39,6 +39,8 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     
     // Allow the user to add an organisation.
     @IBAction func addButtonPressed(_ sender: Any) {
+        var matchFound: Bool = false
+        
         // Show an UIAlert that will prompt the user to add an organisation code and store in subscribed databases.
         let addOrganisationAlert = UIAlertController(title: "Add Organisation", message: "Add the organisation code that you wish to add", preferredStyle: .alert)
         
@@ -51,15 +53,45 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             let orgNum = addOrganisationAlert.textFields![0] // Force unwrap is safe because I know it exists.
             
             // Check if the organisation code is valid.
-            let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
-            orgDB.childByAutoId().setValue(orgNum.text) {
-                (error, reference) in
-                if error != nil {
-                    print(error as Any)
-                } else {
-                    print("Organisation saved successfully!")
+            let identifierDB = Database.database().reference().child("Identifiers")
+            identifierDB.observeSingleEvent(of: .value, with: { (snapshot) in
+                //print(snapshot)
+                for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                   print(snap.value!)
+
+                    if snap.value! as? String == orgNum.text {
+                        print("Valid OrgCode")
+                        // Save the organisation in the users subscribed organisations.
+                        let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
+                        orgDB.childByAutoId().setValue(orgNum.text) {
+                            (error, reference) in
+                            if error != nil {
+                                print(error as Any)
+                            } else {
+                                print("Organisation saved successfully!")
+                                matchFound = true
+                                
+                                // Show UIAlert of code being valid.
+                                let errorAlert = UIAlertController(title: "Success", message: "Organisation saved successfully!", preferredStyle: .alert)
+                                errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                self.present(errorAlert, animated: true, completion: nil)
+                            }
+                        }
+                    } else {
+                        
+                    }
+                }
+            })
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
+                if matchFound != true {
+                    print("Code not valid")
+                    // Show UIAlert of code not being valid.
+                    let errorAlert = UIAlertController(title: "Error", message: "Code not found in UID database", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(errorAlert, animated: true, completion: nil)
                 }
             }
+            
         }))
         
         self.present(addOrganisationAlert, animated: true, completion: nil)
