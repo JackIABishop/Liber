@@ -20,33 +20,53 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Load subscribed organisations.
-        retrieveOrganisations()
         
-        // Adding dummy data.
-        var org1 = Organisation()
-        org1.orgCode = "test"
-        var jack = Organisation()
-        jack.orgCode = "DB6ECCF4-0DE5-45C6-9F8F-44F679936FF3"
-        var realOrg = Organisation()
-        realOrg.orgCode = "953F5245-BBC0-453B-9421-00297F32253D"
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            indeterminateLoad(displayText: "Loading Organisations", view: self.view)
+            // Load subscribed organisations.
+            self.retrieveOrganisations()
+        }
         
-        subscribedOrganisations.append(realOrg)
-        subscribedOrganisations.append(org1)
-        subscribedOrganisations.append(jack)
+        //tableView.delegate = self
+        
+        hideHUD(view: self.view)
     }
     
     // Save the organisation data in the users DB.
     @IBAction func saveButtonPressed(_ sender: Any) {
-        
-        
         performSegue(withIdentifier: "goToTabView", sender: self)
     }
     
     // Load organisation data.
     func retrieveOrganisations() {
         
+        indeterminateLoad(displayText: "Loading Organisation", view: self.view)
+        
+        // Read from the database.
+        let subscribedDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
+        
+        // Go through each item add them to the subscribed DB.
+        subscribedDB.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.hasChildren() {
+                for child in snapshot.children {
+                    let snap = child as! DataSnapshot
+                    print(snap)
+                    
+                    var newOrganisation = Organisation()
+                    
+                    newOrganisation.orgCode = (snap.value as? String)!
+                    
+                    // Add the code to the subscribed organisations.
+                    self.subscribedOrganisations.append(newOrganisation)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+        
+        hideHUD(view: self.view)
     }
     
     //MARK:- TableView Methods
@@ -61,7 +81,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         var orgName = ""
         let orgCode = subscribedOrganisations[indexPath.row].orgCode
         
-        let nameDB = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
+        _ = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
             if let value = snapshot.value as? String {
                 orgName = value
             }
@@ -102,10 +122,15 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                                         // Delete organisation
                                         snap.ref.removeValue()
                                         
-                                        // Show UIAlert of error.
+                                        // Show UIAlert of confirmation.
                                         let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
                                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
                                         self.present(errorAlert, animated: true, completion: nil)
+                                        
+                                        //NOTE:- Not Working
+                                        DispatchQueue.main.async {
+                                            self.tableView.reloadData()
+                                        }
                                         
                                         return
                                     }
@@ -134,7 +159,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             // List out organisations.
             let orgCode = subscribedOrganisations[indexPath.row].orgCode
             
-            let nameDB = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
+            _ = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
                 if let value = snapshot.value as? String {
                     cell?.textLabel?.text = value
                 }
@@ -213,6 +238,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                         // Save the organisation in the users subscribed organisations.
                         orgDB.childByAutoId().setValue(orgNum.text) {
                             (error, reference) in
+                            
                             if error != nil {
                                 print(error as Any)
                             } else {
@@ -220,16 +246,19 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                                 print("Organisation saved successfully!")
                                 matchFound = true
                                 
+                                DispatchQueue.main.async { self.tableView.reloadData() }
+                                
                                 // Show UIAlert of code being valid.
                                 let errorAlert = UIAlertController(title: "Success", message: "Organisation saved successfully!", preferredStyle: .alert)
-                                errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                errorAlert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (alert) in
+                                    self.tableView.reloadData()
+                                })))
                                 self.present(errorAlert, animated: true, completion: nil)
                             }
                         }
                     }
                 }
             }
-            
         }))
         
         self.present(addOrganisationAlert, animated: true, completion: nil)
