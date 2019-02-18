@@ -13,12 +13,14 @@ import Firebase
 class BookcaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Instance Variables
-    var usersBooks = [Book]() // Store the users books.
+    var allBooks = [Book]() // Store the users books.
     var subscribedOrganisations = [Organisation]() // Store the subscribed book data in here.
+    var filteredOrganisationData = [Organisation]() // For the search functionality.
     var databaseHandle : DatabaseHandle!
     let userEmail = getFirebaseUserEmail()
     var selectedBook = Book()
     var filteredBooks = [Book]()
+    var selectedOwnBook: Bool?
 
     // Linking UI Elements
     @IBOutlet var searchBar: UISearchBar!
@@ -27,17 +29,12 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             //indeterminateLoad(displayText: "Loading Bookcase", view: self.view)
             self.retrieveSections()
-            
-            //TODO:- Get names
-            
         }
-        
-        searchBar.delegate = self
-        
-        //hideHUD(view: self.view)
     }
     
     func retrieveSections() {
@@ -123,11 +120,12 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     newBook.publisher = publisher as! String
                     newBook.published = published as! String
                     
-                    // usersBook will now store all books the user has.
-                    self.usersBooks.append(newBook)
+                    // allBooks will now store all books the user has.
+                    self.allBooks.append(newBook)
                     self.filteredBooks.append(newBook)
                 
                     self.subscribedOrganisations[index].books.append(newBook)
+                    //self.filteredOrganisationData[index].books.append(newBook)
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -187,9 +185,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookItemCell")
         
-        if (!filteredBooks.isEmpty) {
+        if (!subscribedOrganisations[indexPath.section].books.isEmpty) {
             // List out books.
-            //cell?.textLabel?.text = filteredBooks[indexPath.row].title
             cell?.textLabel?.text = subscribedOrganisations[indexPath.section].books[indexPath.row].title
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
@@ -203,6 +200,12 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         // Set selected cell as the chosen book to view more information on.
         selectedBook = subscribedOrganisations[indexPath.section].books[indexPath.row]
         
+        if subscribedOrganisations[indexPath.section].orgCode != organisationCode {
+            selectedOwnBook = true
+        } else {
+            selectedOwnBook = false
+        }
+        
         performSegue(withIdentifier: "goToMoreInfo", sender: self)
     }
     
@@ -212,6 +215,9 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
             let destinationVC = segue.destination as? MoreInfoViewController
             
             destinationVC?.bookToView = selectedBook
+            
+            // Check if the book is a users own, if so, prevent the deletion of the book.
+            destinationVC?.buttonHidden = selectedOwnBook! // Force-unwrap is safe
         }
     }
 }
@@ -225,7 +231,7 @@ extension BookcaseViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         // Reset the books
-        filteredBooks = usersBooks
+        filteredBooks = allBooks
         
         if searchBar.text?.count != 0 {
             filteredBooks = filteredBooks.filter({ (item) -> Bool in

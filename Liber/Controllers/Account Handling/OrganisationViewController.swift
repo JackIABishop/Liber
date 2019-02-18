@@ -144,7 +144,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             self.present(viewOrgData, animated: true, completion: nil)
         }
         
-        
         tableView.deselectRow(at: indexPath, animated: true)
         hideHUD(view: self.view)
     }
@@ -164,12 +163,10 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {}
             
-            
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
             cell?.textLabel?.text = "no content found"
         }
-        
         
         return cell!
     }

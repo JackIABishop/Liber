@@ -312,6 +312,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                     </view>
                     <connections>
                         <outlet property="authorText" destination="926-CN-bKY" id="43A-Du-ekR"/>
+                        <outlet property="deleteButton" destination="rhb-CD-5Hn" id="7bG-Jg-VNf"/>
                         <outlet property="isbn10Text" destination="fYW-eN-ROE" id="fCu-hX-XLr"/>
                         <outlet property="isbn13Text" destination="3Ym-Yf-VG4" id="MWT-cK-J9a"/>
                         <outlet property="publishedText" destination="TZL-TR-e0p" id="8KK-jc-eBB"/>
@@ -1278,7 +1279,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="plo-fX-zHh"/>
+        <segue reference="UTg-a9-9we"/>
         <segue reference="Zzw-BF-Vdt"/>
         <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>

@@ -14,6 +14,7 @@ class MoreInfoViewController: UIViewController {
     
     // Instance Variables
     var bookToView = Book()
+    var buttonHidden: Bool?
     
     // Linking UI Elements
     @IBOutlet var titleText: UILabel!
@@ -22,7 +23,8 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet var isbn10Text: UILabel!
     @IBOutlet var publisherText: UILabel!
     @IBOutlet var publishedText: UILabel!
-
+    @IBOutlet var deleteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,8 @@ class MoreInfoViewController: UIViewController {
         isbn10Text.text = bookToView.isbn_10
         publisherText.text = bookToView.publisher
         publishedText.text = bookToView.published
+        
+        deleteButton.isHidden = buttonHidden!
     }
     
     //MARK: - Book Deletion Handling
@@ -63,7 +67,7 @@ class MoreInfoViewController: UIViewController {
         
         // Go through users database and remove the matched book.
         bookDatabase.observeSingleEvent(of: .value) { (snapshot) in
-            if snapshot.hasChildren(){
+            if snapshot.hasChildren() {
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
                     
@@ -74,6 +78,10 @@ class MoreInfoViewController: UIViewController {
                     
                     if title as! String == self.bookToView.title &&
                         author as! String == self.bookToView.author[0] {
+                        
+                        //TODO:- Check if book is in usersDB, if not, prevent deletion.
+                        
+                        
                         // When found a match, delete book.
                         print("Deleting book")
                         snap.ref.removeValue()
