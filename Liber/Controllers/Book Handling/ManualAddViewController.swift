@@ -29,13 +29,11 @@ class ManualAddViewController: UIViewController {
         if titleText.text?.count != 0 {
             // Save the book in user's database.
             indeterminateLoad(displayText: "Saving Book", view: self.view)
-            let userEmail = Auth.auth().currentUser?.email!
-            let parsedEmail = userEmail?.replacingOccurrences(of: ".", with: ",")
             
             // Set each text field in the database.
-            let bookDatabase = Database.database().reference().child("Users").child(parsedEmail!)
-            let bookDictionary = ["User": userEmail,
-                                  "Book Title": titleText.text!,
+            let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
+            
+            let bookDictionary = ["Book Title": titleText.text!,
                                   "Author": authorText.text!,
                                   "ISBN-13": isbn13Text.text!,
                                   "ISBN-10": isbn10Text.text!,

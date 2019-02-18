@@ -10,6 +10,8 @@
 import Foundation
 import Firebase
 
+var organisationCode: String = ""
+
 // Get the latest error message.
 var latestErrorMessage = ""
 func getLatestErrorMessageFromFirebaseFunctions() -> String {
@@ -34,6 +36,11 @@ func conductLoginValidation(loginParameters:Dictionary<String, String>) -> Bool 
 // Function to verify the users registration details.
 func conductRegistrationValidation(registerParameters:Dictionary<String, String>, confirmPassword: String) -> Bool {
     // List different types of validation methods, if any fail, return false.
+    let name: String = registerParameters["Name"] ?? ""
+    if (name.count == 0) {
+        latestErrorMessage = "Enter a name."
+        return false
+    }
     if (registerParameters["Password"] != confirmPassword) {
         latestErrorMessage = "Passwords do not match."
         return false
@@ -68,7 +75,12 @@ func signInFirebaseUser(loginParameters:Dictionary<String, String>, completion: 
         } else {
             // Successful login
             print("Login successful")
-            completion(true)
+            
+            //Get organisation code and save globablly for use throughout the app.
+            getOrgCode()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                completion(true)
+            }
         }
     }
 }
@@ -83,7 +95,43 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
         } else {
             // Successful registration
             print("Registration successful")
-            completion(true)
+            
+            // Create organisationCode and store in Identifiers table.
+            let orgCode = UUID().uuidString
+            
+            let parsedEmail = registerParameters["Email"]!.replacingOccurrences(of: ".", with: ",")
+            let identifierDatabase = Database.database().reference().child("Identifiers").child(parsedEmail)
+            identifierDatabase.setValue(orgCode)
+            
+            // Save users name in User database.
+            let userDatabase = Database.database().reference().child("Users").child(orgCode).child("Name")
+            userDatabase.setValue(registerParameters["Name"]) {
+                (error, reference) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    print("Name saves successfully!")
+                }
+            }
+            
+            // Save own UID as Subscribed bookcase.
+            let orgDB = Database.database().reference().child("Users").child(orgCode).child("Subscribed Organisations")
+            orgDB.childByAutoId().setValue(orgCode) {
+                (error, reference) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    print("UID saved in subscribed organisations")
+                }
+            }
+            
+            //Get organisation code and save globablly for use throughout the app.
+            getOrgCode()
+            getSubscribedOrgs()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                completion(true)
+            }
+            
         }
     }
 }
@@ -103,3 +151,23 @@ func signOutCurrentFirebaseUser() -> Bool {
     }
 }
 
+// This function will get the orgCode from the identifiers table from the current logged in user.
+func getOrgCode() {
+    var orgCode: String = "Not Set"
+    let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
+    let identifierDatabase = Database.database().reference().child("Identifiers").child(parsedEmail)
+    
+    identifierDatabase.observeSingleEvent(of: .value) { (snapshot) in
+        if let newUID = snapshot.value as? String {
+            orgCode = newUID
+        }
+        
+        print("Users organisation code: \(orgCode)")
+        organisationCode = orgCode
+    }
+}
+
+// This function will return the subscribed Organisations the user is subscribed too.
+func getSubscribedOrgs() {
+    
+}
