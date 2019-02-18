@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.0
+    * Introducing Organisations, allowing the user to subscribe to other user's databases.
+    * True deletion of account authentication data, instead of just deleting the user's book database.
+
 ## Version 0.1.2 
     * Change to manualAddViewController to force a Book title to be entered. 
     * Fix of different coloured Navigation Bars by adding a same coloured view behind each one. 
