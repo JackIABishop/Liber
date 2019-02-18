@@ -201,7 +201,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Set selected cell as the chosen book to view more information on.
-        selectedBook = filteredBooks[indexPath.row]
+        selectedBook = subscribedOrganisations[indexPath.section].books[indexPath.row]
         
         performSegue(withIdentifier: "goToMoreInfo", sender: self)
     }
