@@ -21,13 +21,12 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
             indeterminateLoad(displayText: "Loading Organisations", view: self.view)
             // Load subscribed organisations.
             self.retrieveOrganisations()
         }
-        
-        //tableView.delegate = self
         
         hideHUD(view: self.view)
     }
@@ -50,11 +49,10 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             if snapshot.hasChildren() {
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
-                    print(snap)
                     
-                    var newOrganisation = Organisation()
+                    let newOrganisation = Organisation(orgCodeToAdd: (snap.value as? String)!)
                     
-                    newOrganisation.orgCode = (snap.value as? String)!
+                    //newOrganisation.orgCode = (snap.value as? String)!
                     
                     // Add the code to the subscribed organisations.
                     self.subscribedOrganisations.append(newOrganisation)
@@ -108,7 +106,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                         if orgSnapshot.hasChildren() {
                             for child in orgSnapshot.children {
                                 let snap = child as! DataSnapshot
-                                print(snap)
                                 
                                 // Found a match
                                 if snap.value as? String == orgCode {
@@ -121,6 +118,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                                     } else {
                                         // Delete organisation
                                         snap.ref.removeValue()
+                                        self.subscribedOrganisations.remove(at: indexPath.row)
                                         
                                         // Show UIAlert of confirmation.
                                         let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
@@ -143,7 +141,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                 self.present(confirmDeleteAlert, animated: true, completion: nil)
             }))
             viewOrgData.addAction(UIAlertAction(title: "OK", style: .default))
-            print(orgName)
             self.present(viewOrgData, animated: true, completion: nil)
         }
         
@@ -200,11 +197,9 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             identifierDB.observeSingleEvent(of: .value, with: { (snapshot) in
                 //print(snapshot)
                 for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                    print(snap.value!)
                     
                     // Check if OrgCode is valid.
                     if snap.value! as? String == orgNum.text {
-                        
                         
                         // Check if user has already saved the organisation in their database.
                         orgDB.observeSingleEvent(of: .value, with: { (orgsnapshot) in
@@ -238,10 +233,12 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                         // Save the organisation in the users subscribed organisations.
                         orgDB.childByAutoId().setValue(orgNum.text) {
                             (error, reference) in
-                            
                             if error != nil {
                                 print(error as Any)
                             } else {
+                                // Save data in local data source.
+                                let orgToAdd = Organisation(orgCodeToAdd: orgNum.text!)
+                                self.subscribedOrganisations.append(orgToAdd)
                                 
                                 print("Organisation saved successfully!")
                                 matchFound = true

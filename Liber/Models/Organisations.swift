@@ -12,4 +12,8 @@ import Foundation
 struct Organisation {
     var orgCode: String = ""
     var books = [Book]()
+    
+    init(orgCodeToAdd: String) {
+        orgCode = orgCodeToAdd
+    }
 }
