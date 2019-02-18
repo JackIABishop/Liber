@@ -36,6 +36,7 @@ class MoreInfoViewController: UIViewController {
         publisherText.text = bookToView.publisher
         publishedText.text = bookToView.published
         
+        // Preventing the user from deleting a book that is not their own. 
         deleteButton.isHidden = buttonHidden!
     }
     

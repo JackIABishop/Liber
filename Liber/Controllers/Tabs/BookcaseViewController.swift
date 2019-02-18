@@ -13,13 +13,11 @@ import Firebase
 class BookcaseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Instance Variables
-    var allBooks = [Book]() // Store the users books.
     var subscribedOrganisations = [Organisation]() // Store the subscribed book data in here.
     var filteredOrganisationData = [Organisation]() // For the search functionality.
     var databaseHandle : DatabaseHandle!
     let userEmail = getFirebaseUserEmail()
     var selectedBook = Book()
-    var filteredBooks = [Book]()
     var selectedOwnBook: Bool?
 
     // Linking UI Elements
@@ -53,6 +51,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     
                     // Add the code to the subscribed organisations.
                     self.subscribedOrganisations.append(newOrganisation)
+                    self.filteredOrganisationData.append(newOrganisation)
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -70,7 +69,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
             // Get the names for each organisation section.
             for (index, org) in self.subscribedOrganisations.enumerated() {
                 self.retrieveOrgNames(orgCode: org.orgCode) { (orgName) in
-                    self.subscribedOrganisations[index].orgName = orgName
+                    self.filteredOrganisationData[index].orgName = orgName
                     DispatchQueue.main.async { self.tableView.reloadData() }
                 }
             }
@@ -80,7 +79,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     func retrieveOrgNames(orgCode: String, completion: @escaping (String) -> Void) {
         _ = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
             if let value = snapshot.value as? String {
-                print(value)
                 completion(value)
             }
         }
@@ -121,11 +119,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     newBook.published = published as! String
                     
                     // allBooks will now store all books the user has.
-                    self.allBooks.append(newBook)
-                    self.filteredBooks.append(newBook)
-                
                     self.subscribedOrganisations[index].books.append(newBook)
-                    //self.filteredOrganisationData[index].books.append(newBook)
+                    self.filteredOrganisationData[index].books.append(newBook)
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
@@ -166,28 +161,28 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Generate rows for each organisation section.
-        return subscribedOrganisations[section].books.count
+        return filteredOrganisationData[section].books.count
     }
     
     // Create the section headers for the bookcases.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = " \(subscribedOrganisations[section].orgName)'s Bookcase"
+        label.text = " \(filteredOrganisationData[section].orgName)'s Bookcase"
         label.backgroundColor = UIColor.lightGray
         return label
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // Return number for the amount of subscribed bookcases.
-        return subscribedOrganisations.count
+        return filteredOrganisationData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "bookItemCell")
         
-        if (!subscribedOrganisations[indexPath.section].books.isEmpty) {
+        if (!filteredOrganisationData[indexPath.section].books.isEmpty) {
             // List out books.
-            cell?.textLabel?.text = subscribedOrganisations[indexPath.section].books[indexPath.row].title
+            cell?.textLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].title
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
             cell?.textLabel?.text = "no content found"
@@ -198,9 +193,9 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Set selected cell as the chosen book to view more information on.
-        selectedBook = subscribedOrganisations[indexPath.section].books[indexPath.row]
+        selectedBook = filteredOrganisationData[indexPath.section].books[indexPath.row]
         
-        if subscribedOrganisations[indexPath.section].orgCode != organisationCode {
+        if filteredOrganisationData[indexPath.section].orgCode != organisationCode {
             selectedOwnBook = true
         } else {
             selectedOwnBook = false
@@ -231,12 +226,14 @@ extension BookcaseViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         // Reset the books
-        filteredBooks = allBooks
+        filteredOrganisationData = subscribedOrganisations
         
         if searchBar.text?.count != 0 {
-            filteredBooks = filteredBooks.filter({ (item) -> Bool in
-                item.title.contains(find: searchText)
-            })
+            for (index, _) in self.filteredOrganisationData.enumerated() {
+                filteredOrganisationData[index].books = filteredOrganisationData[index].books.filter({ (item) -> Bool in
+                    item.title.contains(find: searchText)
+                })
+            }
         }
         
         tableView.reloadData()
