@@ -10,6 +10,8 @@
 import Foundation
 import Firebase
 
+var organisationCode: String = ""
+
 // Get the latest error message.
 var latestErrorMessage = ""
 func getLatestErrorMessageFromFirebaseFunctions() -> String {
@@ -73,7 +75,12 @@ func signInFirebaseUser(loginParameters:Dictionary<String, String>, completion: 
         } else {
             // Successful login
             print("Login successful")
-            completion(true)
+            
+            //Get organisation code and save globablly for use throughout the app.
+            getOrgCode()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                completion(true)
+            }
         }
     }
 }
@@ -89,13 +96,16 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
             // Successful registration
             print("Registration successful")
             
-            // Enter name in users account database.
+            // Create organisationCode and store in Identifiers table.
+            let orgCode = UUID().uuidString
             
-            // Create organisationCode
-            let orgCode = getOrgCode(userEmail: registerParameters["Email"]!)
-            let bookDatabase = Database.database().reference().child("Users").child(orgCode).child("Name")
+            let parsedEmail = registerParameters["Email"]!.replacingOccurrences(of: ".", with: ",")
+            let identifierDatabase = Database.database().reference().child("Identifiers").child(parsedEmail)
+            identifierDatabase.setValue(orgCode)
             
-            bookDatabase.setValue(registerParameters["Name"]) {
+            // Save users name in User database.
+            let userDatabase = Database.database().reference().child("Users").child(orgCode).child("Name")
+            userDatabase.setValue(registerParameters["Name"]) {
                 (error, reference) in
                 if error != nil {
                     print(error as Any)
@@ -103,7 +113,25 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
                     print("Name saves successfully!")
                 }
             }
-            completion(true)
+            
+            // Save own UID as Subscribed bookcase.
+            let orgDB = Database.database().reference().child("Users").child(orgCode).child("Subscribed Organisations")
+            orgDB.childByAutoId().setValue(orgCode) {
+                (error, reference) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    print("UID saved in subscribed organisations")
+                }
+            }
+            
+            //Get organisation code and save globablly for use throughout the app.
+            getOrgCode()
+            getSubscribedOrgs()
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                completion(true)
+            }
+            
         }
     }
 }
@@ -123,12 +151,23 @@ func signOutCurrentFirebaseUser() -> Bool {
     }
 }
 
-// This function will generate the organisation code based off their email.
-func getOrgCode(userEmail: String) -> String {
-    var result = UInt64(5381)
-    let buf = [UInt8](userEmail.utf8)
-    for b in buf {
-        result = 127 * (result & 0x00ffffffffffffff) + UInt64(b)
+// This function will get the orgCode from the identifiers table from the current logged in user.
+func getOrgCode() {
+    var orgCode: String = "Not Set"
+    let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
+    let identifierDatabase = Database.database().reference().child("Identifiers").child(parsedEmail)
+    
+    identifierDatabase.observeSingleEvent(of: .value) { (snapshot) in
+        if let newUID = snapshot.value as? String {
+            orgCode = newUID
+        }
+        
+        print("Users organisation code: \(orgCode)")
+        organisationCode = orgCode
     }
-    return String(result)
+}
+
+// This function will return the subscribed Organisations the user is subscribed too.
+func getSubscribedOrgs() {
+    
 }

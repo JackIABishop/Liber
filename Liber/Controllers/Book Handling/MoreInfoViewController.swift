@@ -14,6 +14,7 @@ class MoreInfoViewController: UIViewController {
     
     // Instance Variables
     var bookToView = Book()
+    var buttonHidden: Bool?
     
     // Linking UI Elements
     @IBOutlet var titleText: UILabel!
@@ -22,7 +23,8 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet var isbn10Text: UILabel!
     @IBOutlet var publisherText: UILabel!
     @IBOutlet var publishedText: UILabel!
-
+    @IBOutlet var deleteButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,9 @@ class MoreInfoViewController: UIViewController {
         isbn10Text.text = bookToView.isbn_10
         publisherText.text = bookToView.publisher
         publishedText.text = bookToView.published
+        
+        // Preventing the user from deleting a book that is not their own. 
+        deleteButton.isHidden = buttonHidden!
     }
     
     //MARK: - Book Deletion Handling
@@ -59,14 +64,11 @@ class MoreInfoViewController: UIViewController {
         indeterminateLoad(displayText: "Deleting book", view: self.view)
         
         // Remove the book from the database.
-        
-        let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
-        
-        let usersDatabase = Database.database().reference().child("Users").child(parsedEmail)
+        let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
         
         // Go through users database and remove the matched book.
-        usersDatabase.observeSingleEvent(of: .value) { (snapshot) in
-            if snapshot.hasChildren(){
+        bookDatabase.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.hasChildren() {
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
                     
@@ -77,6 +79,10 @@ class MoreInfoViewController: UIViewController {
                     
                     if title as! String == self.bookToView.title &&
                         author as! String == self.bookToView.author[0] {
+                        
+                        //TODO:- Check if book is in usersDB, if not, prevent deletion.
+                        
+                        
                         // When found a match, delete book.
                         print("Deleting book")
                         snap.ref.removeValue()
