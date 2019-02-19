@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.2.2
+    * Fix to names not loading when viewing organisation details. 
+    * User can now see organisation code from the account tab. 
+    * Added iPad functionality. 
+
 ## Version 0.2.1 
     * Fix to organisation names being erased in tableView when searching. 
     * Fixed Issue #7: Incorrect way of database loading. Fix: Overhall of completion handlers when using Firebase calls, optimising the load times of the application.
