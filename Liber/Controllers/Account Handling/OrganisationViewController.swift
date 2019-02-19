@@ -76,74 +76,80 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         return subscribedOrganisations.count
     }
     
+    func getOrgName(orgCode: String, completion: @escaping (String) -> Void) {
+        _ = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
+            if let value = snapshot.value as? String {
+                completion(value)
+            }
+        }
+    }
+    
     fileprivate func viewOrgInformation(_ indexPath: IndexPath, completion: @escaping (Bool) -> ()) {
         var orgName = ""
         let orgCode = subscribedOrganisations[indexPath.row].orgCode
         
-        _ = Database.database().reference().child("Users").child(orgCode).child("Name").observe(.value) { (snapshot) in
-            if let value = snapshot.value as? String {
-                orgName = value
-            }
-        }
-        
-        // Select a row shows the organisation details, then off OK or Delete options.
-        let viewOrgData = UIAlertController(title: "Organisation Details", message: "Name: \(orgName), UID: \(orgCode)", preferredStyle: UIAlertController.Style.alert)
-        
-        // Add action buttons.
-        viewOrgData.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (alert) in
-            // Double ask the user if they want to delete this organisation.
-            let confirmDeleteAlert = UIAlertController(title: "Are you sure?", message: "Delete this organisation: \(orgName)", preferredStyle: .alert)
+        getOrgName(orgCode: orgCode) { (result) in
+            orgName = result
             
-            confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (delete) in
-                // Delete organisation
-                print("Deleting organisation")
+            // Select a row shows the organisation details, then off OK or Delete options.
+            let viewOrgData = UIAlertController(title: "Organisation Details", message: "Name: \(orgName), UID: \(orgCode)", preferredStyle: UIAlertController.Style.alert)
+            
+            // Add action buttons.
+            viewOrgData.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (alert) in
+                // Double ask the user if they want to delete this organisation.
+                let confirmDeleteAlert = UIAlertController(title: "Are you sure?", message: "Delete this organisation: \(orgName)", preferredStyle: .alert)
                 
-                let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
-                
-                // Go through users subscribed organisations and delete the matched UID.
-                orgDB.observeSingleEvent(of: .value) { (orgSnapshot) in
-                    if orgSnapshot.hasChildren() {
-                        for child in orgSnapshot.children {
-                            let snap = child as! DataSnapshot
-                            
-                            // Found a match
-                            if snap.value as? String == orgCode {
-                                // If that match is users org, do not delete
-                                if snap.value as? String == organisationCode {
-                                    // Show UIAlert of error.
-                                    let errorAlert = UIAlertController(title: "Error", message: "You cannot delete your own bookcase", preferredStyle: .alert)
-                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
-                                    self.present(errorAlert, animated: true, completion: nil)
-                                    
-                                    completion(true)
-                                } else {
-                                    // Delete organisation
-                                    snap.ref.removeValue()
-                                    self.subscribedOrganisations.remove(at: indexPath.row)
-                                    
-                                    // Show UIAlert of confirmation.
-                                    let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
-                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
-                                    self.present(errorAlert, animated: true, completion: nil)
-                                    
-                                    //NOTE:- Not Working
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData()
+                confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (delete) in
+                    // Delete organisation
+                    print("Deleting organisation")
+                    
+                    let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
+                    
+                    // Go through users subscribed organisations and delete the matched UID.
+                    orgDB.observeSingleEvent(of: .value) { (orgSnapshot) in
+                        if orgSnapshot.hasChildren() {
+                            for child in orgSnapshot.children {
+                                let snap = child as! DataSnapshot
+                                
+                                // Found a match
+                                if snap.value as? String == orgCode {
+                                    // If that match is users org, do not delete
+                                    if snap.value as? String == organisationCode {
+                                        // Show UIAlert of error.
+                                        let errorAlert = UIAlertController(title: "Error", message: "You cannot delete your own bookcase", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                        
+                                        completion(true)
+                                    } else {
+                                        // Delete organisation
+                                        snap.ref.removeValue()
+                                        self.subscribedOrganisations.remove(at: indexPath.row)
+                                        
+                                        // Show UIAlert of confirmation.
+                                        let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                        
+                                        //NOTE:- Not Working
+                                        DispatchQueue.main.async {
+                                            self.tableView.reloadData()
+                                        }
+                                        
+                                        completion(true)
                                     }
-                                    
-                                    completion(true)
                                 }
                             }
                         }
                     }
-                }
+                }))
+                
+                self.present(confirmDeleteAlert, animated: true, completion: nil)
             }))
-            
-            self.present(confirmDeleteAlert, animated: true, completion: nil)
-        }))
-        viewOrgData.addAction(UIAlertAction(title: "OK", style: .default))
-        self.present(viewOrgData, animated: true, completion: nil)
+            viewOrgData.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(viewOrgData, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
