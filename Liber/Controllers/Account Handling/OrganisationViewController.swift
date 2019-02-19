@@ -14,6 +14,9 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     // Instance variables.
     var numberOfOrganisations: Int = 1
     var subscribedOrganisations = [Organisation]()
+    // Required for addition of organisations.
+    var matchFound: Bool?
+    var dontAdd: Bool?
     
     // Linking UI Elements.
     @IBOutlet var tableView: UITableView!
@@ -21,11 +24,11 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        indeterminateLoad(displayText: "Loading Organisations", view: self.view)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            indeterminateLoad(displayText: "Loading Organisations", view: self.view)
-            // Load subscribed organisations.
-            self.retrieveOrganisations()
+        // Load subscribed organisations.
+        retrieveOrganisations { (_) in
+            
         }
         
         hideHUD(view: self.view)
@@ -37,7 +40,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // Load organisation data.
-    func retrieveOrganisations() {
+    func retrieveOrganisations(completion: @escaping (Bool) -> ()) {
         
         indeterminateLoad(displayText: "Loading Organisation", view: self.view)
         
@@ -61,6 +64,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                         self.tableView.reloadData()
                     }
                 }
+                completion(true)
             }
         }
         
@@ -72,10 +76,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         return subscribedOrganisations.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Get organisation name.
-        indeterminateLoad(displayText: "Hold on...", view: self.view)
-        
+    fileprivate func viewOrgInformation(_ indexPath: IndexPath, completion: @escaping (Bool) -> ()) {
         var orgName = ""
         let orgCode = subscribedOrganisations[indexPath.row].orgCode
         
@@ -85,63 +86,72 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            // Select a row shows the organisation details, then off OK or Delete options.
-            let viewOrgData = UIAlertController(title: "Organisation Details", message: "Name: \(orgName), UID: \(orgCode)", preferredStyle: UIAlertController.Style.alert)
+        // Select a row shows the organisation details, then off OK or Delete options.
+        let viewOrgData = UIAlertController(title: "Organisation Details", message: "Name: \(orgName), UID: \(orgCode)", preferredStyle: UIAlertController.Style.alert)
+        
+        // Add action buttons.
+        viewOrgData.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (alert) in
+            // Double ask the user if they want to delete this organisation.
+            let confirmDeleteAlert = UIAlertController(title: "Are you sure?", message: "Delete this organisation: \(orgName)", preferredStyle: .alert)
             
-            // Add action buttons.
-            viewOrgData.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (alert) in
-                // Double ask the user if they want to delete this organisation.
-                let confirmDeleteAlert = UIAlertController(title: "Are you sure?", message: "Delete this organisation: \(orgName)", preferredStyle: .alert)
+            confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (delete) in
+                // Delete organisation
+                print("Deleting organisation")
                 
-                confirmDeleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-                confirmDeleteAlert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { (delete) in
-                    // Delete organisation
-                    print("Deleting organisation")
-                    
-                    let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
-                    
-                    // Go through users subscribed organisations and delete the matched UID.
-                    orgDB.observeSingleEvent(of: .value) { (orgSnapshot) in
-                        if orgSnapshot.hasChildren() {
-                            for child in orgSnapshot.children {
-                                let snap = child as! DataSnapshot
-                                
-                                // Found a match
-                                if snap.value as? String == orgCode {
-                                    // If that match is users org, do not delete
-                                    if snap.value as? String == organisationCode {
-                                        // Show UIAlert of error.
-                                        let errorAlert = UIAlertController(title: "Error", message: "You cannot delete your own bookcase", preferredStyle: .alert)
-                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
-                                        self.present(errorAlert, animated: true, completion: nil)
-                                    } else {
-                                        // Delete organisation
-                                        snap.ref.removeValue()
-                                        self.subscribedOrganisations.remove(at: indexPath.row)
-                                        
-                                        // Show UIAlert of confirmation.
-                                        let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
-                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
-                                        self.present(errorAlert, animated: true, completion: nil)
-                                        
-                                        //NOTE:- Not Working
-                                        DispatchQueue.main.async {
-                                            self.tableView.reloadData()
-                                        }
-                                        
-                                        return
+                let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
+                
+                // Go through users subscribed organisations and delete the matched UID.
+                orgDB.observeSingleEvent(of: .value) { (orgSnapshot) in
+                    if orgSnapshot.hasChildren() {
+                        for child in orgSnapshot.children {
+                            let snap = child as! DataSnapshot
+                            
+                            // Found a match
+                            if snap.value as? String == orgCode {
+                                // If that match is users org, do not delete
+                                if snap.value as? String == organisationCode {
+                                    // Show UIAlert of error.
+                                    let errorAlert = UIAlertController(title: "Error", message: "You cannot delete your own bookcase", preferredStyle: .alert)
+                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                    self.present(errorAlert, animated: true, completion: nil)
+                                    
+                                    completion(true)
+                                } else {
+                                    // Delete organisation
+                                    snap.ref.removeValue()
+                                    self.subscribedOrganisations.remove(at: indexPath.row)
+                                    
+                                    // Show UIAlert of confirmation.
+                                    let errorAlert = UIAlertController(title: "Success", message: "Organisation deleted.", preferredStyle: .alert)
+                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+                                    self.present(errorAlert, animated: true, completion: nil)
+                                    
+                                    //NOTE:- Not Working
+                                    DispatchQueue.main.async {
+                                        self.tableView.reloadData()
                                     }
+                                    
+                                    completion(true)
                                 }
                             }
                         }
                     }
-                }))
-                
-                self.present(confirmDeleteAlert, animated: true, completion: nil)
+                }
             }))
-            viewOrgData.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(viewOrgData, animated: true, completion: nil)
+            
+            self.present(confirmDeleteAlert, animated: true, completion: nil)
+        }))
+        viewOrgData.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(viewOrgData, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Get organisation name.
+        indeterminateLoad(displayText: "Hold on...", view: self.view)
+        
+        viewOrgInformation(indexPath) { (_) in
+            // Proceed
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -161,8 +171,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                 }
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {}
-            
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
             cell?.textLabel?.text = "no content found"
@@ -172,9 +180,51 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     // Allow the user to add an organisation.
-    @IBAction func addButtonPressed(_ sender: Any) {
-        var matchFound: Bool = false
-        var dontAdd: Bool = false
+    fileprivate func processOrgAddition(_ orgNum: UITextField, dataCompletion: @escaping (Bool) -> ()) {
+        let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
+        
+        if matchFound != true {
+            print("Code not valid")
+            // Show UIAlert of code not being valid.
+            let errorAlert = UIAlertController(title: "Error", message: "Code not found in UID database", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(errorAlert, animated: true, completion: nil)
+            
+            dataCompletion(true)
+        } else {
+            if dontAdd == false {
+                // Save the organisation in the users subscribed organisations.
+                orgDB.childByAutoId().setValue(orgNum.text) {
+                    (error, reference) in
+                    if error != nil {
+                        print(error as Any)
+                        
+                    } else {
+                        // Save data in local data source.
+                        let orgToAdd = Organisation(orgCodeToAdd: orgNum.text!)
+                        self.subscribedOrganisations.append(orgToAdd)
+                        
+                        print("Organisation saved successfully!")
+                        self.matchFound = true
+                        
+                        DispatchQueue.main.async { self.tableView.reloadData() }
+                        
+                        // Show UIAlert of code being valid.
+                        let errorAlert = UIAlertController(title: "Success", message: "Organisation saved successfully!", preferredStyle: .alert)
+                        errorAlert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (alert) in
+                            self.tableView.reloadData()
+                        })))
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }
+                }
+                dataCompletion(true)
+            }
+        }
+    }
+    
+    fileprivate func handleAddButtonPressed(completion: @escaping (Bool) -> ()) {
+        matchFound = false
+        dontAdd = false
         
         let orgDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
         
@@ -187,7 +237,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         
         addOrganisationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         addOrganisationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (alert) in
-            let orgNum = addOrganisationAlert.textFields![0] // Force unwrap is safe because I know it exists.
+            let orgNum = addOrganisationAlert.textFields![0] // Force-unwrap is safe because I know it exists.
             
             // Check if the organisation code is valid.
             let identifierDB = Database.database().reference().child("Identifiers")
@@ -205,57 +255,34 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                                 
                                 if entry.value! as? String == orgNum.text {
                                     // If already in DB
-                                    dontAdd = true
+                                    self.dontAdd = true
                                     let errorAlert = UIAlertController(title: "Error", message: "Already subscribed to this organisation.", preferredStyle: .alert)
                                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
                                     self.present(errorAlert, animated: true, completion: nil)
                                 } else {
-                                    matchFound = true
+                                    self.matchFound = true
                                 }
                             }
+                            // Handle data.
+                            self.processOrgAddition(orgNum, dataCompletion: { (_) in
+                                // Proceed
+                            })
                         })
+                        
                     }
                 }
+                
             })
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1000)) {
-                if matchFound != true {
-                    print("Code not valid")
-                    // Show UIAlert of code not being valid.
-                    let errorAlert = UIAlertController(title: "Error", message: "Code not found in UID database", preferredStyle: .alert)
-                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(errorAlert, animated: true, completion: nil)
-                } else {
-                    if dontAdd == false {
-                        // Save the organisation in the users subscribed organisations.
-                        orgDB.childByAutoId().setValue(orgNum.text) {
-                            (error, reference) in
-                            if error != nil {
-                                print(error as Any)
-                            } else {
-                                // Save data in local data source.
-                                let orgToAdd = Organisation(orgCodeToAdd: orgNum.text!)
-                                self.subscribedOrganisations.append(orgToAdd)
-                                
-                                print("Organisation saved successfully!")
-                                matchFound = true
-                                
-                                DispatchQueue.main.async { self.tableView.reloadData() }
-                                
-                                // Show UIAlert of code being valid.
-                                let errorAlert = UIAlertController(title: "Success", message: "Organisation saved successfully!", preferredStyle: .alert)
-                                errorAlert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (alert) in
-                                    self.tableView.reloadData()
-                                })))
-                                self.present(errorAlert, animated: true, completion: nil)
-                            }
-                        }
-                    }
-                }
-            }
         }))
         
         self.present(addOrganisationAlert, animated: true, completion: nil)
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        handleAddButtonPressed { (_) in
+            // Proceed
+        }
     }
     
 }

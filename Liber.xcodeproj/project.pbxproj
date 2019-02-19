@@ -287,6 +287,7 @@
 				571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */,
 				57B897F521BC5711000237BB /* ConfirmEntryController.swift */,
 				57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */,
+				575580CB21B578A900B6A9AD /* BarcodeScannerController.swift */,
 			);
 			path = "Book Handling";
 			sourceTree = "<group>";
@@ -307,7 +308,6 @@
 			isa = PBXGroup;
 			children = (
 				575580C921B578A900B6A9AD /* BookcaseViewController.swift */,
-				575580CB21B578A900B6A9AD /* BarcodeScannerController.swift */,
 				5700314621B86763002DCF73 /* AccountViewController.swift */,
 			);
 			path = Tabs;

@@ -77,10 +77,9 @@ func signInFirebaseUser(loginParameters:Dictionary<String, String>, completion: 
             print("Login successful")
             
             //Get organisation code and save globablly for use throughout the app.
-            getOrgCode()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            getOrgCode(orgCompletion: { (_) in
                 completion(true)
-            }
+            })
         }
     }
 }
@@ -126,11 +125,9 @@ func registerFirebaseUser(registerParameters:Dictionary<String, String>, complet
             }
             
             //Get organisation code and save globablly for use throughout the app.
-            getOrgCode()
-            getSubscribedOrgs()
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+            getOrgCode(orgCompletion: {_ in
                 completion(true)
-            }
+            })
             
         }
     }
@@ -152,7 +149,7 @@ func signOutCurrentFirebaseUser() -> Bool {
 }
 
 // This function will get the orgCode from the identifiers table from the current logged in user.
-func getOrgCode() {
+func getOrgCode(orgCompletion: @escaping (Bool) -> Void) {
     var orgCode: String = "Not Set"
     let parsedEmail = getFirebaseUserEmail().replacingOccurrences(of: ".", with: ",")
     let identifierDatabase = Database.database().reference().child("Identifiers").child(parsedEmail)
@@ -164,10 +161,7 @@ func getOrgCode() {
         
         print("Users organisation code: \(orgCode)")
         organisationCode = orgCode
+        
+        orgCompletion(true)
     }
-}
-
-// This function will return the subscribed Organisations the user is subscribed too.
-func getSubscribedOrgs() {
-    
 }

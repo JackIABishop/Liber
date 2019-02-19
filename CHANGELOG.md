@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.2.1 
+    * Fix to organisation names being erased in tableView when searching. 
+    * Fixed Issue #7: Incorrect way of database loading. Fix: Overhall of completion handlers when using Firebase calls, optimising the load times of the application.
+
 ## Version 0.2.0
     * Introducing Organisations, allowing the user to subscribe to other user's databases.
     * True deletion of account authentication data, instead of just deleting the user's book database.

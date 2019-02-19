@@ -29,13 +29,42 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         
         searchBar.delegate = self
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            //indeterminateLoad(displayText: "Loading Bookcase", view: self.view)
-            self.retrieveSections()
+        // Load user's bookcase data.
+        indeterminateLoad(displayText: "Loading bookcase", view: self.view)
+        
+        fillBookcaseData { (_) in
+        }
+        
+        hideHUD(view: self.view)
+    }
+    
+    func fillBookcaseData(completionHandler: @escaping (Bool) -> ()) {
+        self.retrieveSections(sectionCompletion: { (_) in
+            self.fillOrgData(dataCompletion: { (_) in
+                // Data loaded.
+                completionHandler(true)
+            })
+        })
+    }
+    
+    fileprivate func fillOrgData(dataCompletion: @escaping (Bool) -> ()) {
+        // Look through users subscribed sections and retrieve their data.
+        for (index, org) in self.subscribedOrganisations.enumerated() {
+            self.retrieveBooks(orgCode: org.orgCode, index: index)
+        }
+        
+        // Get the names for each organisation section.
+        for (index, org) in self.subscribedOrganisations.enumerated() {
+            self.retrieveOrgNames(orgCode: org.orgCode) { (orgName) in
+                self.subscribedOrganisations[index].orgName = orgName
+                self.filteredOrganisationData[index].orgName = orgName
+                DispatchQueue.main.async { self.tableView.reloadData() }
+                dataCompletion(true)
+            }
         }
     }
     
-    func retrieveSections() {
+    func retrieveSections(sectionCompletion: @escaping (Bool) -> ()) {
         // Read from the database.
         let subscribedDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
         
@@ -52,26 +81,9 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     // Add the code to the subscribed organisations.
                     self.subscribedOrganisations.append(newOrganisation)
                     self.filteredOrganisationData.append(newOrganisation)
-                    
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
                 }
-            }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
-            // Look through users subscribed sections and retrieve their data.
-            for (index, org) in self.subscribedOrganisations.enumerated() {
-                self.retrieveBooks(orgCode: org.orgCode, index: index)
-            }
-            
-            // Get the names for each organisation section.
-            for (index, org) in self.subscribedOrganisations.enumerated() {
-                self.retrieveOrgNames(orgCode: org.orgCode) { (orgName) in
-                    self.filteredOrganisationData[index].orgName = orgName
-                    DispatchQueue.main.async { self.tableView.reloadData() }
-                }
+                
+                sectionCompletion(true)
             }
         }
     }
@@ -86,10 +98,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func retrieveBooks(orgCode : String, index: Int) {
-    //func retrieveBooks(orgCode : String) {
-        // Load user's bookcase data.
-        indeterminateLoad(displayText: "Loading bookcase", view: self.view)
-        
         // Read data from the database
         let bookDatabase = Database.database().reference().child("Users").child(orgCode).child("Collection")
         
@@ -130,8 +138,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                 // No data.
             }
         }
-        
-        hideHUD(view: self.view)
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
