@@ -161,7 +161,19 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         optionMenu.addAction(cancelAction)
         
         // Present the menu to the screen.
-        self.present(optionMenu, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            // Use action sheet for iPhone
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        else {
+            // Use popover sheet for iPad.
+            optionMenu.popoverPresentationController?.sourceView = self.view
+            if let popoverController = optionMenu.popoverPresentationController {
+                popoverController.barButtonItem = (sender as! UIBarButtonItem)
+            }
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
     }
     
     //MARK: - TableView Methods

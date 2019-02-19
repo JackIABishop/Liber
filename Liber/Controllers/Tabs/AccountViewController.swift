@@ -17,12 +17,14 @@ class AccountViewController: UIViewController {
     
     // Linking UI Elements
     @IBOutlet var currentAccountLabel: UILabel!
+    @IBOutlet var orgCodeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         currentAccountLabel.text = userEmail
+        orgCodeLabel.text = organisationCode
     }
 
     // Logout the user and return them to the Login screen.
@@ -138,7 +140,7 @@ class AccountViewController: UIViewController {
     
     @IBAction func deleteAccountPressed(_ sender: Any) {
         // Trigger warnings for deleting account using an action pop up box.
-        let optionMenu = UIAlertController(title: "Warning", message: "Deleting your account is a destructive action, your digital bookcase will be deleted.", preferredStyle: UIAlertController.Style.actionSheet)
+        let optionMenu = UIAlertController(title: "Warning", message: "Deleting your account is a destructive action, your digital bookcase will be deleted.", preferredStyle: UIAlertController.Style.alert)
         
         // Creation options.
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
@@ -153,6 +155,7 @@ class AccountViewController: UIViewController {
         
         // Present the menu to the screen.
         self.present(optionMenu, animated: true, completion: nil)
+        
     }
     
     // Logout the current user.
