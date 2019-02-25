@@ -91,7 +91,8 @@ class ConfirmEntryController: UIViewController {
                               "ISBN-13": isbn13Text.text!,
                               "ISBN-10": isbn10Text.text!,
                               "Publisher": publisherText.text!,
-                              "Published": publishedText.text!]
+                              "Published": publishedText.text!,
+                              "Thumbnail": currentBookData.thumbnail!.absoluteString]
         bookDatabase.childByAutoId().setValue(bookDictionary) {
             (error, reference) in
             if error != nil {
