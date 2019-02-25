@@ -20,6 +20,7 @@
 		57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */; };
 		5791EC9021C6D27300F94481 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */; };
 		57967B0A22120FFF00AC9B28 /* Organisations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57967B0922120FFF00AC9B28 /* Organisations.swift */; };
+		57A91712222431BB0029C025 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A91711222431BB0029C025 /* GradientLayer.swift */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
 		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
 		57C98BAC21FFAD08004B79C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C98BAB21FFAD08004B79C1 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
 		5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57967B0922120FFF00AC9B28 /* Organisations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organisations.swift; sourceTree = "<group>"; };
+		57A91711222431BB0029C025 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
 		57C98BAB21FFAD08004B79C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */,
 				57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */,
 				57FA1D9821B6F054001FB848 /* FutureLog */,
+				57A91711222431BB0029C025 /* GradientLayer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 			files = (
 				57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */,
 				57967B0A22120FFF00AC9B28 /* Organisations.swift in Sources */,
+				57A91712222431BB0029C025 /* GradientLayer.swift in Sources */,
 				57D65EDD21FE602200E10D55 /* PasswordResetViewController.swift in Sources */,
 				575580CC21B578A900B6A9AD /* BarcodeScannerController.swift in Sources */,
 				57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */,
