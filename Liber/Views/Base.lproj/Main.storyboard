@@ -689,7 +689,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Account: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQD-CH-7t9">
                                 <rect key="frame" x="16" y="108" width="135" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="135" id="LOp-pf-hwv"/>
+                                    <constraint firstAttribute="width" constant="135" id="jwl-iq-d4L"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -701,8 +701,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Org Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oex-q4-dJu">
-                                <rect key="frame" x="150.66666666666666" y="151" width="74" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Org Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oex-q4-dJu">
+                                <rect key="frame" x="151" y="151" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -710,14 +710,14 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBF-Ti-4rs">
                                 <rect key="frame" x="0.0" y="180" width="375" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="R4D-Pg-C1o"/>
+                                    <constraint firstAttribute="height" constant="21" id="Tra-ia-x71"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3L-Pz-chv">
-                                <rect key="frame" x="128" y="337" width="118" height="33"/>
+                                <rect key="frame" x="128" y="378" width="118" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Delete Account">
                                     <color key="titleColor" red="0.1524967888" green="0.4190410376" blue="0.14067776900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -742,36 +742,49 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                     <action selector="viewOrgsButtonPressed:" destination="s5T-N4-816" eventType="touchUpInside" id="bfC-6m-f0C"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8n-RY-hCa">
+                                <rect key="frame" x="123" y="337" width="129" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Delete Bookcase">
+                                    <color key="titleColor" red="0.1524967888" green="0.4190410376" blue="0.14067776900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteBookcasePressed:" destination="s5T-N4-816" eventType="touchUpInside" id="LDN-Zm-B4M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kn4-PU-XwA" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leading" id="4tL-NH-UFD"/>
-                            <constraint firstItem="oex-q4-dJu" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="bottom" constant="22" id="5Vx-Dx-vX3"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="oAx-Xh-0GS" secondAttribute="bottom" constant="20" id="BKm-BA-2lW"/>
-                            <constraint firstItem="OBF-Ti-4rs" firstAttribute="top" secondItem="oex-q4-dJu" secondAttribute="bottom" constant="8" symbolic="YES" id="BkU-FA-s6s"/>
-                            <constraint firstItem="0iq-on-H3Y" firstAttribute="centerX" secondItem="b3L-Pz-chv" secondAttribute="centerX" id="Crv-Jc-Rgw"/>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="leading" secondItem="OBF-Ti-4rs" secondAttribute="leading" id="Doj-m6-RgZ"/>
-                            <constraint firstItem="1vG-iN-lj1" firstAttribute="centerX" secondItem="0iq-on-H3Y" secondAttribute="centerX" id="Fhj-Se-GEy"/>
-                            <constraint firstItem="b3L-Pz-chv" firstAttribute="top" secondItem="0iq-on-H3Y" secondAttribute="bottom" constant="39" id="HT3-J1-VO5"/>
-                            <constraint firstItem="OBF-Ti-4rs" firstAttribute="centerX" secondItem="1vG-iN-lj1" secondAttribute="centerX" id="J9i-Wu-rdI"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leadingMargin" id="MQC-GL-J2f"/>
-                            <constraint firstAttribute="trailing" secondItem="kn4-PU-XwA" secondAttribute="trailing" id="NeC-r2-luI"/>
-                            <constraint firstItem="kn4-PU-XwA" firstAttribute="top" secondItem="zw1-r7-3xm" secondAttribute="top" id="VEi-NR-ap4"/>
-                            <constraint firstItem="kn4-PU-XwA" firstAttribute="leading" secondItem="oAx-Xh-0GS" secondAttribute="leading" id="X6k-io-RIM"/>
-                            <constraint firstItem="kn4-PU-XwA" firstAttribute="trailing" secondItem="oAx-Xh-0GS" secondAttribute="trailing" id="XS5-Hl-eOg"/>
-                            <constraint firstItem="oex-q4-dJu" firstAttribute="centerX" secondItem="OBF-Ti-4rs" secondAttribute="centerX" id="Y9t-4S-It6"/>
-                            <constraint firstItem="1vG-iN-lj1" firstAttribute="top" secondItem="OBF-Ti-4rs" secondAttribute="bottom" constant="23" id="anT-Lz-Khm"/>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="top" secondItem="fMi-Um-2qt" secondAttribute="top" id="b0a-hD-cf0"/>
-                            <constraint firstItem="0iq-on-H3Y" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="118" id="bQ1-M8-6Hr"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="top" id="bgg-Jr-Xqc"/>
-                            <constraint firstItem="0P5-1k-fqD" firstAttribute="leading" secondItem="DQD-CH-7t9" secondAttribute="trailing" constant="8" symbolic="YES" id="ewD-ft-zFq"/>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="trailing" secondItem="OBF-Ti-4rs" secondAttribute="trailing" id="fVD-mH-hgG"/>
-                            <constraint firstItem="0iq-on-H3Y" firstAttribute="top" secondItem="1vG-iN-lj1" secondAttribute="bottom" constant="8" symbolic="YES" id="hnv-Gl-Jda"/>
-                            <constraint firstItem="1vG-iN-lj1" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="104" id="ieR-l8-nAc"/>
-                            <constraint firstItem="b3L-Pz-chv" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="128" id="mln-pa-2M3"/>
-                            <constraint firstItem="DQD-CH-7t9" firstAttribute="bottom" secondItem="0P5-1k-fqD" secondAttribute="bottom" id="xCc-6i-8Xd"/>
-                            <constraint firstItem="0P5-1k-fqD" firstAttribute="trailing" secondItem="zw1-r7-3xm" secondAttribute="trailingMargin" id="y4y-cB-bar"/>
-                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="bottom" secondItem="kn4-PU-XwA" secondAttribute="bottom" id="zyF-aD-kiU"/>
+                            <constraint firstItem="OBF-Ti-4rs" firstAttribute="top" secondItem="oex-q4-dJu" secondAttribute="bottom" constant="8" symbolic="YES" id="64Q-X6-9Mb"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="top" secondItem="zw1-r7-3xm" secondAttribute="top" id="7Sz-Mv-9wI"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="bottom" secondItem="0P5-1k-fqD" secondAttribute="bottom" id="7h9-Q9-3fm"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="118" id="CI2-97-bU9"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="top" secondItem="1vG-iN-lj1" secondAttribute="bottom" constant="8" symbolic="YES" id="DNS-j2-UmK"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="trailing" secondItem="oAx-Xh-0GS" secondAttribute="trailing" id="KbM-2L-x67"/>
+                            <constraint firstItem="OBF-Ti-4rs" firstAttribute="centerX" secondItem="1vG-iN-lj1" secondAttribute="centerX" id="LZO-PU-Vgb"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="leading" secondItem="OBF-Ti-4rs" secondAttribute="leading" id="NaF-Rp-ix7"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="top" secondItem="fMi-Um-2qt" secondAttribute="top" id="S1M-Cw-5QB"/>
+                            <constraint firstItem="0P5-1k-fqD" firstAttribute="leading" secondItem="DQD-CH-7t9" secondAttribute="trailing" constant="8" symbolic="YES" id="TXX-Z1-R2w"/>
+                            <constraint firstItem="D8n-RY-hCa" firstAttribute="top" secondItem="0iq-on-H3Y" secondAttribute="bottom" constant="39" id="WQH-Zt-8ZS"/>
+                            <constraint firstItem="D8n-RY-hCa" firstAttribute="centerX" secondItem="b3L-Pz-chv" secondAttribute="centerX" id="Xno-ll-ETM"/>
+                            <constraint firstItem="0iq-on-H3Y" firstAttribute="centerX" secondItem="D8n-RY-hCa" secondAttribute="centerX" id="Zn9-e5-iH9"/>
+                            <constraint firstItem="1vG-iN-lj1" firstAttribute="top" secondItem="OBF-Ti-4rs" secondAttribute="bottom" constant="23" id="aWe-hq-uu9"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="kn4-PU-XwA" secondAttribute="bottom" constant="20" id="eNV-PW-CDI"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="top" id="ehS-cG-aaP"/>
+                            <constraint firstItem="oex-q4-dJu" firstAttribute="top" secondItem="0P5-1k-fqD" secondAttribute="bottom" constant="22" id="fGp-wH-8jj"/>
+                            <constraint firstItem="b3L-Pz-chv" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="128" id="jGi-jg-5DG"/>
+                            <constraint firstItem="oex-q4-dJu" firstAttribute="centerX" secondItem="OBF-Ti-4rs" secondAttribute="centerX" id="kta-g4-NvJ"/>
+                            <constraint firstItem="b3L-Pz-chv" firstAttribute="top" secondItem="D8n-RY-hCa" secondAttribute="bottom" constant="8" symbolic="YES" id="nDl-Qi-MRD"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leading" id="okv-s0-ysV"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="leading" secondItem="oAx-Xh-0GS" secondAttribute="leading" id="qOJ-Te-PVm"/>
+                            <constraint firstItem="oAx-Xh-0GS" firstAttribute="trailing" secondItem="OBF-Ti-4rs" secondAttribute="trailing" id="uMc-Jv-uEe"/>
+                            <constraint firstAttribute="trailing" secondItem="kn4-PU-XwA" secondAttribute="trailing" id="usg-cR-yf5"/>
+                            <constraint firstItem="DQD-CH-7t9" firstAttribute="leading" secondItem="zw1-r7-3xm" secondAttribute="leadingMargin" id="vgR-Io-dqh"/>
+                            <constraint firstItem="0P5-1k-fqD" firstAttribute="trailing" secondItem="zw1-r7-3xm" secondAttribute="trailingMargin" id="vgd-hI-xY6"/>
+                            <constraint firstItem="oex-q4-dJu" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="151" id="wLZ-ag-6Vk"/>
+                            <constraint firstItem="1vG-iN-lj1" firstAttribute="centerX" secondItem="0iq-on-H3Y" secondAttribute="centerX" id="wy0-yq-v6g"/>
+                            <constraint firstItem="kn4-PU-XwA" firstAttribute="bottom" secondItem="oAx-Xh-0GS" secondAttribute="bottom" id="z3Q-Ff-oP0"/>
+                            <constraint firstItem="1vG-iN-lj1" firstAttribute="leading" secondItem="fMi-Um-2qt" secondAttribute="leading" constant="104" id="zXY-Nm-lDj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fMi-Um-2qt"/>
                     </view>
@@ -1301,7 +1314,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="V0W-PT-oLM"/>
-        <segue reference="WSY-Q7-ZVl"/>
+        <segue reference="Zzw-BF-Vdt"/>
         <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>
 </document>
