@@ -20,7 +20,6 @@ class ConfirmEntryController: UIViewController {
     @IBOutlet var publisherText: UITextField!
     @IBOutlet var publishedText: UITextField!
     @IBOutlet var thumbnailImageView: UIImageView!
-    @IBOutlet var thumbnailText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +40,7 @@ class ConfirmEntryController: UIViewController {
         publisherText.text = currentBookData.publisher
         publishedText.text = currentBookData.published
         
-        //NOTE: - Code below is temoporarily redundant as getting thumbnail is not priority.
         // Check if thumbnail available
-        //thumbnailText.text = ""
         if (currentBookData.thumbnail != nil) {
             
             let session = URLSession(configuration: .default)
@@ -58,10 +55,8 @@ class ConfirmEntryController: UIViewController {
                         print ("downloaded pic with response code\(res.statusCode)")
                         if let imageData = data {
                             // Convert that data into an image and set it as the thumbnail.
-                            //let image = UIImage(data: imageData)
                             DispatchQueue.main.async {
                                     self.thumbnailImageView.image = UIImage(data: imageData)
-                                    //self.thumbnailImageView.reloadInputViews()
                             }
                             
                         } else {

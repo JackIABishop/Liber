@@ -24,6 +24,8 @@ class MoreInfoViewController: UIViewController {
     @IBOutlet var publisherText: UILabel!
     @IBOutlet var publishedText: UILabel!
     @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var thumbnailImageView: UIImageView!
+    @IBOutlet var loadingText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,40 @@ class MoreInfoViewController: UIViewController {
         
         // Preventing the user from deleting a book that is not their own. 
         deleteButton.isHidden = buttonHidden!
+        
+        // Check if thumbnail available
+        if (bookToView.thumbnail != nil) {
+            
+            let session = URLSession(configuration: .default)
+            
+            let downloadPicTask = session.dataTask(with: bookToView.thumbnail!) { (data, response, error) in
+                // The download has finished.
+                if let e = error {
+                    print("Error downloading pic: \(e)")
+                } else {
+                    // No errors found
+                    if let res = response as? HTTPURLResponse {
+                        print ("downloaded pic with response code\(res.statusCode)")
+                        if let imageData = data {
+                            // Convert that data into an image and set it as the thumbnail.
+                            DispatchQueue.main.async {
+                                self.thumbnailImageView.image = UIImage(data: imageData)
+                            }
+                            
+                        } else {
+                            print ("Couldn't get image: image is nil")
+                        }
+                    } else {
+                        print("Couldn't get response code")
+                    }
+                }
+            }
+            downloadPicTask.resume()
+        } else {
+            loadingText.text = ""
+            //TODO:- Reset UIImageView to nil
+            
+        }
     }
     
     //MARK: - Book Deletion Handling
