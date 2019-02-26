@@ -69,10 +69,10 @@ class LoginViewController: UIViewController {
                     } else {
                         self.searchDatabaseForOrganisationUID(orgToCheck: snap, deleteCompletion: { (_) in
                             // Proceed
-                            completion(true)
                         })
                     }
                 }
+                completion(true)
             }
         }
     }

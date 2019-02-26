@@ -43,14 +43,12 @@ class ConfirmEntryController: UIViewController {
         
         //NOTE: - Code below is temoporarily redundant as getting thumbnail is not priority.
         // Check if thumbnail available
-        thumbnailText.text = ""
-        /*if (currentBookData.thumbnail != nil) {
-            
-            let testpic = URL(string: "http://i.imgur.com/w5rkSIj.jpg")!
+        //thumbnailText.text = ""
+        if (currentBookData.thumbnail != nil) {
             
             let session = URLSession(configuration: .default)
             
-            let downloadPicTask = session.dataTask(with: testpic) { (data, response, error) in
+            let downloadPicTask = session.dataTask(with: currentBookData.thumbnail!) { (data, response, error) in
                 // The download has finished.
                 if let e = error {
                     print("Error downloading pic: \(e)")
@@ -60,18 +58,22 @@ class ConfirmEntryController: UIViewController {
                         print ("downloaded pic with response code\(res.statusCode)")
                         if let imageData = data {
                             // Convert that data into an image and set it as the thumbnail.
-                            let image = UIImage(data: imageData)
-                            self.thumbnailImageView.image = image
+                            //let image = UIImage(data: imageData)
+                            DispatchQueue.main.async {
+                                    self.thumbnailImageView.image = UIImage(data: imageData)
+                                    //self.thumbnailImageView.reloadInputViews()
+                            }
+                            
                         } else {
-                            print ("Couldn't get imaeg: image is nil")
+                            print ("Couldn't get image: image is nil")
                         }
                     } else {
-                        print("Couldn't get response code for some reason")
+                        print("Couldn't get response code")
                     }
                 }
             }
             downloadPicTask.resume()
-        }*/
+        }
     }
     
     //MARK: - Button press handling.
