@@ -20,7 +20,6 @@ class ConfirmEntryController: UIViewController {
     @IBOutlet var publisherText: UITextField!
     @IBOutlet var publishedText: UITextField!
     @IBOutlet var thumbnailImageView: UIImageView!
-    @IBOutlet var thumbnailText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,16 +40,12 @@ class ConfirmEntryController: UIViewController {
         publisherText.text = currentBookData.publisher
         publishedText.text = currentBookData.published
         
-        //NOTE: - Code below is temoporarily redundant as getting thumbnail is not priority.
         // Check if thumbnail available
-        thumbnailText.text = ""
-        /*if (currentBookData.thumbnail != nil) {
-            
-            let testpic = URL(string: "http://i.imgur.com/w5rkSIj.jpg")!
+        if (currentBookData.thumbnail != nil) {
             
             let session = URLSession(configuration: .default)
             
-            let downloadPicTask = session.dataTask(with: testpic) { (data, response, error) in
+            let downloadPicTask = session.dataTask(with: currentBookData.thumbnail!) { (data, response, error) in
                 // The download has finished.
                 if let e = error {
                     print("Error downloading pic: \(e)")
@@ -60,18 +55,20 @@ class ConfirmEntryController: UIViewController {
                         print ("downloaded pic with response code\(res.statusCode)")
                         if let imageData = data {
                             // Convert that data into an image and set it as the thumbnail.
-                            let image = UIImage(data: imageData)
-                            self.thumbnailImageView.image = image
+                            DispatchQueue.main.async {
+                                    self.thumbnailImageView.image = UIImage(data: imageData)
+                            }
+                            
                         } else {
-                            print ("Couldn't get imaeg: image is nil")
+                            print ("Couldn't get image: image is nil")
                         }
                     } else {
-                        print("Couldn't get response code for some reason")
+                        print("Couldn't get response code")
                     }
                 }
             }
             downloadPicTask.resume()
-        }*/
+        }
     }
     
     //MARK: - Button press handling.
@@ -91,7 +88,8 @@ class ConfirmEntryController: UIViewController {
                               "ISBN-13": isbn13Text.text!,
                               "ISBN-10": isbn10Text.text!,
                               "Publisher": publisherText.text!,
-                              "Published": publishedText.text!]
+                              "Published": publishedText.text!,
+                              "Thumbnail": currentBookData.thumbnail!.absoluteString]
         bookDatabase.childByAutoId().setValue(bookDictionary) {
             (error, reference) in
             if error != nil {

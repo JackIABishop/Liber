@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.2.3
+    * Enable the ability to delete a user's bookcase. 
+    * Change some design elements of the app. 
+    * Addition of book cover in moreInfoController, first viewable in the confirmEntryViewController after scanning a book.
+    * Implemented custom tableView cells in BookcaseViewController. 
+    * Implemented a check to see if a subscribed bookcase has been removed, if so, remove from account.
+    * Allowed the user to sort the ordering of bookcase entries. 
+
 ## Version 0.2.2
     * Fix to names not loading when viewing organisation details. 
     * User can now see organisation code from the account tab. 

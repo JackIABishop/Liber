@@ -155,7 +155,36 @@ class AccountViewController: UIViewController {
         
         // Present the menu to the screen.
         self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteBookcasePressed(_ sender: Any) {
+        // Trigger warnings for deleting bookcase using an action pop up box.
+        let optionMenu = UIAlertController(title: "Warning", message: "Deleting your bookcase is a destructive action, you will not be able to recover your data.", preferredStyle: UIAlertController.Style.alert)
         
+        // Creation options.
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.destructive) { (alert) in
+            self.deleteBookcase()
+        }
+        
+        // Adding the actions to the menu.
+        optionMenu.addAction(cancelAction)
+        optionMenu.addAction(confirmAction)
+        
+        // Present the menu to the screen.
+        self.present(optionMenu, animated: true, completion: nil)
+    }
+    
+    // Remove all books in user's bookcase.
+    func deleteBookcase() {
+        indeterminateLoad(displayText: "Deleting account", view: self.view)
+        
+        // Remove user bookcase data.
+        Database.database().reference(withPath: "Users").child(organisationCode).child("Collection").removeValue()
+        
+        print("Bookcase Deleted")
+        hideHUD(view: self.view)
     }
     
     // Logout the current user.
@@ -185,7 +214,7 @@ class AccountViewController: UIViewController {
         // Remove UID.
         Database.database().reference(withPath: "Identifiers").child(parsedEmail).removeValue()
         
-        //TODO:- Remove user authentication.
+        // Remove user authentication.
         user?.delete { error in
             if let error = error {
                 // Error

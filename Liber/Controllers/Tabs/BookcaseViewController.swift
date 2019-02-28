@@ -19,7 +19,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     let userEmail = getFirebaseUserEmail()
     var selectedBook = Book()
     var selectedOwnBook: Bool?
-
+    var bookcaseSortingAscending: Bool = true
+    
     // Linking UI Elements
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
@@ -33,9 +34,25 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         indeterminateLoad(displayText: "Loading bookcase", view: self.view)
         
         fillBookcaseData { (_) in
+            // Once the data has been retrieved, organise the bookcase entries in the order chosen by the user.
+            self.sortBookcaseData()
         }
         
         hideHUD(view: self.view)
+    }
+    
+    func sortBookcaseData() {
+        // Sort each organisation individually.
+        for (index, _) in filteredOrganisationData.enumerated() {
+            if bookcaseSortingAscending {
+                // Ascending Order
+                filteredOrganisationData[index].books = filteredOrganisationData[index].books.sorted(by: { $0.title < $1.title})
+            } else {
+                // Descending Order
+                filteredOrganisationData[index].books = filteredOrganisationData[index].books.sorted(by: { $0.title > $1.title})
+            }
+        }
+        DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
     func fillBookcaseData(completionHandler: @escaping (Bool) -> ()) {
@@ -119,12 +136,14 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
                     let ISBN10 = dataChange!["ISBN-10"]
                     let publisher = dataChange!["Publisher"]
                     let published = dataChange!["Published"]
+                    let thumbnail = dataChange!["Thumbnail"]
                     newBook.title = title as! String
                     newBook.author[0] = author as! String
                     newBook.isbn_13 = ISBN13 as! String
                     newBook.isbn_10 = ISBN10 as! String
                     newBook.publisher = publisher as! String
                     newBook.published = published as! String
+                    newBook.thumbnail = NSURL(string: thumbnail as! String)! as URL
                     
                     // allBooks will now store all books the user has.
                     self.subscribedOrganisations[index].books.append(newBook)
@@ -176,6 +195,54 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    // Present a view controller to allow the user to set the bookcase in ascending or descending order.
+    @IBAction func sortingButtonPressed(_ sender: Any) {
+        // Get selected titles.
+        var ascendingActionTitle: String = "Ascending"
+        var descendingActionTitle: String = "Descending"
+        
+        if bookcaseSortingAscending == true {
+            ascendingActionTitle = "Ascending (Currently Selected)"
+        } else {
+            descendingActionTitle = "Descending (Currently Selected)"
+        }
+        
+        // Create actionsheet.
+        let optionMenu = UIAlertController(title: "Sorting", message: "Choose method of sorting your bookcase by book title", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        // Sorting options.
+        let ascendingAction = UIAlertAction(title: ascendingActionTitle, style: UIAlertAction.Style.default) { (alert) in
+            self.bookcaseSortingAscending = true
+            self.sortBookcaseData()
+        }
+        
+        let descendingAction = UIAlertAction(title: descendingActionTitle, style: UIAlertAction.Style.default) { (alert) in
+            self.bookcaseSortingAscending = false
+            self.sortBookcaseData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+        
+        optionMenu.addAction(ascendingAction)
+        optionMenu.addAction(descendingAction)
+        optionMenu.addAction(cancelAction)
+        
+        // Present the menu to the screen.
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            // Use action sheet for iPhone
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        else {
+            // Use popover sheet for iPad.
+            optionMenu.popoverPresentationController?.sourceView = self.view
+            if let popoverController = optionMenu.popoverPresentationController {
+                popoverController.barButtonItem = (sender as! UIBarButtonItem)
+            }
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Generate rows for each organisation section.
@@ -185,7 +252,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     // Create the section headers for the bookcases.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = " \(filteredOrganisationData[section].orgName)'s Bookcase"
+        label.text = "   \(filteredOrganisationData[section].orgName)'s Bookcase"
         label.backgroundColor = UIColor.lightGray
         return label
     }
@@ -196,17 +263,26 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookItemCell")
+        //let cellIdentifier = "BookcaseTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookcaseTableViewCell", for: indexPath) as? BookcaseTableViewCell else {
+            fatalError("The dequeued cell is not an instance of BookcaseTableViewCell")
+        }
         
         if (!filteredOrganisationData[indexPath.section].books.isEmpty) {
             // List out books.
-            cell?.textLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].title
+            cell.bookcaseTitleLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].title
+            cell.bookcaseAuthorLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].author[0]
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
-            cell?.textLabel?.text = "no content found"
+            cell.textLabel?.text = "no content found"
         }
         
-        return cell!
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

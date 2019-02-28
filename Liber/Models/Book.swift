@@ -17,8 +17,6 @@ class Book {
     var publisher = ""
     var published = ""
     var thumbnail = URL(string: "")
-    //var price : String = ""
-    //var location : String = ""
     
     func resetClassData() {
         title = ""
@@ -28,8 +26,6 @@ class Book {
         publisher = ""
         published = ""
         thumbnail = URL(string: "")
-        //price = ""
-        //location = ""
     }
     
     let bookElements : Int = 7
