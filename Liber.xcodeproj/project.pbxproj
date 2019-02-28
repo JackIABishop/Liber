@@ -10,6 +10,8 @@
 		5700314721B86763002DCF73 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700314621B86763002DCF73 /* AccountViewController.swift */; };
 		571FA1AE2201C973005BDF69 /* ManualAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */; };
 		573F624F21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */; };
+		5748D49522286EEB00B02B48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5748D49422286EEB00B02B48 /* Assets.xcassets */; };
+		5748D4992228790E00B02B48 /* BookcaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748D4982228790E00B02B48 /* BookcaseTableViewCell.swift */; };
 		575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C721B578A900B6A9AD /* AppDelegate.swift */; };
 		575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C921B578A900B6A9AD /* BookcaseViewController.swift */; };
 		575580CC21B578A900B6A9AD /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580CB21B578A900B6A9AD /* BarcodeScannerController.swift */; };
@@ -23,7 +25,6 @@
 		57A91712222431BB0029C025 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A91711222431BB0029C025 /* GradientLayer.swift */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
 		57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F521BC5711000237BB /* ConfirmEntryController.swift */; };
-		57C98BAC21FFAD08004B79C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C98BAB21FFAD08004B79C1 /* Assets.xcassets */; };
 		57D65EDD21FE602200E10D55 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */; };
 		57EEBD8D2212EE2900FDA709 /* OrganisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EEBD8C2212EE2900FDA709 /* OrganisationViewController.swift */; };
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
@@ -63,6 +64,8 @@
 		5700314621B86763002DCF73 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManualAddViewController.swift; path = "Liber/Controllers/Book Handling/ManualAddViewController.swift"; sourceTree = SOURCE_ROOT; };
 		573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUDFunctionFile.swift; sourceTree = "<group>"; };
+		5748D49422286EEB00B02B48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5748D4982228790E00B02B48 /* BookcaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookcaseTableViewCell.swift; path = Liber/Controllers/BookcaseTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		575580C421B578A900B6A9AD /* Liber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580C721B578A900B6A9AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		575580C921B578A900B6A9AD /* BookcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookcaseViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		57A91711222431BB0029C025 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		57B897F521BC5711000237BB /* ConfirmEntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmEntryController.swift; sourceTree = "<group>"; };
-		57C98BAB21FFAD08004B79C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57D65EDC21FE602200E10D55 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		57EEBD8C2212EE2900FDA709 /* OrganisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationViewController.swift; sourceTree = "<group>"; };
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -196,7 +198,7 @@
 		575580F721B5813E00B6A9AD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				57C98BAB21FFAD08004B79C1 /* Assets.xcassets */,
+				5748D49422286EEB00B02B48 /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -247,6 +249,7 @@
 		575580FD21B581E200B6A9AD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				5748D4982228790E00B02B48 /* BookcaseTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -438,7 +441,7 @@
 				575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */,
 				57FE9A0F21C3D5AB00CF3DCD /* GoogleService-Info.plist in Resources */,
 				575580CF21B578A900B6A9AD /* Main.storyboard in Resources */,
-				57C98BAC21FFAD08004B79C1 /* Assets.xcassets in Resources */,
+				5748D49522286EEB00B02B48 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +555,7 @@
 				57967B0A22120FFF00AC9B28 /* Organisations.swift in Sources */,
 				57A91712222431BB0029C025 /* GradientLayer.swift in Sources */,
 				57D65EDD21FE602200E10D55 /* PasswordResetViewController.swift in Sources */,
+				5748D4992228790E00B02B48 /* BookcaseTableViewCell.swift in Sources */,
 				575580CC21B578A900B6A9AD /* BarcodeScannerController.swift in Sources */,
 				57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */,
 				57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */,

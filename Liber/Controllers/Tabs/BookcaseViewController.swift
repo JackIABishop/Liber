@@ -252,7 +252,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     // Create the section headers for the bookcases.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = " \(filteredOrganisationData[section].orgName)'s Bookcase"
+        label.text = "   \(filteredOrganisationData[section].orgName)'s Bookcase"
         label.backgroundColor = UIColor.lightGray
         return label
     }
@@ -263,17 +263,26 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "bookItemCell")
+        //let cellIdentifier = "BookcaseTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BookcaseTableViewCell", for: indexPath) as? BookcaseTableViewCell else {
+            fatalError("The dequeued cell is not an instance of BookcaseTableViewCell")
+        }
         
         if (!filteredOrganisationData[indexPath.section].books.isEmpty) {
             // List out books.
-            cell?.textLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].title
+            cell.bookcaseTitleLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].title
+            cell.bookcaseAuthorLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].author[0]
         } else {
             //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
-            cell?.textLabel?.text = "no content found"
+            cell.textLabel?.text = "no content found"
         }
         
-        return cell!
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
