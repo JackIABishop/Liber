@@ -19,7 +19,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     let userEmail = getFirebaseUserEmail()
     var selectedBook = Book()
     var selectedOwnBook: Bool?
-
+    var bookcaseSortingAscending: Bool = true
+    
     // Linking UI Elements
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
@@ -33,9 +34,25 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         indeterminateLoad(displayText: "Loading bookcase", view: self.view)
         
         fillBookcaseData { (_) in
+            // Once the data has been retrieved, organise the bookcase entries in the order chosen by the user.
+            self.sortBookcaseData()
         }
         
         hideHUD(view: self.view)
+    }
+    
+    func sortBookcaseData() {
+        // Sort each organisation individually.
+        for (index, _) in filteredOrganisationData.enumerated() {
+            if bookcaseSortingAscending {
+                // Ascending Order
+                filteredOrganisationData[index].books = filteredOrganisationData[index].books.sorted(by: { $0.title < $1.title})
+            } else {
+                // Descending Order
+                filteredOrganisationData[index].books = filteredOrganisationData[index].books.sorted(by: { $0.title > $1.title})
+            }
+        }
+        DispatchQueue.main.async { self.tableView.reloadData() }
     }
     
     func fillBookcaseData(completionHandler: @escaping (Bool) -> ()) {
@@ -160,6 +177,54 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         // Adding the actions to the menu.
         optionMenu.addAction(manualEntryAction)
         optionMenu.addAction(barcodeScanAction)
+        optionMenu.addAction(cancelAction)
+        
+        // Present the menu to the screen.
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            // Use action sheet for iPhone
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+        else {
+            // Use popover sheet for iPad.
+            optionMenu.popoverPresentationController?.sourceView = self.view
+            if let popoverController = optionMenu.popoverPresentationController {
+                popoverController.barButtonItem = (sender as! UIBarButtonItem)
+            }
+            
+            self.present(optionMenu, animated: true, completion: nil)
+        }
+    }
+    
+    // Present a view controller to allow the user to set the bookcase in ascending or descending order.
+    @IBAction func sortingButtonPressed(_ sender: Any) {
+        // Get selected titles.
+        var ascendingActionTitle: String = "Ascending"
+        var descendingActionTitle: String = "Descending"
+        
+        if bookcaseSortingAscending == true {
+            ascendingActionTitle = "Ascending (Currently Selected)"
+        } else {
+            descendingActionTitle = "Descending (Currently Selected)"
+        }
+        
+        // Create actionsheet.
+        let optionMenu = UIAlertController(title: "Sorting", message: "Choose method of sorting your bookcase by book title", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        // Sorting options.
+        let ascendingAction = UIAlertAction(title: ascendingActionTitle, style: UIAlertAction.Style.default) { (alert) in
+            self.bookcaseSortingAscending = true
+            self.sortBookcaseData()
+        }
+        
+        let descendingAction = UIAlertAction(title: descendingActionTitle, style: UIAlertAction.Style.default) { (alert) in
+            self.bookcaseSortingAscending = false
+            self.sortBookcaseData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
+        
+        optionMenu.addAction(ascendingAction)
+        optionMenu.addAction(descendingAction)
         optionMenu.addAction(cancelAction)
         
         // Present the menu to the screen.

@@ -43,6 +43,7 @@ class MoreInfoViewController: UIViewController {
         
         // Check if thumbnail available
         if (bookToView.thumbnail != nil) {
+            indeterminateLoad(displayText: "Loading Image", view: self.view)
             
             let session = URLSession(configuration: .default)
             
@@ -53,10 +54,12 @@ class MoreInfoViewController: UIViewController {
                 } else {
                     // No errors found
                     if let res = response as? HTTPURLResponse {
-                        print ("downloaded pic with response code\(res.statusCode)")
+                        
+                        print ("downloaded pic with response code: \(res.statusCode)")
                         if let imageData = data {
                             // Convert that data into an image and set it as the thumbnail.
                             DispatchQueue.main.async {
+                                self.loadingText.text = ""
                                 self.thumbnailImageView.image = UIImage(data: imageData)
                             }
                             
@@ -68,11 +71,12 @@ class MoreInfoViewController: UIViewController {
                     }
                 }
             }
+            hideHUD(view: self.view)
             downloadPicTask.resume()
         } else {
             loadingText.text = ""
-            //TODO:- Reset UIImageView to nil
-            
+            // Reset UIImageView to nil
+            thumbnailImageView.image = nil
         }
     }
     
