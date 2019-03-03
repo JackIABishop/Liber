@@ -24,12 +24,13 @@ let colorBottom = UIColor(red: 3.0 / 255.0, green: 150.0 / 255.0, blue: 255.0 / 
 //let colorBottom = UIColor(red: 98.0 / 255.0, green: 58.0 / 255.0, blue: 162.0 / 255.0, alpha: 1.0).cgColor
 
 func createGradientLayer(view: UIView) {
-    gradientLayer = CAGradientLayer()
-    
-    gradientLayer.frame = view.bounds
-    
-    gradientLayer.colors = [colorTop, colorBottom]
-    gradientLayer.locations = [0.0, 1.0]
-    
-    view.layer.insertSublayer(gradientLayer, at: 0)
+  gradientLayer = CAGradientLayer()
+  
+  gradientLayer.frame = view.bounds
+  
+  gradientLayer.colors = [colorTop, colorBottom]
+  gradientLayer.locations = [0.0, 1.0]
+  
+  view.layer.insertSublayer(gradientLayer, at: 0)
 }
+

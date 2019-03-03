@@ -13,13 +13,14 @@ import MBProgressHUD
 //MARK:- Functions
 
 func indeterminateLoad(displayText: String, view: UIView) {
-    let loadingNotification = MBProgressHUD.showAdded(to: view, animated: true)
-    loadingNotification.mode = MBProgressHUDMode.indeterminate
-    loadingNotification.label.text = displayText
-    
-    loadingNotification.show(animated: true)
+  let loadingNotification = MBProgressHUD.showAdded(to: view, animated: true)
+  loadingNotification.mode = MBProgressHUDMode.indeterminate
+  loadingNotification.label.text = displayText
+  
+  loadingNotification.show(animated: true)
 }
 
 func hideHUD(view: UIView) {
-    MBProgressHUD.hideAllHUDs(for: view, animated: true)
+  MBProgressHUD.hideAllHUDs(for: view, animated: true)
 }
+

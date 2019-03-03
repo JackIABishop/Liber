@@ -10,16 +10,17 @@
 import Foundation
 
 struct Organisation {
-    var orgCode: String = ""
-    var books = [Book]()
-    var orgName: String = ""
-    
-    init(orgCodeToAdd: String) {
-        orgCode = orgCodeToAdd
-    }
-    
-    init(orgCodeToAdd: String, booksToAdd: [Book]) {
-        orgCode = orgCodeToAdd
-        books = booksToAdd
-    }
+  var orgCode: String = ""
+  var books = [Book]()
+  var orgName: String = ""
+  
+  init(orgCodeToAdd: String) {
+    orgCode = orgCodeToAdd
+  }
+  
+  init(orgCodeToAdd: String, booksToAdd: [Book]) {
+    orgCode = orgCodeToAdd
+    books = booksToAdd
+  }
 }
+

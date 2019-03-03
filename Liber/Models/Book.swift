@@ -10,23 +10,24 @@
 import Foundation
 
 class Book {
-    var title = ""
-    var author = [""]
-    var isbn_13 = ""
-    var isbn_10 = ""
-    var publisher = ""
-    var published = ""
-    var thumbnail = URL(string: "")
-    
-    func resetClassData() {
-        title = ""
-        author.removeAll()
-        isbn_13 = ""
-        isbn_10 = ""
-        publisher = ""
-        published = ""
-        thumbnail = URL(string: "")
-    }
-    
-    let bookElements : Int = 7
+  var title = ""
+  var author = [""]
+  var isbn_13 = ""
+  var isbn_10 = ""
+  var publisher = ""
+  var published = ""
+  var thumbnail = URL(string: "")
+  
+  func resetClassData() {
+    title = ""
+    author.removeAll()
+    isbn_13 = ""
+    isbn_10 = ""
+    publisher = ""
+    published = ""
+    thumbnail = URL(string: "")
+  }
+  
+  let bookElements : Int = 7
 }
+
