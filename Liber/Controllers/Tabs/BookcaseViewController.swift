@@ -246,7 +246,20 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
   //MARK: - TableView Methods
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // Generate rows for each organisation section.
-    return filteredOrganisationData[section].books.count
+    if filteredOrganisationData[section].books.count == 0 {
+      // Replace the tableView with a message stating the bookcase is empty.
+      let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+      noDataLabel.text = "No books added yet!"
+      noDataLabel.textColor = UIColor.black
+      noDataLabel.textAlignment = .center
+      tableView.backgroundView = noDataLabel
+      tableView.separatorStyle = .none
+      return 0
+    } else {
+      tableView.separatorStyle = .singleLine
+      tableView.backgroundView = nil
+      return filteredOrganisationData[section].books.count
+    }
   }
   
   // Create the section headers for the bookcases.
@@ -273,15 +286,13 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
       // List out books.
       cell.bookcaseTitleLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].title
       cell.bookcaseAuthorLabel?.text = filteredOrganisationData[indexPath.section].books[indexPath.row].author[0]
-    } else {
-      //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
-      cell.textLabel?.text = "no content found"
     }
     
     return cell
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    // Table View height
     return 55
   }
   
