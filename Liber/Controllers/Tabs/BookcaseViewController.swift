@@ -143,7 +143,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
           newBook.isbn_10 = ISBN10 as! String
           newBook.publisher = publisher as! String
           newBook.published = published as! String
-          newBook.thumbnail = NSURL(string: thumbnail as! String)! as URL
+          newBook.thumbnail = NSURL(string: thumbnail as? String ?? "")! as URL
           
           // allBooks will now store all books the user has.
           self.subscribedOrganisations[index].books.append(newBook)

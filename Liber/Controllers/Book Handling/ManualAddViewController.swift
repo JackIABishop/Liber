@@ -26,7 +26,7 @@ class ManualAddViewController: UIViewController {
   
   @IBAction func confirmButtonPressed(_ sender: Any) {
     // Check if the user has entered a book title.
-    if titleText.text?.count != 0 {
+    if titleText.text?.count != 0 && authorText.text?.count != 0 {
       // Save the book in user's database.
       indeterminateLoad(displayText: "Saving Book", view: self.view)
       
@@ -52,7 +52,7 @@ class ManualAddViewController: UIViewController {
       performSegue(withIdentifier: "goToTabView", sender: self)
     } else {
       // Print an error message to the user
-      let errorAlert = UIAlertController(title: "Uh-oh", message: "A book title is required", preferredStyle: .alert)
+      let errorAlert = UIAlertController(title: "Uh-oh", message: "A book title & author is required", preferredStyle: .alert)
       errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
       self.present(errorAlert, animated: true, completion: nil)
     }
