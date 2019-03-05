@@ -81,8 +81,6 @@ class ConfirmEntryController: UIViewController {
     // Save the book in user's database
     indeterminateLoad(displayText: "Saving Book", view: self.view)
     
-    // Set each text field in the database.
-    let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
     let bookDictionary = ["Book Title": titleText.text!,
                           "Author": authorText.text!,
                           "ISBN-13": isbn13Text.text!,
@@ -90,18 +88,11 @@ class ConfirmEntryController: UIViewController {
                           "Publisher": publisherText.text!,
                           "Published": publishedText.text!,
                           "Thumbnail": currentBookData.thumbnail!.absoluteString]
-    bookDatabase.childByAutoId().setValue(bookDictionary) {
-      (error, reference) in
-      if error != nil {
-        print(error as Any)
-      } else {
-        print("Book saved successfully!")
-      }
-    }
     
-    hideHUD(view: self.view)
-    performSegue(withIdentifier: "goToTabView", sender: self)
+    addBook(bookToAdd: bookDictionary) { (_) in
+      self.performSegue(withIdentifier: "goToTabView", sender: self)
+      hideHUD(view: self.view)
+    }
   }
-  
 }
 

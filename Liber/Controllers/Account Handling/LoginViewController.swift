@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
     hideHUD(view: self.view)
   }
   
-  func bookcasePurge(completion: @escaping (Bool) -> ()) {
+  func bookcasePurge(completion: @escaping (Bool) -> Void) {
     let subscribedDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
     
     // Go through each stored database and check if it is still has an account present.
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
     }
   }
   
-  func searchDatabaseForOrganisationUID(orgToCheck: DataSnapshot, deleteCompletion: @escaping (Bool) -> ()) {
+  func searchDatabaseForOrganisationUID(orgToCheck: DataSnapshot, deleteCompletion: @escaping (Bool) -> Void) {
     let orgToSearch = orgToCheck.value as? String
     
     // Search through DBs.

@@ -65,7 +65,7 @@ func emailValidation(emailToTest: String) -> Bool {
 
 /// Firebase Account Handling.
 // Function to handle a login press.
-func signInFirebaseUser(loginParameters:Dictionary<String, String>, completion: @escaping (Bool)  -> ()) {
+func signInFirebaseUser(loginParameters: Dictionary<String, String>, completion: @escaping (Bool)  -> Void) {
   // Attempt to sign into Firebase.
   Auth.auth().signIn(withEmail: loginParameters["Email"]!, password: loginParameters["Password"]!) { (user, error) in
     if error != nil {
@@ -84,7 +84,7 @@ func signInFirebaseUser(loginParameters:Dictionary<String, String>, completion: 
   }
 }
 
-func registerFirebaseUser(registerParameters:Dictionary<String, String>, completion: @escaping (Bool) -> ()) {
+func registerFirebaseUser(registerParameters:Dictionary<String, String>, completion: @escaping (Bool) -> Void) {
   // Attempt to register the user into Firebase.
   Auth.auth().createUser(withEmail: registerParameters["Email"]!, password: registerParameters["Password"]!) { (user, error) in
     if error != nil {
@@ -163,6 +163,36 @@ func getOrgCode(orgCompletion: @escaping (Bool) -> Void) {
     organisationCode = orgCode
     
     orgCompletion(true)
+  }
+}
+
+// This function will check if a book entry is located in the passed organisation.
+func checkBookInOrganisation(bookToCheck: Book, orgCodeToCheck: String, completion: @escaping (Bool) -> Void) {
+  // Get database to check.
+  let bookDatabase = Database.database().reference().child("Users").child(orgCodeToCheck).child("Collection")
+
+  // Go through each element in the bookcase and look for a match.
+  bookDatabase.observeSingleEvent(of: .value) { snapshot in
+    if snapshot.hasChildren() {
+      for child in snapshot.children {
+        let snap = child as! DataSnapshot
+        
+        let dataChange = snap.value as? [String:AnyObject]
+        
+        let title = dataChange!["Book Title"]
+        let author = dataChange!["Author"]
+        
+        if title as! String == bookToCheck.title &&
+          author as! String == bookToCheck.author[0] {
+          // When found a match, return true
+          completion(true)
+        }
+      }
+      completion(false) // Gone through the database and not found a match. 
+    }
+    else {
+      print("No data")
+    }
   }
 }
 

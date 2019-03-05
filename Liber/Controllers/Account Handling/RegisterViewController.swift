@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
     createGradientLayer(view: view)
   }
   
-  // MARK: - Account Handling
+  // MARK:- Account Handling
   @IBAction func registerPressed(_ sender: AnyObject) {
     // Notify the user that something is happening.
     indeterminateLoad(displayText: "Registering", view: self.view)

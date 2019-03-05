@@ -87,7 +87,12 @@ class MoreInfoViewController: UIViewController {
     let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
     
     let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.destructive) { (alert) in
-      self.deleteBook()
+      indeterminateLoad(displayText: "Deleting book", view: self.view)
+      
+      deleteBook(bookToDelete: self.bookToView, completion: { (_) in
+        self.performSegue(withIdentifier: "goToTabView", sender: self)
+        hideHUD(view: self.view)
+      })
     }
     
     // Add the options to the menu.
@@ -95,38 +100,6 @@ class MoreInfoViewController: UIViewController {
     deleteMenu.addAction(confirmAction)
     
     self.present(deleteMenu, animated: true, completion: nil)
-  }
-  
-  func deleteBook() {
-    // Delete the selected book.
-    indeterminateLoad(displayText: "Deleting book", view: self.view)
-    
-    // Remove the book from the database.
-    let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
-    
-    // Go through users database and remove the matched book.
-    bookDatabase.observeSingleEvent(of: .value) { (snapshot) in
-      if snapshot.hasChildren() {
-        for child in snapshot.children {
-          let snap = child as! DataSnapshot
-          
-          let dataChange = snap.value as? [String:AnyObject]
-          
-          let title = dataChange!["Book Title"]
-          let author = dataChange!["Author"]
-          
-          if title as! String == self.bookToView.title &&
-            author as! String == self.bookToView.author[0] {
-            // When found a match, delete book.
-            print("Deleting book")
-            snap.ref.removeValue()
-          }
-        }
-      }
-    }
-    
-    performSegue(withIdentifier: "goToTabView", sender: self)
-    hideHUD(view: self.view)
   }
 }
 

@@ -22,7 +22,6 @@ class ManualAddViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
   }
   
   @IBAction func confirmButtonPressed(_ sender: Any) {
@@ -31,26 +30,17 @@ class ManualAddViewController: UIViewController {
       // Save the book in user's database.
       indeterminateLoad(displayText: "Saving Book", view: self.view)
       
-      // Set each text field in the database.
-      let bookDatabase = Database.database().reference().child("Users").child(organisationCode).child("Collection")
-      
       let bookDictionary = ["Book Title": titleText.text!,
                             "Author": authorText.text!,
                             "ISBN-13": isbn13Text.text!,
                             "ISBN-10": isbn10Text.text!,
                             "Publisher": publisherText.text!,
                             "Published": publishedText.text!]
-      bookDatabase.childByAutoId().setValue(bookDictionary) {
-        (error, reference) in
-        if error != nil {
-          print(error as Any)
-        } else {
-          print("Book saved successfully!")
-        }
-      }
       
-      hideHUD(view: self.view)
-      performSegue(withIdentifier: "goToTabView", sender: self)
+      addBook(bookToAdd: bookDictionary) { (_) in
+        self.performSegue(withIdentifier: "goToTabView", sender: self)
+        hideHUD(view: self.view)
+      }
     } else {
       // Print an error message to the user.
       let errorAlert = UIAlertController(title: "Uh-oh", message: "A book title & author is required", preferredStyle: .alert)

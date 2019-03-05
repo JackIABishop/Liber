@@ -1,29 +1,19 @@
 //
-//  LiberTests.swift
+//  LiberObjectTests.swift
 //  LiberTests
 //
-//  Created by Jack Bishop on 03/12/2018.
-//  Copyright © 2018 Jack Bishop. All rights reserved.
+//  Created by Jack Bishop on 04/03/2019.
+//  Copyright © 2019 Jack Bishop. All rights reserved.
 //
+//  Test cases for the objects that do not require the use of the database.
 
 import XCTest
 @testable import Liber
 
-class LiberClassTests: XCTestCase {
-  
+class LiberObjectTests: XCTestCase {
+
   override func setUp() {
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    
-    // Login a User?
-    let registerParams = ["Name": "Test Account", "Email": "test@test.com", "Password": "password"]
-    registerFirebaseUser(registerParameters: registerParams) { (result) in
-      if result {
-        // Success
-      }
-      else {
-        // Error
-      }
-    }
   }
   
   override func tearDown() {
@@ -38,10 +28,9 @@ class LiberClassTests: XCTestCase {
     testBook.author[0] = "Test Author"
     testBook.thumbnail = URL(string: "Test_URL")
     
-    // Testing the dummy values that I have set have been set correctly
     XCTAssertTrue(testBook.title == "Test Title")
     XCTAssertTrue(testBook.author[0] == "Test Author")
-    XCTAssertTrue(testBook.thumbnail?.absoluteString == "Test_URL")
+    XCTAssertTrue((testBook.thumbnail?.absoluteString)! == "Test_URL")
     testBook.resetClassData()
     XCTAssertTrue(testBook.title == "")
     XCTAssertTrue(testBook.author.count == 0)
@@ -57,16 +46,5 @@ class LiberClassTests: XCTestCase {
     XCTAssertTrue(testOrganisation.orgCode == "12345")
     XCTAssertTrue(testOrganisation.books[0].title == testBook.title)
   }
-  
-  func testManualAddViewController() {
-    
-    
-  }
-  
-  func textConfirmEntryViewController() {
-    
-  }
-  
 }
-
 
