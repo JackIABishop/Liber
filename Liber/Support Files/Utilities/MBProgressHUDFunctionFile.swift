@@ -10,8 +10,6 @@
 import Foundation
 import MBProgressHUD
 
-//MARK:- Functions
-
 func indeterminateLoad(displayText: String, view: UIView) {
   let loadingNotification = MBProgressHUD.showAdded(to: view, animated: true)
   loadingNotification.mode = MBProgressHUDMode.indeterminate

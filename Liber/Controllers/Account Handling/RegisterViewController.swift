@@ -12,13 +12,11 @@ import Firebase
 
 class RegisterViewController: UIViewController {
   
-  // Linking UI Elements
+  // Linking UI Elements.
   @IBOutlet var nameTextField: UITextField!
   @IBOutlet var emailTextField: UITextField!
   @IBOutlet var passwordTextField: UITextField!
   @IBOutlet var confirmPasswordTextField: UITextField!
-  
-  // Labels
   @IBOutlet var warningText: UILabel!
   
   override func viewDidLoad() {
@@ -36,7 +34,7 @@ class RegisterViewController: UIViewController {
     if conductRegistrationValidation(registerParameters: registerParameters, confirmPassword: confirmPasswordTextField.text!) {
       registerFirebaseUser(registerParameters: registerParameters) { (result) in
         if result {
-          // Successful registration
+          // Successful registration.
           self.warningText.text = ""
           self.performSegue(withIdentifier: "goToGuideView", sender: self)
         } else {

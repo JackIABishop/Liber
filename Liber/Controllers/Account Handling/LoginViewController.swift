@@ -12,10 +12,9 @@ import Firebase
 
 class LoginViewController: UIViewController {
   
-  // Linking UI Elements
+  // Linking UI Elements.
   @IBOutlet var emailTextField: UITextField!
   @IBOutlet var passwordTextField: UITextField!
-  
   @IBOutlet var warningText: UILabel!
   
   override func viewDidLoad() {
@@ -65,7 +64,7 @@ class LoginViewController: UIViewController {
           let orgToSearch = snap.value as? String
           
           if orgToSearch == organisationCode {
-            // Users organisation, does not require checking
+            // Users organisation, does not require checking.
           } else {
             self.searchDatabaseForOrganisationUID(orgToCheck: snap, deleteCompletion: { (_) in
               // Proceed
@@ -90,10 +89,10 @@ class LoginViewController: UIViewController {
           
           // Check if UID exists, if not, delete from users database.
           if UIDsnap.value as? String == orgToSearch {
-            // Do not delete
+            // Do not delete.
             deleteCompletion(true)
           } else {
-            // Cannot find, so delete
+            // Cannot find, so delete.
             orgToCheck.ref.removeValue()
             
             deleteCompletion(true)

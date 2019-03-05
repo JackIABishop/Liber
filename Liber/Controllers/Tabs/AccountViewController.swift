@@ -38,13 +38,11 @@ class AccountViewController: UIViewController {
   
   //MARK: - Button Presses
   @IBAction func changePasswordPressed(_ sender: Any) {
-    // Launch Change Password Functionality
-    
-    //TODO:- Change these to password fields
-    
+    // Launch Change Password Functionality.
     // Ask the user for their current password.
     let changePasswordAlert = UIAlertController(title: "Change password", message: "Enter your current password", preferredStyle: .alert)
     
+    // Creating the different text field options.
     changePasswordAlert.addTextField { (currentPassword) in
       currentPassword.placeholder = "Current Password"
       currentPassword.isSecureTextEntry = true
@@ -197,7 +195,7 @@ class AccountViewController: UIViewController {
     }
   }
   
-  // Delete the users account
+  // Delete the users account.
   func deleteAccount() {
     indeterminateLoad(displayText: "Deleting account", view: self.view)
     
@@ -226,7 +224,7 @@ class AccountViewController: UIViewController {
     hideHUD(view: self.view)
   }
   
-  // Open the OrganisationViewController
+  // Open the OrganisationViewController.
   @IBAction func viewOrgsButtonPressed(_ sender: Any) {
     performSegue(withIdentifier: "goToOrganisation", sender: self)
   }

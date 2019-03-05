@@ -5,6 +5,7 @@
 //  Created by Jack Bishop on 28/02/2019.
 //  Copyright © 2019 Jack Bishop. All rights reserved.
 //
+//  This class has been created for the custom table view cell. 
 
 import UIKit
 
@@ -15,13 +16,10 @@ class BookcaseTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

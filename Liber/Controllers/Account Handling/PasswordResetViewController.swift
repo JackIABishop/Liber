@@ -22,7 +22,7 @@ class PasswordResetViewController: UIViewController {
   }
   
   @IBAction func resetPasswordPressed(_ sender: Any) {
-    // Do email Validation
+    // Do email Validation.
     let usersEmail = emailTextField.text!
     
     if (!emailValidation(emailToTest: usersEmail)) {

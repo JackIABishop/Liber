@@ -5,6 +5,7 @@
 //  Created by Jack Bishop on 30/01/2019.
 //  Copyright © 2019 Jack Bishop. All rights reserved.
 //
+//  This class will handle the controller to manually add a book entry. 
 
 import UIKit
 import Firebase
@@ -51,7 +52,7 @@ class ManualAddViewController: UIViewController {
       hideHUD(view: self.view)
       performSegue(withIdentifier: "goToTabView", sender: self)
     } else {
-      // Print an error message to the user
+      // Print an error message to the user.
       let errorAlert = UIAlertController(title: "Uh-oh", message: "A book title & author is required", preferredStyle: .alert)
       errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
       self.present(errorAlert, animated: true, completion: nil)

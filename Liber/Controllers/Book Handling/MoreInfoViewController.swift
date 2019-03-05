@@ -41,7 +41,7 @@ class MoreInfoViewController: UIViewController {
     // Preventing the user from deleting a book that is not their own.
     deleteButton.isHidden = buttonHidden!
     
-    // Check if thumbnail available
+    // Check if thumbnail available.
     if (bookToView.thumbnail != nil) {
       indeterminateLoad(displayText: "Loading Image", view: self.view)
       
@@ -49,12 +49,11 @@ class MoreInfoViewController: UIViewController {
       
       let downloadPicTask = session.dataTask(with: bookToView.thumbnail!) { (data, response, error) in
         // The download has finished.
-        if let e = error {
-          print("Error downloading pic: \(e)")
+        if let err = error {
+          print("Error downloading pic: \(err)")
         } else {
           // No errors found
           if let res = response as? HTTPURLResponse {
-            
             print ("downloaded pic with response code: \(res.statusCode)")
             if let imageData = data {
               // Convert that data into an image and set it as the thumbnail.
@@ -62,7 +61,6 @@ class MoreInfoViewController: UIViewController {
                 self.loadingText.text = ""
                 self.thumbnailImageView.image = UIImage(data: imageData)
               }
-              
             } else {
               print ("Couldn't get image: image is nil")
             }
@@ -75,7 +73,7 @@ class MoreInfoViewController: UIViewController {
       downloadPicTask.resume()
     } else {
       loadingText.text = ""
-      // Reset UIImageView to nil
+      // Reset UIImageView to nil.
       thumbnailImageView.image = nil
     }
   }
@@ -85,7 +83,7 @@ class MoreInfoViewController: UIViewController {
     // Open an action sheet to confirm the deletion of the book entry.
     let deleteMenu = UIAlertController(title: "Warning", message: "Deleting your account is a destructive action, this book entry will be deleted.", preferredStyle: UIAlertController.Style.actionSheet)
     
-    // Options.
+    // Options
     let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
     
     let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.destructive) { (alert) in
@@ -119,10 +117,6 @@ class MoreInfoViewController: UIViewController {
           
           if title as! String == self.bookToView.title &&
             author as! String == self.bookToView.author[0] {
-            
-            //TODO:- Check if book is in usersDB, if not, prevent deletion.
-            
-            
             // When found a match, delete book.
             print("Deleting book")
             snap.ref.removeValue()

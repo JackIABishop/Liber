@@ -40,17 +40,17 @@ class ConfirmEntryController: UIViewController {
     publisherText.text = currentBookData.publisher
     publishedText.text = currentBookData.published
     
-    // Check if thumbnail available
+    // Check if thumbnail available.
     if (currentBookData.thumbnail != nil) {
       
       let session = URLSession(configuration: .default)
       
       let downloadPicTask = session.dataTask(with: currentBookData.thumbnail!) { (data, response, error) in
         // The download has finished.
-        if let e = error {
-          print("Error downloading pic: \(e)")
+        if let err = error {
+          print("Error downloading pic: \(err)")
         } else {
-          // No errors found
+          // No errors found.
           if let res = response as? HTTPURLResponse {
             print ("downloaded pic with response code\(res.statusCode)")
             if let imageData = data {
@@ -71,14 +71,14 @@ class ConfirmEntryController: UIViewController {
     }
   }
   
-  //MARK: - Button press handling.
+  //MARK: - Button press handling
   @IBAction func cancelButtonPressed(_ sender: Any) {
     // Cancel action and return to add screen.
     performSegue(withIdentifier: "goToTabView", sender: self)
   }
   
   @IBAction func confirmButtonPressed(_ sender: Any) {
-    // Save the book in user's database.
+    // Save the book in user's database
     indeterminateLoad(displayText: "Saving Book", view: self.view)
     
     // Set each text field in the database.

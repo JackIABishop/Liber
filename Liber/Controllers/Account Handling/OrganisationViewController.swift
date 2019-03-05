@@ -5,6 +5,7 @@
 //  Created by Jack Bishop on 12/02/2019.
 //  Copyright © 2019 Jack Bishop. All rights reserved.
 //
+//  Handling the subscribed organisations for the user in the OrganisationViewController. 
 
 import UIKit
 import Firebase
@@ -28,7 +29,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     
     // Load subscribed organisations.
     retrieveOrganisations { (_) in
-      
     }
     
     hideHUD(view: self.view)
@@ -42,8 +42,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
   // Load organisation data.
   func retrieveOrganisations(completion: @escaping (Bool) -> ()) {
     
-    indeterminateLoad(displayText: "Loading Organisation", view: self.view)
-    
     // Read from the database.
     let subscribedDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
     
@@ -55,8 +53,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
           
           let newOrganisation = Organisation(orgCodeToAdd: (snap.value as? String)!)
           
-          //newOrganisation.orgCode = (snap.value as? String)!
-          
           // Add the code to the subscribed organisations.
           self.subscribedOrganisations.append(newOrganisation)
           
@@ -67,8 +63,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
         completion(true)
       }
     }
-    
-    hideHUD(view: self.view)
   }
   
   //MARK:- TableView Methods
@@ -112,9 +106,9 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
               for child in orgSnapshot.children {
                 let snap = child as! DataSnapshot
                 
-                // Found a match
+                // Found a match.
                 if snap.value as? String == orgCode {
-                  // If that match is users org, do not delete
+                  // If that match is users org, do not delete.
                   if snap.value as? String == organisationCode {
                     // Show UIAlert of error.
                     let errorAlert = UIAlertController(title: "Error", message: "You cannot delete your own bookcase", preferredStyle: .alert)
@@ -123,7 +117,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                     
                     completion(true)
                   } else {
-                    // Delete organisation
+                    // Delete organisation.
                     snap.ref.removeValue()
                     self.subscribedOrganisations.remove(at: indexPath.row)
                     
@@ -132,7 +126,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(errorAlert, animated: true, completion: nil)
                     
-                    //NOTE:- Not Working
                     DispatchQueue.main.async {
                       self.tableView.reloadData()
                     }
@@ -157,7 +150,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     indeterminateLoad(displayText: "Hold on...", view: self.view)
     
     viewOrgInformation(indexPath) { (_) in
-      // Proceed
+      // Proceed.
     }
     
     tableView.deselectRow(at: indexPath, animated: true)
@@ -176,10 +169,6 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
           cell?.textLabel?.text = value
         }
       }
-      
-    } else {
-      //TODO: - Print no content found. https://stackoverflow.com/questions/28532926/if-no-table-view-results-display-no-results-on-screen
-      cell?.textLabel?.text = "no content found"
     }
     
     return cell!
@@ -260,7 +249,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                 print(entry.value!)
                 
                 if entry.value! as? String == orgNum.text {
-                  // If already in DB
+                  // If already in DB.
                   self.dontAdd = true
                   let errorAlert = UIAlertController(title: "Error", message: "Already subscribed to this organisation.", preferredStyle: .alert)
                   errorAlert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -269,17 +258,14 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
                   self.matchFound = true
                 }
               }
-              // Handle data.
+              // Handle data
               self.processOrgAddition(orgNum, dataCompletion: { (_) in
                 // Proceed
               })
             })
-            
           }
         }
-        
       })
-      
     }))
     
     self.present(addOrganisationAlert, animated: true, completion: nil)
@@ -290,6 +276,5 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
       // Proceed
     }
   }
-  
 }
 

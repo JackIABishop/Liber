@@ -19,7 +19,7 @@ var isFirstRequest: Bool? // Setting first scan request.
 
 class BarcodeScannerController: UIViewController {
   
-  // Linking UI Elements
+  // Linking UI Elements.
   @IBOutlet var messageLabel: UILabel!
   @IBOutlet var navigationBar: UINavigationBar!
   @IBOutlet var blockView: UIView!
@@ -30,11 +30,11 @@ class BarcodeScannerController: UIViewController {
   var barcodeFrameView: UIView?
   var bookFound : Bool?
   
-  // Listing supported datatypes for the barcode, at the current just two the two ISBN standards.
+  // Listing supported datatypes for the barcode, at the current just the two ISBN standards.
   private let supportedCodeTypes = [AVMetadataObject.ObjectType.ean8,
                                     AVMetadataObject.ObjectType.ean13,]
   
-  // MARK: - Setting up BarcodeScannerController to show camera and scan for supportedCodeTypes.
+  // MARK:- Setting up BarcodeScannerController to show camera and scan for supportedCodeTypes.
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -82,7 +82,6 @@ class BarcodeScannerController: UIViewController {
     captureSession.startRunning()
     
     // Move the message label to the front.
-    // NOTE: - This may be removed after ConfirmEntryController has been implemented.
     view.bringSubviewToFront(messageLabel)
     
     // Initialise the Code Frame to show user where to place code.
@@ -101,7 +100,7 @@ class BarcodeScannerController: UIViewController {
     
   }
   
-  // MARK: - Handling Book Data
+  // MARK: - Handling Book Data.
   func searchGoogleBooks(decodedURL : String) -> Bool {
     let session = URLSession.shared
     let client = GoogleBooksApiClient(session: session)
@@ -115,7 +114,7 @@ class BarcodeScannerController: UIViewController {
         currentBookData.author = volumes.items[0].volumeInfo.authors
         currentBookData.isbn_10 = volumes.items[0].volumeInfo.industryIdentifiers[1].identifier
         currentBookData.isbn_13 = volumes.items[0].volumeInfo.industryIdentifiers[0].identifier
-        // May not always have a publisher/publish date so conditional unwrapping to set default value to ""
+        // May not always have a publisher/publish date so conditional unwrapping to set default value to "".
         currentBookData.publisher = volumes.items[0].volumeInfo.publisher ?? ""
         currentBookData.published = volumes.items[0].volumeInfo.publishedDate ?? ""
         currentBookData.thumbnail = volumes.items[0].volumeInfo.imageLinks?.thumbnail
@@ -153,7 +152,7 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
       return
     }
     
-    // Get the metadata object
+    // Get the metadata object.
     let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
     
     if supportedCodeTypes.contains(metadataObj.type) {
@@ -162,18 +161,16 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
       let barcodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
       barcodeFrameView?.frame = barcodeObject!.bounds
       
+      // By checking if it is the first request, it prevents mutiple API calls.
       if isFirstRequest! {
         if metadataObj.stringValue != nil {
-          // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API
-          // NOTE: - Force unwrapping value in this case is fine as I check it is not nil.
+          // This will segue to the ConfirmEntryController as the found code will be searched in the Google Books API.
+          // NOTE:- Force unwrapping value in this case is fine as I check it is not nil.
           
           isFirstRequest = false
-          // Put your code which should be executed with a delay here
           if self.searchGoogleBooks(decodedURL: metadataObj.stringValue!) {
             // If the barcode is matched with the Google Books.
             // If a book has been found prevent further API calls.
-            
-            print("Book sent to controller")
             sentBookTitle = currentBookData.title
             self.performSegue(withIdentifier: "goToConfirmEntry", sender: self)
             
@@ -185,7 +182,6 @@ extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
           print("setting first request to false")
         }
       }
-      
     }
   }
 }
