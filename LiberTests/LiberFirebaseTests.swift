@@ -5,7 +5,7 @@
 //  Created by Jack Bishop on 04/03/2019.
 //  Copyright © 2019 Jack Bishop. All rights reserved.
 //
-//  Test cases for the database driven functions. 
+//  Test cases for the database driven functions.
 
 import XCTest
 @testable import Liber
@@ -26,10 +26,6 @@ class LiberFirebaseTests: XCTestCase {
     testBook.isbn_10 = "1234567890"
     testBook.publisher = "Test Publisher"
     testBook.published = "Test Date"
-  }
-  
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
   
   //MARK:- Bookcase Management Tests
@@ -82,18 +78,5 @@ class LiberFirebaseTests: XCTestCase {
       }
     }
   }
- 
-  
-  //MARK:- Organisation Management Tests
-  
-  func testDeleteAccount() {
-    //TODO:- Test removing the test account
-  }
-  
-  func testRecieveBooks() {
-    
-  }
-  
-  
 }
 

@@ -11,14 +11,6 @@ import XCTest
 @testable import Liber
 
 class LiberObjectTests: XCTestCase {
-
-  override func setUp() {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
-  
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-  }
   
   func testBookClass() {
     // Creating a book object, filling it with data and testing the resetClassData function.
