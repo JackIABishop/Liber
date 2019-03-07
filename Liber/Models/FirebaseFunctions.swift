@@ -18,6 +18,8 @@ func getLatestErrorMessageFromFirebaseFunctions() -> String {
   return latestErrorMessage
 }
 
+// MARK:- Account Validation
+
 /// Validation
 // Function to verify the users login details.
 func conductLoginValidation(loginParameters:Dictionary<String, String>) -> Bool {
@@ -62,6 +64,8 @@ func emailValidation(emailToTest: String) -> Bool {
   let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
   return emailTest.evaluate(with: emailToTest)
 }
+
+// MARK:- Account Management
 
 /// Firebase Account Handling.
 // Function to handle a login press.
@@ -148,6 +152,8 @@ func signOutCurrentFirebaseUser() -> Bool {
   }
 }
 
+// MARK:- Organisations
+
 // This function will get the orgCode from the identifiers table from the current logged in user.
 func getOrgCode(orgCompletion: @escaping (Bool) -> Void) {
   var orgCode: String = "Not Set"
@@ -195,4 +201,3 @@ func checkBookInOrganisation(bookToCheck: Book, orgCodeToCheck: String, completi
     }
   }
 }
-

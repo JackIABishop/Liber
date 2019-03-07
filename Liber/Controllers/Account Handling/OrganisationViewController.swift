@@ -65,7 +65,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     }
   }
   
-  //MARK:- TableView Methods
+  // MARK:- TableView Methods
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return subscribedOrganisations.count
   }

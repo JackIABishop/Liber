@@ -13,7 +13,7 @@ import FirebaseAuth
 
 class LiberFirebaseTests: XCTestCase {
   
-  var testOrganisationCode: String = "53C572EA-FE0E-4807-AF6E-240826AA6B96"
+  var testOrganisationCode: String = "53C572EA-FE0E-4807-AF6E-240826AA6B96" // Org code for Test account.
   var testBook = Book()
   
   override func setUp() {

@@ -78,7 +78,7 @@ class MoreInfoViewController: UIViewController {
     }
   }
   
-  //MARK: - Book Deletion Handling
+  // MARK: - Book Deletion Handling
   @IBAction func deleteBookPressed(_ sender: Any) {
     // Open an action sheet to confirm the deletion of the book entry.
     let deleteMenu = UIAlertController(title: "Warning", message: "Deleting your account is a destructive action, this book entry will be deleted.", preferredStyle: UIAlertController.Style.actionSheet)

@@ -36,7 +36,7 @@ class AccountViewController: UIViewController {
     hideHUD(view: self.view)
   }
   
-  //MARK: - Button Presses
+  // MARK: - Button Presses
   @IBAction func changePasswordPressed(_ sender: Any) {
     // Launch Change Password Functionality.
     // Ask the user for their current password.

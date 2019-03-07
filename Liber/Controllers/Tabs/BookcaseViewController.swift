@@ -111,7 +111,6 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
         completion(value)
       }
     }
-    
   }
   
   func retrieveBooks(orgCode : String, index: Int) {
@@ -243,7 +242,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     }
   }
   
-  //MARK: - TableView Methods
+  // MARK: - TableView Methods
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // Generate rows for each organisation section.
     if filteredOrganisationData[section].books.count == 0 {
@@ -322,7 +321,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
   }
 }
 
-//MARK: - Search Bar Methods
+// MARK: - Search Bar Methods
 extension BookcaseViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     tableView.reloadData()

@@ -71,7 +71,7 @@ class ConfirmEntryController: UIViewController {
     }
   }
   
-  //MARK: - Button press handling
+  // MARK: - Button press handling
   @IBAction func cancelButtonPressed(_ sender: Any) {
     // Cancel action and return to add screen.
     performSegue(withIdentifier: "goToTabView", sender: self)

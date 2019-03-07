@@ -141,7 +141,6 @@ class BarcodeScannerController: UIViewController {
   @IBAction func cancelButtonPressed(_ sender: Any) {
     performSegue(withIdentifier: "goToTabView", sender: self)
   }
-  
 }
 
 extension BarcodeScannerController: AVCaptureMetadataOutputObjectsDelegate {
