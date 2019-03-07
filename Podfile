@@ -17,10 +17,9 @@ target 'Liber' do
     inherit! :search_paths
     # Pods for testing
   end
+end
 
-  target 'LiberUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+target 'LiberUITests' do
+  inherit! :search_paths
+  # Pods for testing
 end

@@ -27,6 +27,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.accessibilityIdentifier = "bookcaseView" // Idenfitifier required to UI testing.
     
     searchBar.delegate = self
     
