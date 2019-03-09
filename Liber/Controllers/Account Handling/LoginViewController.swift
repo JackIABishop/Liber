@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.accessibilityIdentifier = "loginView" // Idenfitifier required to UI testing.
     createGradientLayer(view: view)
   }
   
@@ -55,6 +56,8 @@ class LoginViewController: UIViewController {
   func bookcasePurge(completion: @escaping (Bool) -> Void) {
     let subscribedDB = Database.database().reference().child("Users").child(organisationCode).child("Subscribed Organisations")
     
+    var subscribedOrganisations = [String]()
+    
     // Go through each stored database and check if it is still has an account present.
     subscribedDB.observeSingleEvent(of: .value) { snapshot in
       if snapshot.hasChildren() {
@@ -63,11 +66,19 @@ class LoginViewController: UIViewController {
           
           let orgToSearch = snap.value as? String
           
+          subscribedOrganisations.append(orgToSearch!)
+          
+          print(orgToSearch!)
+          
           if orgToSearch == organisationCode {
             // Users organisation, does not require checking.
           } else {
-            self.searchDatabaseForOrganisationUID(orgToCheck: snap, deleteCompletion: { (_) in
-              // Proceed
+            // Check if orgToSearch exists in the identifier list.
+            self.checkIfIDHasAnIdentifier(orgToSearch: orgToSearch!, result: { (result) in
+              if !result {
+                // There is no identifier, delete this entry.
+                snap.ref.removeValue()
+              }
             })
           }
         }
@@ -76,32 +87,31 @@ class LoginViewController: UIViewController {
     }
   }
   
-  func searchDatabaseForOrganisationUID(orgToCheck: DataSnapshot, deleteCompletion: @escaping (Bool) -> Void) {
-    let orgToSearch = orgToCheck.value as? String
+  func checkIfIDHasAnIdentifier(orgToSearch: String, result: @escaping (Bool) -> Void) {
+    var orgFound: Bool = false
     
     // Search through DBs.
-    let databaseToSearch = Database.database().reference().child("Users")
+    //let databaseToSearch = Database.database().reference().child("Users")
+    let databaseToSearch = Database.database().reference().child("Identifiers")
     
     databaseToSearch.observeSingleEvent(of: .value, with: { (orgsnapshot) in
       if orgsnapshot.hasChildren() {
         for childUID in orgsnapshot.children {
-          let UIDsnap = childUID as! DataSnapshot
+          let snap = childUID as! DataSnapshot
+          let UIDSnap = snap.value as? String
           
-          // Check if UID exists, if not, delete from users database.
-          if UIDsnap.value as? String == orgToSearch {
-            // Do not delete.
-            deleteCompletion(true)
-          } else {
-            // Cannot find, so delete.
-            orgToCheck.ref.removeValue()
-            
-            deleteCompletion(true)
+          if UIDSnap! == orgToSearch {
+            orgFound = true
           }
+        }
+        
+        // Return false if the ID has not been found in the Identifiers list, notifying the caller to remove the value from the users Subscribed Organisations.
+        if orgFound == false{
+          result(false)
         }
       }
     })
   }
-  
 }
 
 
