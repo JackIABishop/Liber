@@ -24,6 +24,7 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.accessibilityIdentifier = "organisationView" // Idenfitifier required to UI testing.
     
     indeterminateLoad(displayText: "Loading Organisations", view: self.view)
     

@@ -893,7 +893,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fMi-Um-2qt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="user_male" id="aMU-NH-tX5"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="user_male" largeContentSizeImage="Account" id="aMU-NH-tX5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currentAccountLabel" destination="0P5-1k-fqD" id="VaR-fq-oBN"/>
@@ -1413,13 +1413,15 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         </scene>
     </scenes>
     <resources>
+        <image name="Account" width="16" height="16"/>
         <image name="book" width="30" height="30"/>
         <image name="plus" width="30" height="30"/>
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="h1h-dJ-Q52"/>
         <segue reference="UTg-a9-9we"/>
-        <segue reference="WSY-Q7-ZVl"/>
+        <segue reference="Zzw-BF-Vdt"/>
         <segue reference="kua-8v-1Hi"/>
     </inferredMetricsTieBreakers>
 </document>

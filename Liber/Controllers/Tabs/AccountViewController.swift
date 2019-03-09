@@ -21,6 +21,7 @@ class AccountViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.accessibilityIdentifier = "accountView" // Idenfitifier required to UI testing.
     
     // Do any additional setup after loading the view.
     currentAccountLabel.text = userEmail

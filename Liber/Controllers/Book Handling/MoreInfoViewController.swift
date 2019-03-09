@@ -29,6 +29,7 @@ class MoreInfoViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.accessibilityIdentifier = "bookView" // Idenfitifier required to UI testing.
     
     // Setting up the view controller.
     titleText.text = bookToView.title
