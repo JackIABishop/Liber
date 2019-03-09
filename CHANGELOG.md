@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 0.2.4
+    * Creation of test plans, using Xcodes testing features. 
+    * Splitting up of project code files to implement proper MVC architecture. 
+    * Change to code comments, keeping a consistent style through the code; following similar concepts to the ones in this Stack Overflow thread: https://softwareengineering.stackexchange.com/questions/17766/what-are-your-thoughts-on-periods-full-stops-in-code-comments.
+    * General code clean up - Removing acronyms, according to style guide (https://github.com/raywenderlich/swift-style-guide).
+    * The app now provides a display screen that will display a message if there are no books in the users bookcase.
+
 ## Version 0.2.3
     * Enable the ability to delete a user's bookcase. 
     * Change some design elements of the app. 
@@ -11,7 +18,7 @@
 ## Version 0.2.2
     * Fix to names not loading when viewing organisation details. 
     * User can now see organisation code from the account tab. 
-    * Added iPad functionality. 
+    * Added iPad functionality, by changing the use of action sheet. 
 
 ## Version 0.2.1 
     * Fix to organisation names being erased in tableView when searching. 
