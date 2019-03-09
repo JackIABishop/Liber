@@ -42,8 +42,15 @@ class MoreInfoViewController: UIViewController {
     // Preventing the user from deleting a book that is not their own.
     deleteButton.isHidden = buttonHidden!
     
+    downloadThumbnail()
+  }
+  
+  func downloadThumbnail() {
+    // Reset UIImageView to nil.
+    thumbnailImageView.image = nil
+    
     // Check if thumbnail available.
-    if (bookToView.thumbnail != nil) {
+    if (bookToView.thumbnail?.absoluteString != "") {
       indeterminateLoad(displayText: "Loading Image", view: self.view)
       
       let session = URLSession(configuration: .default)
@@ -73,7 +80,7 @@ class MoreInfoViewController: UIViewController {
       hideHUD(view: self.view)
       downloadPicTask.resume()
     } else {
-      loadingText.text = ""
+      loadingText.text = "Not Available"
       // Reset UIImageView to nil.
       thumbnailImageView.image = nil
     }
@@ -101,6 +108,11 @@ class MoreInfoViewController: UIViewController {
     deleteMenu.addAction(confirmAction)
     
     self.present(deleteMenu, animated: true, completion: nil)
+  }
+  
+  @IBAction func backButtonPressed(_ sender: Any) {
+    thumbnailImageView.image = nil
+    performSegue(withIdentifier: "goToTabView", sender: self)
   }
 }
 
