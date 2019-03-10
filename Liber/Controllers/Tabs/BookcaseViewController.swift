@@ -266,7 +266,7 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let label = UILabel()
     label.text = "   \(filteredOrganisationData[section].orgName)'s Bookcase"
-    label.backgroundColor = UIColor.lightGray
+    label.backgroundColor = UIColor.cyan
     return label
   }
   
