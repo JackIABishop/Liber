@@ -16,11 +16,16 @@ class LoginViewController: UIViewController {
   @IBOutlet var emailTextField: UITextField!
   @IBOutlet var passwordTextField: UITextField!
   @IBOutlet var warningText: UILabel!
+  @IBOutlet weak var loginButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.accessibilityIdentifier = "loginView" // Idenfitifier required to UI testing.
     createGradientLayer(view: view)
+    
+    // Setting up button appearence. 
+    loginButton.layer.cornerRadius = 10
+    loginButton.clipsToBounds = true
   }
   
   // MARK: - Account Handling

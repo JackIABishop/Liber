@@ -32,7 +32,6 @@
 		57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */; };
 		57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */; };
 		57FA1D9221B6B5E5001FB848 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */; };
-		57FA1D9921B6F054001FB848 /* FutureLog in Resources */ = {isa = PBXBuildFile; fileRef = 57FA1D9821B6F054001FB848 /* FutureLog */; };
 		57FA1D9F21B71B67001FB848 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FA1D9E21B71B67001FB848 /* Book.swift */; };
 		57FE9A0F21C3D5AB00CF3DCD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */; };
 		B0747F2DA85122B58B3E3AEB /* Pods_LiberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BAC75BBB1204E58CD93AD1B /* Pods_LiberTests.framework */; };
@@ -94,7 +93,6 @@
 		57FA1D8C21B6A33A001FB848 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		57FA1D8F21B6B5D4001FB848 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		57FA1D9121B6B5E5001FB848 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		57FA1D9821B6F054001FB848 /* FutureLog */ = {isa = PBXFileReference; lastKnownFileType = text; path = FutureLog; sourceTree = "<group>"; };
 		57FA1D9E21B71B67001FB848 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		67D1868A44B48AEC27D4F1EB /* Pods-LiberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiberTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiberTests/Pods-LiberTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +245,6 @@
 			children = (
 				573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */,
 				57FE9A0E21C3D5AB00CF3DCD /* GoogleService-Info.plist */,
-				57FA1D9821B6F054001FB848 /* FutureLog */,
 				57A91711222431BB0029C025 /* GradientLayer.swift */,
 			);
 			path = Utilities;
@@ -416,7 +413,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57FA1D9921B6F054001FB848 /* FutureLog in Resources */,
 				575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */,
 				57FE9A0F21C3D5AB00CF3DCD /* GoogleService-Info.plist in Resources */,
 				575580CF21B578A900B6A9AD /* Main.storyboard in Resources */,

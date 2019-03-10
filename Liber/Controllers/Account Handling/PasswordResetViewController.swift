@@ -15,10 +15,15 @@ class PasswordResetViewController: UIViewController {
   // Linking UI Elements
   @IBOutlet var confirmationText: UILabel!
   @IBOutlet var emailTextField: UITextField!
+  @IBOutlet weak var resetButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     createGradientLayer(view: view)
+    
+    // Setting up button appearence.
+    resetButton.layer.cornerRadius = 10
+    resetButton.clipsToBounds = true
   }
   
   @IBAction func resetPasswordPressed(_ sender: Any) {

@@ -18,10 +18,15 @@ class RegisterViewController: UIViewController {
   @IBOutlet var passwordTextField: UITextField!
   @IBOutlet var confirmPasswordTextField: UITextField!
   @IBOutlet var warningText: UILabel!
+  @IBOutlet weak var registerButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     createGradientLayer(view: view)
+    
+    // Setting up button appearence.
+    registerButton.layer.cornerRadius = 10
+    registerButton.clipsToBounds = true
   }
   
   // MARK:- Account Handling

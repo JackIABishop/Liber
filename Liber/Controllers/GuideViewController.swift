@@ -10,10 +10,15 @@
 import UIKit
 
 class GuideViewController: UIViewController {
+  @IBOutlet weak var proceedButton: UIButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     createGradientLayer(view: self.view)
+    
+    // Setting up button appearence.
+    proceedButton.layer.cornerRadius = 10
+    proceedButton.clipsToBounds = true
   }
 }
 
