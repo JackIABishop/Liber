@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		5700314721B86763002DCF73 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5700314621B86763002DCF73 /* AccountViewController.swift */; };
 		571FA1AE2201C973005BDF69 /* ManualAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */; };
-		57252362222D93B80057FA26 /* BookManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57252361222D93B80057FA26 /* BookManagement.swift */; };
 		57252364222D9E380057FA26 /* LiberFirebaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57252363222D9E380057FA26 /* LiberFirebaseTests.swift */; };
 		57252366222DC8B00057FA26 /* LiberObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57252365222DC8B00057FA26 /* LiberObjectTests.swift */; };
 		573F624F21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */; };
 		5748D49522286EEB00B02B48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5748D49422286EEB00B02B48 /* Assets.xcassets */; };
 		5748D4992228790E00B02B48 /* BookcaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5748D4982228790E00B02B48 /* BookcaseTableViewCell.swift */; };
+		575274FB2235A0F300E99FC3 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575274F92235A0F200E99FC3 /* FirebaseFunctions.swift */; };
+		575274FC2235A0F300E99FC3 /* BookManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575274FA2235A0F300E99FC3 /* BookManagement.swift */; };
 		575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C721B578A900B6A9AD /* AppDelegate.swift */; };
 		575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580C921B578A900B6A9AD /* BookcaseViewController.swift */; };
 		575580CC21B578A900B6A9AD /* BarcodeScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580CB21B578A900B6A9AD /* BarcodeScannerController.swift */; };
@@ -22,7 +23,6 @@
 		575580D421B578AB00B6A9AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 575580D221B578AB00B6A9AD /* LaunchScreen.storyboard */; };
 		575580EA21B578AB00B6A9AD /* LiberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575580E921B578AB00B6A9AD /* LiberUITests.swift */; };
 		57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */; };
-		5791EC9021C6D27300F94481 /* FirebaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */; };
 		57967B0A22120FFF00AC9B28 /* Organisations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57967B0922120FFF00AC9B28 /* Organisations.swift */; };
 		57A91712222431BB0029C025 /* GradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A91711222431BB0029C025 /* GradientLayer.swift */; };
 		57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B897F221BC0D6B000237BB /* GuideViewController.swift */; };
@@ -64,12 +64,13 @@
 		4B75144DFE3618BC9E909C02 /* Pods-Liber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Liber.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Liber/Pods-Liber.debug.xcconfig"; sourceTree = "<group>"; };
 		5700314621B86763002DCF73 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		571FA1AD2201C973005BDF69 /* ManualAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ManualAddViewController.swift; path = "Liber/Controllers/Book Handling/ManualAddViewController.swift"; sourceTree = SOURCE_ROOT; };
-		57252361222D93B80057FA26 /* BookManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManagement.swift; sourceTree = "<group>"; };
 		57252363222D9E380057FA26 /* LiberFirebaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberFirebaseTests.swift; sourceTree = "<group>"; };
 		57252365222DC8B00057FA26 /* LiberObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberObjectTests.swift; sourceTree = "<group>"; };
 		573F624E21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBProgressHUDFunctionFile.swift; sourceTree = "<group>"; };
 		5748D49422286EEB00B02B48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5748D4982228790E00B02B48 /* BookcaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookcaseTableViewCell.swift; path = Liber/Controllers/BookcaseTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		575274F92235A0F200E99FC3 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
+		575274FA2235A0F300E99FC3 /* BookManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookManagement.swift; sourceTree = "<group>"; };
 		575580C421B578A900B6A9AD /* Liber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Liber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575580C721B578A900B6A9AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		575580C921B578A900B6A9AD /* BookcaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookcaseViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		575580E921B578AB00B6A9AD /* LiberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiberUITests.swift; sourceTree = "<group>"; };
 		575580EB21B578AB00B6A9AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57640D4E21BE77C100F93FC1 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
-		5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctions.swift; sourceTree = "<group>"; };
 		57967B0922120FFF00AC9B28 /* Organisations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organisations.swift; sourceTree = "<group>"; };
 		57A91711222431BB0029C025 /* GradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientLayer.swift; sourceTree = "<group>"; };
 		57B897F221BC0D6B000237BB /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +194,8 @@
 		575580F821B5814900B6A9AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				575274FA2235A0F300E99FC3 /* BookManagement.swift */,
+				575274F92235A0F200E99FC3 /* FirebaseFunctions.swift */,
 				57B897F421BC56E8000237BB /* Book Handling */,
 				57FA1D8E21B6B561001FB848 /* Account Handling */,
 				57FA1D9321B6B637001FB848 /* Tabs */,
@@ -207,8 +209,6 @@
 			children = (
 				57FA1D9E21B71B67001FB848 /* Book.swift */,
 				57967B0922120FFF00AC9B28 /* Organisations.swift */,
-				57252361222D93B80057FA26 /* BookManagement.swift */,
-				5791EC8F21C6D27300F94481 /* FirebaseFunctions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -534,16 +534,16 @@
 				575580CC21B578A900B6A9AD /* BarcodeScannerController.swift in Sources */,
 				57FA1D9021B6B5D4001FB848 /* RegisterViewController.swift in Sources */,
 				57FA1D8D21B6A33A001FB848 /* WelcomeViewController.swift in Sources */,
-				5791EC9021C6D27300F94481 /* FirebaseFunctions.swift in Sources */,
 				57B897F321BC0D6B000237BB /* GuideViewController.swift in Sources */,
 				575580C821B578A900B6A9AD /* AppDelegate.swift in Sources */,
-				57252362222D93B80057FA26 /* BookManagement.swift in Sources */,
 				57B897F621BC5711000237BB /* ConfirmEntryController.swift in Sources */,
+				575274FC2235A0F300E99FC3 /* BookManagement.swift in Sources */,
 				575580CA21B578A900B6A9AD /* BookcaseViewController.swift in Sources */,
 				57640D4F21BE77C100F93FC1 /* MoreInfoViewController.swift in Sources */,
 				57FA1D9F21B71B67001FB848 /* Book.swift in Sources */,
 				57EEBD8D2212EE2900FDA709 /* OrganisationViewController.swift in Sources */,
 				5700314721B86763002DCF73 /* AccountViewController.swift in Sources */,
+				575274FB2235A0F300E99FC3 /* FirebaseFunctions.swift in Sources */,
 				571FA1AE2201C973005BDF69 /* ManualAddViewController.swift in Sources */,
 				573F624F21F4DC6600C05F51 /* MBProgressHUDFunctionFile.swift in Sources */,
 			);
