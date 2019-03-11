@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.0.0
+    * Signing the current version of Liber as v1.0.0, the final version for the deliverable 2 deadline of the project.
+
 ## Version 0.2.4
     * Creation of test plans, using Xcodes testing features. 
     * Splitting up of project code files to implement proper MVC architecture. 
