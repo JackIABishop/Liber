@@ -1,5 +1,8 @@
 #  Liber
 
+## Github Page
+For a full picture of the repository over teh course of the development, the Github page can be found [here](https://github.com/JackIABishop/Liber).
+
 ## Summary
 This application has been developed as use for a project for the University of Central Lancashire. It contains all of the source files which are being used to make the application (apart from additional libraries using the podfile). 
 The application is a iOS based application used to allow users to register an account with Liber, barcode scan a book's ISBN number and retrieve that books details through the use of the Google Books API. The book data will then be stored in the user's account (using Firebase) to enable them to view their book collection from the application. 
