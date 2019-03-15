@@ -1,7 +1,7 @@
 #  Liber
 
 ## Github Page
-For a full picture of the repository over teh course of the development, the Github page can be found [here](https://github.com/JackIABishop/Liber).
+The full repository which details the iterative stages of development can be found [here](https://github.com/JackIABishop/Liber).
 
 ## Summary
 This application has been developed as use for a project for the University of Central Lancashire. It contains all of the source files which are being used to make the application (apart from additional libraries using the podfile). 
