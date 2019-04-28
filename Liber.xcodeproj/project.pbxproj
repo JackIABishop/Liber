@@ -377,13 +377,16 @@
 				TargetAttributes = {
 					575580C321B578A900B6A9AD = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					575580D921B578AB00B6A9AD = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 575580C321B578A900B6A9AD;
 					};
 					575580E421B578AB00B6A9AD = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 						TestTargetID = 575580C321B578A900B6A9AD;
 					};
 				};
@@ -741,7 +744,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackbishop.Liber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -766,7 +769,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackbishop.Liber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -787,7 +790,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackbishop.LiberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Liber.app/Liber";
 			};
@@ -809,7 +812,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackbishop.LiberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Liber.app/Liber";
 			};
@@ -830,7 +833,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackbishop.LiberUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Liber;
 			};
@@ -851,7 +854,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jackbishop.LiberUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Liber;
 			};
