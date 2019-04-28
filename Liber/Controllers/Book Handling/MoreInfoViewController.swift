@@ -107,7 +107,31 @@ class MoreInfoViewController: UIViewController {
     deleteMenu.addAction(cancelAction)
     deleteMenu.addAction(confirmAction)
     
-    self.present(deleteMenu, animated: true, completion: nil)
+    // Present the correct action menu depending on the iOS Device.
+    if UIDevice.current.userInterfaceIdiom == .phone {
+      // Use action sheet for iPhone
+      self.present(deleteMenu, animated: true, completion: nil)
+    }
+    else {
+      // Use popover sheet for iPad.
+      deleteMenu.popoverPresentationController?.sourceView = self.view
+      if let popoverController = deleteMenu.popoverPresentationController {
+        
+        let viewForSource = sender as! UIView
+        popoverController.sourceView = viewForSource
+        
+        // The position of where the popover will show.
+        popoverController.sourceRect = viewForSource.bounds
+        
+        // The size you want to display.
+        deleteMenu.preferredContentSize = CGSize(width: 200,height: 500)
+        popoverController.delegate = self as? UIPopoverPresentationControllerDelegate
+        
+        
+      }
+      
+      self.present(deleteMenu, animated: true, completion: nil)
+    }
   }
   
   @IBAction func backButtonPressed(_ sender: Any) {
