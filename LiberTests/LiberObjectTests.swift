@@ -23,7 +23,7 @@ class LiberObjectTests: XCTestCase {
     XCTAssertTrue(testBook.title == "Test Title")
     XCTAssertTrue(testBook.author[0] == "Test Author")
     XCTAssertTrue((testBook.thumbnail?.absoluteString)! == "Test_URL")
-    testBook.resetClassData()
+    testBook.resetClassData() // Check to see if the data is properly reset.
     XCTAssertTrue(testBook.title == "")
     XCTAssertTrue(testBook.author.count == 0)
     XCTAssertTrue(testBook.thumbnail == nil)

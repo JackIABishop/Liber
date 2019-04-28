@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iCc-fV-i4m">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iCc-fV-i4m">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1303,7 +1303,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="gCT-Rg-z3q" id="juL-T9-Qcu"/>
-                        <outlet property="loginButton" destination="63h-dy-Ch7" id="N1A-g9-qId"/>
+                        <outlet property="loginButton" destination="63h-dy-Ch7" id="qdb-Dl-cfl"/>
                         <outlet property="passwordTextField" destination="tfU-FK-2RZ" id="098-Wq-TA1"/>
                         <outlet property="warningText" destination="Z3x-Fm-NnF" id="KqH-zE-28b"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="goToTabView" id="V0W-PT-oLM"/>

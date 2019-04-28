@@ -18,20 +18,7 @@ class LiberUITests: XCTestCase {
     XCUIApplication().launch()
   }
   
-  // UI test to go through the elements to login via the test account.
-  func testLogin() {
-    let app = XCUIApplication()
-    app.buttons["Log In"].tap()
-    app.textFields["Email"].tap()
-    app.textFields["Email"].typeText("test@test.com")
-    app.secureTextFields["Password"].tap()
-    app.secureTextFields["Password"].typeText("password")
-    app.buttons["Login"].tap()
-    
-    sleep(3) // Wait for the server call to be made.
   
-    XCTAssertTrue(app.isDisplayingBookcase) // Testing Case
-  }
   
   // Open a book and check if exepected behaviour is true.
   func testAddBook() {
