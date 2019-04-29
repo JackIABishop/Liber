@@ -10,6 +10,8 @@ The application is a iOS based application used to allow users to register an ac
 ## Video Demo
 The first deliverable demo video van be found at the following link: [Link to YouTube video](https://www.youtube.com/watch?v=uYifEzh8e7E)
 
+The demonstration for the final submission of the app can be found here: [Link to YouTube video](https://www.youtube.com/watch?v=y2mDSJQDrgU&t)
+
 ## Installation
 To build Liber in a development environment, Xcode is required to launch the .xcworkspace. When running the project, it is important to know that the pods required are not included in the project file. To install the pods, locate to the file directory using terminal and run:
 
