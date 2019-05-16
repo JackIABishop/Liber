@@ -30,9 +30,8 @@ class OrganisationViewController: UIViewController, UITableViewDelegate, UITable
     
     // Load subscribed organisations.
     retrieveOrganisations { (_) in
+      hideHUD(view: self.view)
     }
-    
-    hideHUD(view: self.view)
   }
   
   // Save the organisation data in the users DB.

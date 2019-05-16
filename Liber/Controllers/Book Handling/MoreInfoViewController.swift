@@ -126,8 +126,6 @@ class MoreInfoViewController: UIViewController {
         // The size you want to display.
         deleteMenu.preferredContentSize = CGSize(width: 200,height: 500)
         popoverController.delegate = self as? UIPopoverPresentationControllerDelegate
-        
-        
       }
       
       self.present(deleteMenu, animated: true, completion: nil)

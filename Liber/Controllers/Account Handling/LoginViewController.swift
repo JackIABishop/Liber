@@ -41,21 +41,22 @@ class LoginViewController: UIViewController {
         if result {
           // Successful login
           self.bookcasePurge { (_) in
+            hideHUD(view: self.view)
             // This will remove any bookcases that the user is subscribed too which has been deleted.
             self.warningText.text = ""
             self.performSegue(withIdentifier: "goToTabView", sender: self)
           }
         } else {
+          hideHUD(view: self.view)
           // Error signing into Firebase.
           self.warningText.text = "Incorrect email / password."
         }
       }
     } else {
+      hideHUD(view: self.view)
       // Login validation failed, so print the error message to the user.
       self.warningText.text = getLatestErrorMessageFromFirebaseFunctions()
     }
-    
-    hideHUD(view: self.view)
   }
   
   func bookcasePurge(completion: @escaping (Bool) -> Void) {

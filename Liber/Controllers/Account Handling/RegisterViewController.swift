@@ -39,20 +39,21 @@ class RegisterViewController: UIViewController {
     if conductRegistrationValidation(registerParameters: registerParameters, confirmPassword: confirmPasswordTextField.text!) {
       registerFirebaseUser(registerParameters: registerParameters) { (result) in
         if result {
+          hideHUD(view: self.view)
           // Successful registration.
           self.warningText.text = ""
           self.performSegue(withIdentifier: "goToGuideView", sender: self)
         } else {
+          hideHUD(view: self.view)
           // Error registering with Firebase.
           self.warningText.text = "Error registering account, please try again."
         }
       }
     } else {
+      hideHUD(view: self.view)
       // Register validation failed, so print an error message to the user.
       self.warningText.text = getLatestErrorMessageFromFirebaseFunctions()
     }
-    
-    hideHUD(view: self.view)
   }
 }
 

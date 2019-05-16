@@ -37,9 +37,8 @@ class BookcaseViewController: UIViewController, UITableViewDelegate, UITableView
     fillBookcaseData { (_) in
       // Once the data has been retrieved, organise the bookcase entries in the order chosen by the user.
       self.sortBookcaseData()
+      hideHUD(view: self.view)
     }
-    
-    hideHUD(view: self.view)
   }
   
   func sortBookcaseData() {
