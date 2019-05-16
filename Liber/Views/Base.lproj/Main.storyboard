@@ -389,9 +389,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXC-42-yk3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXC-42-yk3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.97647720575332642" green="0.9764588475227356" blue="0.97647124528884888" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching for barcode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2FV-j3-7cM">
@@ -404,9 +403,8 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-SE-B9j">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGN-SE-B9j">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Barcode Scanner" id="WYh-3q-plJ">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BKM-jV-pSF">
@@ -423,7 +421,14 @@ Now that you have made an account, you can view your digital bookcase. It may lo
                         <constraints>
                             <constraint firstItem="2FV-j3-7cM" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="637" id="1XR-pt-BuB"/>
                             <constraint firstAttribute="trailing" secondItem="2FV-j3-7cM" secondAttribute="trailing" id="8LR-dx-Otu"/>
+                            <constraint firstItem="JXC-42-yk3" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="99P-VI-cBT"/>
+                            <constraint firstItem="wGN-SE-B9j" firstAttribute="leading" secondItem="2FV-j3-7cM" secondAttribute="leading" id="BCq-a0-dPB"/>
+                            <constraint firstItem="wGN-SE-B9j" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" id="CyM-zF-xNd"/>
                             <constraint firstItem="2FV-j3-7cM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="Ilb-7g-GfX"/>
+                            <constraint firstItem="JXC-42-yk3" firstAttribute="bottom" secondItem="wGN-SE-B9j" secondAttribute="bottom" id="L5f-gw-ph3"/>
+                            <constraint firstItem="JXC-42-yk3" firstAttribute="leading" secondItem="wGN-SE-B9j" secondAttribute="leading" id="OIb-WW-ELm"/>
+                            <constraint firstItem="JXC-42-yk3" firstAttribute="trailing" secondItem="wGN-SE-B9j" secondAttribute="trailing" id="QYb-OQ-Qbg"/>
+                            <constraint firstItem="wGN-SE-B9j" firstAttribute="trailing" secondItem="2FV-j3-7cM" secondAttribute="trailing" id="lyo-du-caK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
@@ -1432,7 +1437,7 @@ Now that you have made an account, you can view your digital bookcase. It may lo
         <image name="user_male" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="V0W-PT-oLM"/>
+        <segue reference="Vh5-4A-kRo"/>
         <segue reference="wFM-tI-g5j"/>
         <segue reference="dO8-bj-3Pk"/>
     </inferredMetricsTieBreakers>
